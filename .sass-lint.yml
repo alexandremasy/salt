@@ -85,3 +85,4 @@ rules:
   # Other
   # allow-single-line: 1
   brace-style: 0
+  leading-underscore: 0

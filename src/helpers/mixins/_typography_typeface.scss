@@ -1,0 +1,84 @@
+//
+//   Typeface – Declare a local font-face
+//
+//   @param {String} $font-family - The font family
+//   @param {String} $path - The folder containing the font. Can be relative or absolute
+//   @param {Array} $weights - All the weight available for the font
+//   @param {boolean} $style - The font-style to apply
+//   @param {boolean} $is-google - Is it a Google font ?
+//
+@mixin typography-local-typeface($font-family, $path, $weights, $style: normal)
+{
+  // remove the last "/" if present
+  @if (str-slice($path, -1) == "/")
+  {
+    $path: #{str-slice($path, 0, -2)};
+  }
+
+  @each $weight in $weights
+  {
+    @font-face {
+      font-family: $font-family;
+      font-weight: $weight;
+      font-style: $style;
+      
+      src: typography-typeface(
+        $font-family,
+        $path
+      );
+    }
+  }
+
+}
+
+//
+//   Typeface - Declare a Google font-face
+//
+//   @param {String} $font-family - The font-family
+//   @param {Array} $weights - All the weights to declare
+//   @param {Boolean} $has-italic - Does the typography has to support for italic ?
+//
+@mixin typography-google-typeface($font-family, $weights, $has-italic)
+{
+  $url: typography-google-url($font-family, $weights, $has-italic);
+  @debug "Google Font URL: "$url;
+  // @import url($url);
+}
+
+@function typography-typeface($font-family, $path)
+{
+  $src: ();
+
+  $formats-map: (
+    eot:   "#{$path}/#{$font-family}.#{$font-format-eot}?#iefix" format("embedded-opentype"),
+    woff2: "#{$path}/#{$font-family}.#{$font-format-woff2}" format("woff2"),
+    woff:  "#{$path}/#{$font-family}.#{$font-format-woff}" format("woff"),
+    ttf:   "#{$path}/#{$font-family}.#{$font-format-ttf}" format("truetype"),
+    svg:   "#{$path}/#{$font-family}.#{$font-format-svg}##{$font-family}" format("svg")
+  );
+
+  @each $key, $values in $formats-map
+  {
+    $file-path: nth($values, 1);
+    $font-format: nth($values, 2);
+
+    $src: append($src, url($file-path) $font-format, comma);
+  }
+
+  @return $src;
+}
+
+
+@function typography-google-url($font-family, $weigths, $italic)
+{
+  // https://fonts.googleapis.com/css?family=Rubik:400,400i,500
+  $import: ();
+  @each $key, $value in $weigths
+  {
+    @debug $key;
+    @debug $value;
+    @debug '------';
+  }
+
+  @return $import;
+}

@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////
+//
+//   Font-Weight
+//
+////////////////////////////////////////////////////
+$font-thin:           100;
+$font-ultra-light:    200;
+$font-light:          300;
+$font-normal:         400;
+$font-medium:         500;
+$font-semi-bold:      600;
+$font-bold:           700;
+$font-extra-bold:     800;
+$font-black:          900;
+
+$font-weights:        (
+                        $font-thin,
+                        $font-ultra-light,
+                        $font-light, $font-normal,
+                        $font-medium, $font-semi-bold,
+                        $font-bold,
+                        $font-extra-bold,
+                        $font-black
+                      );
