@@ -12,16 +12,19 @@
 //   a. Typefaces
 //
 //   => heading
-$font-heading: "Rubik";
-$font-heading-weights: ($font-normal, $font-bold);
-$font-heading-has-italic: false;
-$font-heading-is-google-font: true;
+$font-heading:              "Rubik";
+$font-heading-typefaces: (
+  $font-normal:             $font-google,
+  $font-bold:               $font-google
+);
+
 //
 //   => body
 $font-body: "Open Sans";
-$font-body-weights: ($font-normal, $font-semi-bold, $font-black);
-$font-body-has-italic: false;
-$font-body-is-google-font: true;
+$font-body-typefaces: (
+  $font-normal:             '../fonts/rubik/rubik-normal',
+  $font-bold:               '../fonts/rubik/rubik-bold',
+);
 //
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -31,6 +34,8 @@ $font-body-is-google-font: true;
 $font-size-base: 16px;
 //
 //   => heading
+
+
 $font-heading-sizes: (
   xxs:    (10px / $font-size-base, 10px / $font-size-base),
   xs:     (12px / $font-size-base, 12px / $font-size-base),

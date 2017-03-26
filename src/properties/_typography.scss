@@ -3,18 +3,20 @@
 
 
 // Google Font
-@include typography-google-typeface($font-heading, $font-heading-weights, $font-heading-has-italic);
+// @include typography-google-typeface($font-heading, $font-heading-weights, $font-heading-has-italic);
 
 // Local Font
-$font-style: if($font-heading-has-italic, 'italic', 'normal');
-@include typography-local-typeface($font-heading, "../fonts/rubik", $font-heading-weights, $font-style);
+// $font-style: if($font-heading-has-italic, 'italic', 'normal');
+// @include typography-local-typeface($font-heading, "../fonts/rubik", $font-heading-weights, $font-style);
 
 
 
+// @include typography-typefaces($font-heading, $font-heading-typefaces);
+@include typography-typefaces($font-body, $font-body-typefaces);
 
 
-
-@include typography-local-typeface((
-  "../fonts/rubik/rubik-normal",
-  "../fonts/rubik/rubik-bold"
-), $font-heading-weights, $font-style);
+//
+// @include typography-local-typeface((
+//   "../fonts/rubik/rubik-normal",
+//   "../fonts/rubik/rubik-bold"
+// ), $font-heading-weights, $font-style);

@@ -1,0 +1,29 @@
+//
+//   Build the many path to import a local font
+//
+//   @param {string} $font-family - The font family
+//   @param {string} $path - The path to the file to import minus the extension.
+//   @return {list} - Return the list with all the proper import.
+//
+@function typography-local-path($font-family, $path)
+{
+  $src: ();
+
+  $formats-map: (
+    eot:   "#{$path}.#{$font-format-eot}?#iefix" format("embedded-opentype"),
+    woff2: "#{$path}.#{$font-format-woff2}" format("woff2"),
+    woff:  "#{$path}.#{$font-format-woff}" format("woff"),
+    ttf:   "#{$path}.#{$font-format-ttf}" format("truetype"),
+    svg:   "#{$path}.#{$font-format-svg}##{$font-family}" format("svg")
+  );
+
+  @each $key, $values in $formats-map
+  {
+    $file-path: nth($values, 1);
+    $font-format: nth($values, 2);
+
+    $src: append($src, url($file-path) $font-format, comma);
+  }
+
+  @return $src;
+}

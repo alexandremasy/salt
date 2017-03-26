@@ -8,10 +8,13 @@
 //
 @import "helpers/properties/_font-weights";
 @import "helpers/properties/_font-formats";
+@import "helpers/properties/_font-providers";
 
 //
 //   2. Functions
 //
+@import "helpers/functions/_list-to-string";
+@import "helpers/functions/_typography-local-path";
 
 //
 //   3. Mixins
