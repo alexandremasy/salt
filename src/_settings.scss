@@ -75,3 +75,48 @@ $font-heading-line-height: (
 $font-body-line-height: $font-heading-line-height;
 //
 //////////////////////////////////////////////////////////////////////////////
+//
+//   2. Grid
+//
+//       a. Base
+//       b. Breakpoints
+//       c. Sizes
+//       d. Layout
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//   a. Base
+//
+$grid-base: 16px;
+
+//
+//   b. Breakpoints
+//
+$grid-breakpoints: (
+  xxs:  320px,
+  xs:   375px,
+  s:    425px,
+  m:    768px,
+  l:    1024px,
+  xl:   1200px,
+  xxl:  1440px
+);
+
+//
+//   c. Sizes
+//
+$grid-sizes: (
+  xxs:  .25,
+  xs:   .5,
+  s:    .75,
+  m:    1,
+  l:    1.5,
+  xl:   2,
+  xxl:  4
+);
+
+//
+//   d. Layout
+//
+$grid-colums: 12;
+$grid-gutter: nth($grid-sizes, m) * 1em;
