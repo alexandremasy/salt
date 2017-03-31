@@ -1,0 +1,11 @@
+//
+//   Typography – Font-Sizes
+//   Create the utility classes
+//
+//   @param {string} $font-family - The font family name
+//   @param {list} $typefaces - A list of all the weight to declare.
+//
+@mixin typography-fontsize
+{
+  @content;
+}

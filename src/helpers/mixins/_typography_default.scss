@@ -1,0 +1,17 @@
+//
+//   Typography – Default
+//   Setup the default values for the html & body
+//
+//   @param {string} $font-family - The font family name
+//   @param {list} $typefaces - A list of all the weight to declare.
+//
+@mixin typography-default($font-family, $font-size, $line-height)
+{
+  html,
+  body
+  {
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: $line-height;
+  }
+}

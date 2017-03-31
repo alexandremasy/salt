@@ -1,28 +1,28 @@
 //
 //   Exponential operation
 //
-//   @param {number} $number - The base to use
-//   @param {number} $exponent - The exponent.
+//   @param {number} $x - The base to use
+//   @param {number} $n - The exponent.
 //   @return {number} - Return $number raised to the power of $exponent
 //
-@function pow($number, $exponent)
+@function power ($x, $n)
 {
-  $value: 1;
+  $ret: 1;
 
-  @if $exponent > 0
+  @if $n >= 0
   {
-    @for $i from 1 through $exponent
+    @for $i from 1 through $n
     {
-      $value: $value * $number;
+      $ret: $ret * $x;
     }
   }
-  @else if $exponent < 0
+  @else
   {
-    @for $i from 1 through -$exponent
+    @for $i from $n to 0
     {
-      $value: $value / $number;
+      $ret: $ret / $x;
     }
   }
 
-  @return $value;
+  @return $ret;
 }

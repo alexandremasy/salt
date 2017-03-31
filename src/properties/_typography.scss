@@ -1,4 +1,31 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+//   1. Typography
+//
+//       a. Base (html, body)
+//       b. Typefaces
+//       c. Sizes
+//       d. Line-Height
+//       e. Icons
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//   a. Base
+//   Define the default html, body value
+//
+@include typography-default($font-family-base, $font-size-base, $font-line-height-base);
 
-// Order of the includes matters, and it is: normal, bold, italic, bold+italic.
+//////////////////////////////////////////////////////////////////////////////
+//
+//   b. Typefaces
+//   Order of the includes matters, and it is: normal, bold, italic, bold+italic.
+//
 @include typography-typefaces($font-heading, $font-heading-typefaces);
 @include typography-typefaces($font-body, $font-body-typefaces);
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//   b. Sizes - Solution A
+//
+//   Set the size of the font for mobile / desktop
+@include typography-fontsize;
