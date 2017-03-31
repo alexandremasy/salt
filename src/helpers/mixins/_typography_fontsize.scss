@@ -1,11 +1,27 @@
 //
+//   Typography – Font-Size
+//   Output the appropriate font-size
+//
+//   @param {number} $font-size-min - The minimum font-size
+//   @param {number} $font-size-max - The maximum font-size
+//   @param {number} $breakpoint-min - The smallest breakpoint
+//   @param {number} $breakpoint-max - The largest breakpoint
+//
+@mixin typography-fontsize($font-size-min, $font-size-max, $breakpoint-min, $breakpoint-max)
+{
+  font-size: calc(#{$font-size-min} + (#{$font-size-max/1px} - #{$font-size-min/1px}) * ((100vw - #{$breakpoint-min}) / ( #{$breakpoint-max/1px} - #{$breakpoint-min/1px})));
+}
+
+//
 //   Typography – Font-Sizes
 //   Create the utility classes
 //
-//   @param {string} $font-family - The font family name
-//   @param {list} $typefaces - A list of all the weight to declare.
+//   @param {number} $font-size-min - The minimum font-size
+//   @param {number} $font-size-max - The maximum font-size
+//   @param {number} $breakpoint-min - The smallest breakpoint
+//   @param {number} $breakpoint-max - The largest breakpoint
 //
-@mixin typography-fontsize
+@mixin typography-fontsizes()
 {
   @content;
 }
