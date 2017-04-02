@@ -1,0 +1,23 @@
+////////////////////////////////////////////////////
+//
+//   Grid - Unit interval
+//   Defines a number to be added or subtracted from each unit when declaring breakpoints with exclusive intervals
+//   @example scss - Interval for pixels is defined as `1` by default
+//    @include media('>128px') {}
+//
+//    /* Generates: */
+//    @media (min-width: 129px) {}
+//
+////////////////////////////////////////////////////
+
+$grid-interval-px: 1;
+$grid-interval-em: .01;
+$grid-interval-rem: .1;
+$grid-interval-default: 0;
+
+$grid-intervals: (
+  px: $grid-interval-px,
+  em: $grid-interval-em,
+  rem: $grid-interval-rem,
+  default: $grid-interval-default
+) !default;

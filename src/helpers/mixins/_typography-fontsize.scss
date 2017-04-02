@@ -1,0 +1,59 @@
+//
+//   Typography – Font-Size
+//   Output the appropriate font-size
+//
+//   @param {number} $font-size-min - The minimum font-size
+//   @param {number} $font-size-max - The maximum font-size
+//   @param {number} $breakpoint-min - The smallest breakpoint
+//   @param {number} $breakpoint-max - The largest breakpoint
+//
+@mixin typography-fontsize($name, $font-size-min, $font-size-max, $breakpoint-min, $breakpoint-max)
+{
+  .f-#{$name}
+  {
+    font-size: calc(#{$font-size-min} + (#{$font-size-max/1px} - #{$font-size-min/1px}) * ((100vw - #{$breakpoint-min}) / ( #{$breakpoint-max/1px} - #{$breakpoint-min/1px})));
+
+    // @include media-up('xxl')
+    // {
+    //   font-size: $fmax;
+    //   line-height: #{$lmin};
+    // }
+    //
+    // @include media-down('xxs')
+    // {
+    //   font-size: $fmin;
+    //   line-height: #{$lmax};
+    // };
+  }
+}
+
+//
+//   Typography – Font-Sizes
+//   Create the utility classes
+//
+//   @param {number} $font-size-min - The minimum font-size
+//   @param {number} $font-size-max - The maximum font-size
+//   @param {number} $breakpoint-min - The smallest breakpoint
+//   @param {number} $breakpoint-max - The largest breakpoint
+//
+@mixin typography-fontsizes($font-size-heading, $font-size-body)
+{
+  $breakpoint-min: 1px;
+  $breakpoint-max: 100px;
+
+  $base-min: nth($font-size-base, 1);
+  $base-max: nth($font-size-base, 2);
+
+  $sizes: join($font-size-heading, $font-size-body);
+  @each $size in $sizes
+  {
+    $name: '';
+    $size: nth($size, 2);
+    $min: nth($size, 1) * $base-min;
+    $max: nth($size, 2) * $base-max;
+
+    @include typography-fontsize($name, $min, $max, $breakpoint-min, $breakpoint-max);
+  }
+
+  @content;
+}

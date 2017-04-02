@@ -28,4 +28,4 @@
 //   b. Sizes - Solution A
 //
 //   Set the size of the font for mobile / desktop
-@include typography-fontsize;
+@include typography-fontsizes($font-size-heading, $font-size-body);

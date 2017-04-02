@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 ////////////////////////////////////////////////////
 //
 //   Helpers
@@ -10,19 +12,25 @@
 @import "helpers/properties/_font-formats";
 @import "helpers/properties/_font-providers";
 
+@import "helpers/properties/_grid-media";
+@import "helpers/properties/_grid-intervals";
+
 //
 //   2. Functions
 //
 @import "helpers/functions/_list-to-string";
-@import "helpers/functions/_math_pow";
+@import "helpers/functions/_math-power";
 @import "helpers/functions/_typography-local-path";
+@import "helpers/functions/_grid-breakpoint";
 
 //
 //   3. Mixins
 //
-@import "helpers/mixins/_typography_default";
-@import "helpers/mixins/_typography_fontsize";
-@import "helpers/mixins/_typography_typeface";
+@import "helpers/mixins/_typography-default";
+@import "helpers/mixins/_typography-fontsize";
+@import "helpers/mixins/_typography-typeface";
+
+@import "helpers/mixins/_grid-breakpoints";
 
 ////////////////////////////////////////////////////
 //
@@ -37,4 +45,5 @@
 //   Properties
 //
 ////////////////////////////////////////////////////
-@import "properties/_typography";
+// @import "properties/_typography";
+@import "properties/_breakpoint";
