@@ -20,22 +20,26 @@
 // @include media(">m", "<m")
 
 
+// @see http://include-media.com
 
 @mixin media($conditions...)
 {
   @media #{unquote(parse-expression(nth($conditions, 1)))}
   {
     // Recursive call
-    @include media(slice($conditions, 2)...)
-    {
+    // @include media(slice($conditions, 2))
+    // {
       @content;
-    }
+    // }
   }
 }
 
 
 @function parse-expression($expression)
 {
+  @debug "---------";
+  @debug "expression: " $expression;
+
   // If it is part of $grid-media, it has no operator
   // then there is no need to go any further, just return the value
   @if map-has-key($grid-media, $expression)
@@ -43,10 +47,23 @@
     @return map-get($grid-media, $expression);
   }
 
+  @debug '--------';
   $operator: get-expression-operator($expression);
+  @debug 'expression:' $expression;
+  @debug "operator:" $operator;
+  @debug '--------';
   $dimension: get-expression-dimension($expression, $operator);
+  @debug 'expression:' $expression;
+  @debug "dimension:" $dimension;
+  @debug '--------';
   $prefix: get-expression-prefix($operator);
+  @debug 'expression:' $expression;
+  @debug "prefix:" $prefix;
+  @debug '--------';
+  @debug 'expression:' $expression;
   $value: get-expression-value($expression, $operator);
+  @debug "value:" $value;
+  @debug '--------';
 
   @return '(#{$prefix}-#{$dimension}: #{$value})';
 }
@@ -58,9 +75,12 @@
 ///
 /// @return {String} - Any of `>=`, `>`, `<=`, `<`, `≥`, `≤`
 ///
-@function get-expression-operator($expression) {
-  @each $operator in ('>=', '>', '<=', '<', '≥', '≤') {
-    @if str-index($expression, $operator) {
+@function get-expression-operator($expression)
+{
+  @each $operator in ('>=', '>', '<=', '<', '≥', '≤')
+  {
+    @if str-index($expression, $operator)
+    {
       @return $operator;
     }
   }
@@ -82,12 +102,14 @@
 ///
 /// @return {String} - `width` or `height` (or potentially anything else)
 ///
-@function get-expression-dimension($expression, $operator) {
+@function get-expression-dimension($expression, $operator)
+{
   $operator-index: str-index($expression, $operator);
   $parsed-dimension: str-slice($expression, 0, $operator-index - 1);
   $dimension: 'width';
 
-  @if str-length($parsed-dimension) > 0 {
+  @if str-length($parsed-dimension) > 0
+  {
     $dimension: $parsed-dimension;
   }
 
@@ -102,7 +124,8 @@
 ///
 /// @return {String} - `min` or `max`
 ///
-@function get-expression-prefix($operator) {
+@function get-expression-prefix($operator)
+{
   @return if(index(('<', '<=', '≤'), $operator), 'max', 'min');
 }
 
@@ -115,17 +138,27 @@
 ///
 /// @return {Number} - A numeric value
 ///
-@function get-expression-value($expression, $operator) {
+@function get-expression-value($expression, $operator)
+{
   $operator-index: str-index($expression, $operator);
   $value: str-slice($expression, $operator-index + str-length($operator));
 
-  @if map-has-key($breakpoints, $value) {
-    $value: map-get($breakpoints, $value);
-  } @else {
+  @debug "expression" $expression;
+  @debug "operator" $operator;
+  @debug "operator-index" $operator-index;
+  @debug "value:" $value;
+
+  @if map-has-key($grid-breakpoints, $value)
+  {
+    $value: map-get($grid-breakpoints, $value);
+  }
+  @else
+  {
+    @debug "to-number " $value;
     $value: to-number($value);
   }
 
-  $interval: map-get($unit-intervals, unit($value));
+  $interval: map-get($grid-intervals, unit($value));
 
   @if not $interval {
     // It is not possible to include a mixin inside a function, so we have to
@@ -136,11 +169,35 @@
     $_: im-log('Unknown unit `#{unit($value)}`.');
   }
 
-  @if $operator == '>' {
+  @debug "value: " $value;
+  @debug "interval: " $interval;
+
+  @if $operator == '>'
+  {
     $value: $value + $interval;
-  } @else if $operator == '<' {
+  }
+  @else if $operator == '<'
+  {
     $value: $value - $interval;
   }
 
   @return $value;
+}
+
+///
+/// Add `$unit` to `$value`
+///
+/// @param {Number} $value - Value to add unit to
+/// @param {String} $unit - String representation of the unit
+///
+/// @return {Number} - `$value` expressed in `$unit`
+///
+@function to-length($value, $unit) {
+  $units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
+
+  @if not index(map-keys($units), $unit) {
+    $_: im-log('Invalid unit `#{$unit}`.');
+  }
+
+  @return $value * map-get($units, $unit);
 }

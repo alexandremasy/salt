@@ -1,4 +1,8 @@
-@include media('<m')
+@include media('=m')
 {
-  font-size: 1;
+  html,
+  body
+  {
+    font-size: 1;
+  }
 }

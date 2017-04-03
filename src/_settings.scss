@@ -121,20 +121,20 @@ $font-body-line-height: $font-heading-line-height;
 //   a. Base
 //   => It is advised to have the same value for the grid-base and font-size-base
 //
-$grid-base: $font-size-base;
+$grid-base: nth($font-size-base, 2);
 
 //////////////////////////////////////////////////////////////////////////////
 //
 //   b. Breakpoints
 //
 $grid-breakpoints: (
-  xxs:  320px / $grid-base,
-  xs:   375px / $grid-base,
-  s:    425px / $grid-base,
-  m:    768px / $grid-base,
-  l:    1024px / $grid-base,
-  xl:   1200px / $grid-base,
-  xxl:  1440px / $grid-base
+  xxs:  320px / $grid-base * 1em,
+  xs:   375px / $grid-base * 1em,
+  s:    425px / $grid-base * 1em,
+  m:    768px / $grid-base * 1em,
+  l:    1024px / $grid-base * 1em,
+  xl:   1200px / $grid-base * 1em,
+  xxl:  1440px / $grid-base * 1em
 ) !default;
 
 //////////////////////////////////////////////////////////////////////////////
