@@ -1,0 +1,22 @@
+//
+//   Retrieve the grid breakpoint associated with
+//
+//   @param {string} $font-family - The font family
+//   @param {string} $path - The path to the file to import minus the extension.
+//   @return {list} - Return the list with all the proper import.
+//
+@function _grid-breakpoint-get($size)
+{
+  // has an operator ?
+
+  // retrieve the breakpoint
+
+  // apply the operator
+
+  @if map-has-key($grid-breakpoints, $size)
+  {
+    $value: map-get($grid-breakpoints, $size);
+  }
+
+  @return $value;
+}

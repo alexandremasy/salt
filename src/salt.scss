@@ -6,22 +6,20 @@
 //
 ////////////////////////////////////////////////////
 //
-//   1. Properties
+//   1. Value Objects
 //
-@import "helpers/properties/_font-weights";
-@import "helpers/properties/_font-formats";
-@import "helpers/properties/_font-providers";
+@import "helpers/vo/_font-weights";
+@import "helpers/vo/_font-formats";
+@import "helpers/vo/_font-providers";
 
-@import "helpers/properties/_grid-media";
-@import "helpers/properties/_grid-intervals";
+@import "helpers/vo/_grid-media";
+@import "helpers/vo/_grid-intervals";
 
 //
 //   2. Functions
 //
-@import "helpers/functions/_list-to-string";
 @import "helpers/functions/_math-power";
 @import "helpers/functions/_typography-local-path";
-@import "helpers/functions/_string-to-number";
 
 //
 //   3. Mixins

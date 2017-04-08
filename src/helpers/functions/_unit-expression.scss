@@ -1,0 +1,55 @@
+
+
+
+//
+//   Unit expression parser
+//   Parse an expression composed of an operator and a grid breakpoint
+//   Return the value of the breakpoint altered by the unit interval
+//
+//   @param {String} $expression   The expression to parse
+//   @return {Number}
+//
+//
+//   @example scss
+//     unit-parse('=m') => 48em
+//     unit-parse('>m') => 48.01em
+//     unit-parse('<m') => 47.99em
+//
+@function unit-parse($expression)
+{
+  $operator: unit-parse-operator($expression);
+  $breakpoint: unit-parse-breakpoint($expression);
+
+  @return returnValue;
+}
+
+//
+//   Parse an unit expression to retrieve the operator
+//
+//   @param {String} $expression   The expression to parse.
+//   @return {String}              The operator.
+//
+//   @example scss
+//      unit-parse-operator('=m') => 'm'
+//      unit-parse-operator('>m') => 'm'
+//      unit-parse-operator('<m') => 'm'
+//
+@function unit-parse-operator($expression)
+{
+  @return "=";
+}
+
+//
+//  Parse an unit expression to retrieve the breakpoint
+//
+//  @param {String} $expression  The expression to parse.
+//  @return {Number}             The breakpoint value
+//
+//  @example scss
+//     unit-parse-breakpoint('=m') => 48em
+//     unit-parse-breakpoint('>m') => 48em
+//     unit-parse-breakpoint('<m') => 48em
+//
+@function unit-parse-breakpoint(arguments) {
+  @return returnValue;
+}
