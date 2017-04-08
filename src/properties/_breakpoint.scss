@@ -1,8 +1,25 @@
-@include media('screen')
+@include media('>m', '<xl', 'retina2x')
 {
   html,
   body
   {
     font-size: 1;
   }
+}
+
+html
+{
+  content: grid-parse('m');
+}
+html
+{
+  content: grid-parse('=m');
+}
+html
+{
+  content: grid-parse('>m');
+}
+html
+{
+  content: grid-parse('<m');
 }

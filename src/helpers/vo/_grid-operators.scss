@@ -1,0 +1,18 @@
+////////////////////////////////////////////////////
+//
+//   Grid Operators
+//
+////////////////////////////////////////////////////
+$more: ">";
+$more-or-equal: ">=";
+$less: "<";
+$less-or-equal: "<=";
+$equal: '=';
+
+$grid-operators: (
+  $more,
+  $more-or-equal,
+  $less,
+  $less-or-equal,
+  $equal
+);

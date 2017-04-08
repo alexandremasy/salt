@@ -1,0 +1,113 @@
+//
+//   Unit expression parser
+//   Parse an expression composed of an operator and a grid breakpoint
+//   Return the value of the breakpoint altered by the unit interval
+//
+//   @param {String} $expression   The expression to parse
+//   @return {Number}
+//
+//   @example scss
+//     grid-parse('=m') => 48em
+//     grid-parse('>m') => 48.01em
+//     grid-parse('<m') => 47.99em
+//
+//   @author Alexandre Masy
+//
+@function grid-parse($expression)
+{
+  $ret: null;
+  $operator: grid-parse-operator($expression);
+  $breakpoint: grid-parse-breakpoint($expression, $operator);
+
+  // if no operator than give back the value of the expression
+  // it is the equivalent of a equal operation
+  @if $operator == null
+  {
+    $operator: '=';
+  }
+
+  @if $breakpoint == null
+  {
+    @error 'Unknown breakpoint: `#{$expression}`';
+    $breakpoint: 0;
+    $interval: 0;
+  }
+
+  $interval: map-get($grid-intervals, unit($breakpoint));
+
+  @if $operator == $equal
+  {
+    $ret: $breakpoint;
+  }
+  @else if index(($less, $less-or-equal), $operator)
+  {
+    $ret: $breakpoint - $interval;
+  }
+  @else if index(($more, $more-or-equal), $operator)
+  {
+    $ret: $breakpoint + $interval;
+  }
+
+  @return $ret;
+}
+
+//
+//   Parse an unit expression to retrieve the operator
+//
+//   @param {String} $expression   The expression to parse.
+//   @return {String}              The operator.
+//
+//   @example scss
+//      grid-parse-operator('=m') => 'm'
+//      grid-parse-operator('>m') => 'm'
+//      grid-parse-operator('<m') => 'm'
+//
+//   @access private
+//   @author Alexandre Masy
+//
+@function grid-parse-operator($expression)
+{
+  @each $operator in $grid-operators
+  {
+    @if str-index($expression, $operator)
+    {
+      @return $operator;
+    }
+  }
+
+  @return null;
+}
+
+//
+//  Parse an unit expression to retrieve the breakpoint
+//
+//  @param {String} $expression  The expression to parse.
+//  @return {Number}             The breakpoint value
+//
+//  @example scss
+//     grid-parse-breakpoint('=m') => 48em
+//     grid-parse-breakpoint('>m') => 48em
+//     grid-parse-breakpoint('<m') => 48em
+//
+//  @access private
+//  @author Alexandre Masy
+//
+
+@function grid-parse-breakpoint($expression, $operator)
+{
+  $value: $expression;
+
+  @if $operator != null
+  {
+    $index: str-index($expression, $operator);
+    $value: str-slice($expression, $index + str-length($operator));
+  }
+
+  $ret: null;
+  @if map-has-key($grid-breakpoints, $value)
+  {
+    $ret: map-get($grid-breakpoints, $value);
+  }
+
+  @return $ret;
+}

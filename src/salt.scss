@@ -14,12 +14,14 @@
 
 @import "helpers/vo/_grid-media";
 @import "helpers/vo/_grid-intervals";
+@import "helpers/vo/_grid-operators";
 
 //
 //   2. Functions
 //
 @import "helpers/functions/_math-power";
 @import "helpers/functions/_typography-local-path";
+@import "helpers/functions/_grid-expression";
 
 //
 //   3. Mixins
