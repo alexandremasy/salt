@@ -3,16 +3,18 @@
 //   Grid Operators
 //
 ////////////////////////////////////////////////////
+
 $more: ">";
 $more-or-equal: ">=";
 $less: "<";
 $less-or-equal: "<=";
 $equal: '=';
 
+// order matters or < will be found before <=
 $grid-operators: (
-  $more,
   $more-or-equal,
-  $less,
+  $more,
   $less-or-equal,
+  $less,
   $equal
 );

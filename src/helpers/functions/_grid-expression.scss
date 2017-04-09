@@ -35,15 +35,15 @@
 
   $interval: map-get($grid-intervals, unit($breakpoint));
 
-  @if $operator == $equal
+  @if index(($equal, $less-or-equal, $more-or-equal), $operator)
   {
     $ret: $breakpoint;
   }
-  @else if index(($less, $less-or-equal), $operator)
+  @else if index(($less), $operator)
   {
     $ret: $breakpoint - $interval;
   }
-  @else if index(($more, $more-or-equal), $operator)
+  @else if index(($more), $operator)
   {
     $ret: $breakpoint + $interval;
   }
@@ -58,9 +58,9 @@
 //   @return {String}              The operator.
 //
 //   @example scss
-//      grid-parse-operator('=m') => 'm'
-//      grid-parse-operator('>m') => 'm'
-//      grid-parse-operator('<m') => 'm'
+//      grid-parse-operator('=m') => '='
+//      grid-parse-operator('>m') => '>'
+//      grid-parse-operator('<m') => '<'
 //
 //   @access private
 //   @author Alexandre Masy

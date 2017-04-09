@@ -1,0 +1,56 @@
+//
+//   Parse an expression to return a valid media-query expression
+//
+//   @param {String} $expression - Expression to parse
+//   @return {String} - Valid media query
+//
+@function grid-breakpoint($expression)
+{
+  // If it is part of $grid-media, it has no operator
+  // then there is no need to go any further, just return the value
+  @if map-has-key($grid-media, $expression)
+  {
+    @return map-get($grid-media, $expression);
+  }
+
+  $operator: grid-parse-operator($expression);
+  $dimension: grid-breakpoint-dimension($expression, $operator);
+  $prefix: grid-breakpoint-prefix($operator);
+  $value: grid-parse($expression);
+
+  @return '(#{$prefix}-#{$dimension}: #{$value})';
+}
+
+//
+//   Get dimension prefix based on an operator
+//
+//   @param {String} $operator - Operator
+//   @return {String} - `min` or `max`
+//   @access private
+//
+@function grid-breakpoint-prefix($operator)
+{
+  @return if(index(($less, $less-or-equal), $operator), 'max', 'min');
+}
+
+//
+//   Get dimension of an expression, based on a found operator
+//
+//   @param {String} $expression - Expression to extract dimension from
+//   @param {String} $operator - Operator from `$expression`
+//   @return {String} - `width` or `height` (or potentially anything else)
+//   @access private
+//
+@function grid-breakpoint-dimension($expression, $operator)
+{
+  $operator-index: str-index($expression, $operator);
+  $parsed-dimension: str-slice($expression, 0, $operator-index - 1);
+  $dimension: 'width';
+
+  @if str-length($parsed-dimension) > 0
+  {
+    $dimension: $parsed-dimension;
+  }
+
+  @return $dimension;
+}
