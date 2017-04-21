@@ -5,7 +5,7 @@
 //   @param {string} $path - The path to the file to import minus the extension.
 //   @return {list} - Return the list with all the proper import.
 //
-@function typography-local-path($font-family, $path)
+@function font-local-path($font-family, $path)
 {
   $src: ();
 

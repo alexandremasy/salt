@@ -11,19 +11,19 @@
 {
   .f-#{$name}
   {
-    font-size: calc(#{$font-size-min} + (#{$font-size-max/1px} - #{$font-size-min/1px}) * ((100vw - #{$breakpoint-min}) / ( #{$breakpoint-max/1px} - #{$breakpoint-min/1px})));
+    @include media('>xxl')
+    {
+      font-size: $font-size-max * 1em;
+    }
 
-    // @include media-up('xxl')
-    // {
-    //   font-size: $fmax;
-    //   line-height: #{$lmin};
-    // }
+    @include media('<xxs')
+    {
+      font-size: $font-size-min * 1em;
+    }
+
+    // @TODO Get the unit as one interpolator
     //
-    // @include media-down('xxs')
-    // {
-    //   font-size: $fmin;
-    //   line-height: #{$lmax};
-    // };
+    font-size: calc(#{$font-size-min*1em} + (#{strip-unit($font-size-max)} - #{strip-unit($font-size-min)}) * (100vw - #{$breakpoint-min}) / (#{strip-unit($breakpoint-max)} - #{strip-unit($breakpoint-min)}));
   }
 }
 
@@ -38,19 +38,20 @@
 //
 @mixin typography-fontsizes($font-size-heading, $font-size-body)
 {
-  $breakpoint-min: 1px;
-  $breakpoint-max: 100px;
+  $breakpoint-min: grid-parse('xxs');
+  $breakpoint-max: grid-parse('xxl');
 
   $base-min: nth($font-size-base, 1);
   $base-max: nth($font-size-base, 2);
 
-  $sizes: join($font-size-heading, $font-size-body);
+  // $sizes: join($font-size-heading, $font-size-body);
+  $sizes: $font-size-heading;
   @each $size in $sizes
   {
-    $name: '';
+    $name: nth($size, 1);
     $size: nth($size, 2);
-    $min: nth($size, 1) * $base-min;
-    $max: nth($size, 2) * $base-max;
+    $min: nth($size, 1);
+    $max: nth($size, 2);
 
     @include typography-fontsize($name, $min, $max, $breakpoint-min, $breakpoint-max);
   }

@@ -52,7 +52,7 @@
     font-weight: $weight;
     // font-style: $style;
 
-    src: typography-local-path($font-family, $provider);
+    src: font-local-path($font-family, $provider);
   }
 }
 
