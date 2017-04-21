@@ -7,25 +7,22 @@
 //   @param {number} $breakpoint-min - The smallest breakpoint
 //   @param {number} $breakpoint-max - The largest breakpoint
 //
-@mixin typography-fontsize($name, $font-size-min, $font-size-max, $breakpoint-min, $breakpoint-max)
+@mixin typography-fontsize($font-size-min, $font-size-max, $breakpoint-min, $breakpoint-max)
 {
-  .f-#{$name}
+  $unit: 1rem;
+  @include media('>xxl')
   {
-    @include media('>xxl')
-    {
-      font-size: $font-size-max * 1em;
-    }
-
-    @include media('<xxs')
-    {
-      font-size: $font-size-min * 1em;
-    }
-
-    // @TODO Get the unit as one interpolator
-    //
-    font-size: calc(#{$font-size-min*1em} + (#{strip-unit($font-size-max)} - #{strip-unit($font-size-min)}) * (100vw - #{$breakpoint-min}) / (#{strip-unit($breakpoint-max)} - #{strip-unit($breakpoint-min)}));
+    font-size: $font-size-max * $unit;
   }
+
+  @include media('<xxs')
+  {
+    font-size: $font-size-min * $unit;
+  }
+
+  font-size: calc(#{$font-size-min*$unit} + (#{strip-unit($font-size-max)} - #{strip-unit($font-size-min)}) * (100vw - #{$breakpoint-min}) / (#{strip-unit($breakpoint-max)} - #{strip-unit($breakpoint-min)}));
 }
+
 
 //
 //   Typography – Font-Sizes
@@ -41,20 +38,37 @@
   $breakpoint-min: grid-parse('xxs');
   $breakpoint-max: grid-parse('xxl');
 
-  $base-min: nth($font-size-base, 1);
-  $base-max: nth($font-size-base, 2);
+  // heading
+  @if $font-size-heading != $font-size-body
+  {
+    @each $size in $font-size-heading
+    {
+      $name: nth($size, 1);
+      $size: nth($size, 2);
+      $min: nth($size, 1);
+      $max: nth($size, 2);
 
-  // $sizes: join($font-size-heading, $font-size-body);
-  $sizes: $font-size-heading;
-  @each $size in $sizes
+      .f-heading-#{$name}
+      {
+        @include typography-fontsize($min, $max, $breakpoint-min, $breakpoint-max);
+      }
+    }
+  }
+
+  // body
+  @each $size in $font-size-body
   {
     $name: nth($size, 1);
     $size: nth($size, 2);
     $min: nth($size, 1);
     $max: nth($size, 2);
 
-    @include typography-fontsize($name, $min, $max, $breakpoint-min, $breakpoint-max);
+    .f-#{$name}
+    {
+      @include typography-fontsize($min, $max, $breakpoint-min, $breakpoint-max);
+    }
   }
+
 
   @content;
 }
