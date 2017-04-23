@@ -54,7 +54,7 @@ rules:
   # Style Guide
   bem-depth: 1
   border-zero: 1
-  clean-import-paths: 1
+  clean-import-paths: 0
   empty-args: 1
   hex-length: 0
   hex-notation: 1

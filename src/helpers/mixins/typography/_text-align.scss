@@ -1,0 +1,24 @@
+
+//
+//   Typography - Text Align
+//   Align an
+//
+//   @param {String} $value
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group class-helpers
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/text-align
+//
+@mixin text-align($value)
+{
+  @if index($text-align, $value) != null
+  {
+    text-align: $value;
+  }
+  @else
+  {
+    @warn "#{$value} is not accepted by the text-align property";
+  }
+}
