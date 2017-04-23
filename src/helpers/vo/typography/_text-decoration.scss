@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////
+//
+//   Allowed values for text-decoration
+//
+////////////////////////////////////////////////////
+$text-decoration-none:          "none";
+$text-decoration-overline:      "overline";
+$text-decoration-line-through:  "line-through";
+$text-decoration-underline:     "underline";
+
+$text-decoration:          (
+                        $text-decoration-none,
+                        $text-decoration-overline,
+                        $text-decoration-line-through,
+                        $text-decoration-underline
+                      );

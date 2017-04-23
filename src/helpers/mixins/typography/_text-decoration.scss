@@ -1,0 +1,52 @@
+//
+//   Typography - Text Decoration
+//   The text-align CSS property describes how inline content like text is aligned in its parent block element. text-align does not control the alignment of block elements, only their inline content.
+//
+//   @param {String} $value
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include text-decoration(none);       => text-decoration: none;
+//     @include text-decoration(underline);  => text-decoration: underline;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/text-decoration
+//
+@mixin text-decoration($value)
+{
+  @if index($text-decoration, $value) != null
+  {
+    text-align: unquote($value);
+  }
+  @else
+  {
+    @warn "#{$value} is not accepted by the text-decoration property";
+  }
+}
+
+//
+//   Typography - text-decoration helper class
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-helper
+//
+@mixin text-decoration-helper
+{
+  $domain: 'td';
+  $prefix: helper-prefix();
+
+  @if $prefix != null
+  {
+    @each $value in $text-decoration
+    {
+      $class-name: $prefix + $domain + '-' + $value;
+      #{$class-name}
+      {
+        @include text-decoration($value);
+      }
+    }
+  }
+}

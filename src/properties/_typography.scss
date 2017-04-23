@@ -30,14 +30,11 @@
 //   Set the size of the font for mobile / desktop
 // @include typography-fontsizes($font-size-heading, $font-size-body);
 
-html
-{
-  @include text-align(center);
-}
-@include text-align-helper;
+//////////////////////////////////////////////////////////////////////////////
 //
-// html
-// {
-//   @include color(none);
-// }
-// @include color-helper;
+//   Helpers
+//
+//   => Typography
+@include color-helper;
+@include text-align-helper;
+@include text-decoration-helper;
