@@ -2,10 +2,19 @@
 //
 //  Typography - Font
 //
+//  $font-family
+//  $font-size
+//  $line-height
+//  $color
+//  $text-align
 //
-// 
 
-@mixin font($values...)
+@mixin font($font-family, $font-size, $line-height, $color, $text-align)
 {
+  // @TODO
 
+  @if $text-align
+  {
+    @include text-align($text-align);
+  }
 }

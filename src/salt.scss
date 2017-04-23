@@ -13,6 +13,7 @@
 @import "helpers/vo/_font-weights";
 @import "helpers/vo/_font-formats";
 @import "helpers/vo/_font-providers";
+@import "helpers/vo/typography/_color";
 @import "helpers/vo/typography/_text-align";
 
 @import "helpers/vo/_grid-media";
@@ -33,11 +34,11 @@
 //
 //   3. Mixins
 //
-@import "helpers/mixins/_helper-iterator";
-
 @import "helpers/mixins/_typography-default";
 @import "helpers/mixins/_typography-fontsize";
 @import "helpers/mixins/_typography-typeface";
+
+@import "helpers/mixins/typography/_color";
 @import "helpers/mixins/typography/_text-align";
 
 @import "helpers/mixins/_grid-breakpoints";

@@ -35,5 +35,18 @@
 //
 @mixin text-align-helper
 {
-  @include helper-iterator($text-align, 'ta');
+  $domain: 'ta';
+  $prefix: helper-prefix();
+
+  @if $prefix != null
+  {
+    @each $value in $text-align
+    {
+      $class-name: $prefix + $domain + '-' + $value;
+      #{$class-name}
+      {
+        @include text-align($value);
+      }
+    }
+  }
 }

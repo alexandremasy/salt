@@ -55,7 +55,7 @@ rules:
   bem-depth: 1
   border-zero: 1
   clean-import-paths: 0
-  empty-args: 1
+  empty-args: 0
   hex-length: 0
   hex-notation: 1
   indentation: 0
