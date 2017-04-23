@@ -1,13 +1,16 @@
-
 //
 //   Typography - Text Align
-//   Align an
+//   The text-align CSS property describes how inline content like text is aligned in its parent block element. text-align does not control the alignment of block elements, only their inline content.
 //
 //   @param {String} $value
 //
 //   @author Alexandre Masy
 //   @version 1.0
-//   @group class-helpers
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include text-align(center);   => text-align: center;
+//     @include text-align('center'); => text-align: center;
 //
 //   @see https://developer.mozilla.org/en/docs/Web/CSS/text-align
 //
@@ -15,10 +18,22 @@
 {
   @if index($text-align, $value) != null
   {
-    text-align: $value;
+    text-align: unquote($value);
   }
   @else
   {
     @warn "#{$value} is not accepted by the text-align property";
   }
+}
+
+//
+//   Typography - text-align helper class
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-helper
+//
+@mixin text-align-helper
+{
+  @include helper-iterator($text-align, 'ta');
 }

@@ -1,0 +1,23 @@
+//
+//   Helper - Iterator
+//   Iterator over $list to generate the helper classes
+//
+//   @param {List} $list – The list to iterate
+//   @param {String} $domain – The domain for which generate the helper for
+//
+@mixin helper-iterator($list, $domain)
+{
+  $prefix: helper-prefix();
+  @debug $prefix;
+  
+  @each $value in $list
+  {
+    @if $prefix != null
+    {
+      #{$prefix}#{$domain}-#{$value}
+      {
+        @include text-align($value);
+      }
+    }
+  }
+}

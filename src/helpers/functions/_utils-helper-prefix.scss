@@ -1,0 +1,20 @@
+//
+//   Utils - Helper Prefix
+//   What's the prefix for the helper class
+//
+//   @return {String}
+//
+@function helper-prefix()
+{
+  @if $helpers == class
+  {
+    @return '.';
+  }
+
+  @else if $helpers == placeholder
+  {
+    @return '%';
+  }
+
+  @return null;
+}
