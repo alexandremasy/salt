@@ -1,0 +1,19 @@
+////////////////////////////////////////////////////
+//
+//   Typography :: letter-spacing
+//
+////////////////////////////////////////////////////
+
+//
+//   letter-spacing domain
+//
+$letter-spacing-domain:       'ls';
+
+//
+//   Allowed values for letter-spacing property
+//
+$letter-spacing-none:         normal;
+
+$letter-spacing: (
+  none: $letter-spacing-none
+);

@@ -1,0 +1,25 @@
+////////////////////////////////////////////////////
+//
+//   Typography :: text-transform
+//
+////////////////////////////////////////////////////
+
+//
+//   Text-transform domain
+//
+$text-transform-domain:        'tt';
+
+//
+//   Allowed values for text-transform
+//
+$text-transform-none:          none;
+$text-transform-uppercase:     uppercase;
+$text-transform-lowercase:     lowercase;
+$text-transform-capitalize:    capitalize;
+
+$text-transform:     (
+                        $text-transform-none,
+                        $text-transform-uppercase,
+                        $text-transform-lowercase,
+                        $text-transform-capitalize
+                      );

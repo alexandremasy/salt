@@ -1,7 +1,7 @@
 //
 //   Helper Factory
 //   This is here, in the wonderful industry that all the helper are created!
-//   Enjoy your journey through a wonderland of loops. 
+//   Enjoy your journey through a wonderland of loops.
 //
 @mixin helper-factory
 {
@@ -10,13 +10,15 @@
   @include helper-factory-iterator($color, $color-domain, color);
   @include helper-factory-iterator($text-align, $text-align-domain, text-align);
   @include helper-factory-iterator($text-decoration, $text-decoration-domain, text-decoration);
+  @include helper-factory-iterator($text-transform, $text-transform-domain, text-transform);
+  @include helper-factory-iterator(map-merge($letter-spacing, $font-letter-spacing), $letter-spacing-domain, letter-spacing);
 }
 
 //
 //   Helper Factory – Iterator
 //   Iterate over the given list to generate the appropriate helper
 //
-//   @param {List} $list – The list to iterate on
+//   @param {List,Map} $list – The list to iterate on
 //   @param {String} $domain – The domain used for the helper
 //   @param {String} $property - The property for which the helper is generated
 //
@@ -26,13 +28,29 @@
 
   @if $prefix != null
   {
-    @each $item in $list
+    @if type-of($list) == 'list'
     {
-      $c: $prefix + $item;
-
-      #{$c}
+      @each $item in $list
       {
-        #{$property}: $item;
+        $c: $prefix + $item;
+
+        #{$c}
+        {
+          #{$property}: $item;
+        }
+      }
+    }
+
+    @if type-of($list) == 'map'
+    {
+      @each $key, $value in $list
+      {
+        $c: $prefix + $key;
+
+        #{$c}
+        {
+          #{$property}: $value;
+        }
       }
     }
   }
