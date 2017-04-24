@@ -12,6 +12,7 @@
   @include helper-factory-iterator($text-decoration, $text-decoration-domain, text-decoration);
   @include helper-factory-iterator($text-transform, $text-transform-domain, text-transform);
   @include helper-factory-iterator(map-merge($letter-spacing, $font-letter-spacing), $letter-spacing-domain, letter-spacing);
+  @include helper-factory-iterator($word-break, $word-break-domain, word-break);
 }
 
 //

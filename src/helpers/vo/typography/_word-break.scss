@@ -1,0 +1,23 @@
+////////////////////////////////////////////////////
+//
+//   Typograhy :: word-break
+//
+////////////////////////////////////////////////////
+
+//
+//  word-break domain
+//
+$word-break-domain:    'wb';
+
+//
+//   Allowed values for word-break property
+//
+$word-break-normal:     normal;
+$word-break-break-all:  break-all;
+$word-break-keep-all:   keep-all;
+
+$word-break:          (
+                        $word-break-normal,
+                        $word-break-break-all,
+                        $word-break-keep-all
+                      );
