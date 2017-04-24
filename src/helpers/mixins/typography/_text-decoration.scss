@@ -25,28 +25,3 @@
     @warn "#{$value} is not accepted by the text-decoration property";
   }
 }
-
-//
-//   Typography - text-decoration helper class
-//
-//   @author Alexandre Masy
-//   @version 1.0
-//   @group css-helper
-//
-@mixin text-decoration-helper
-{
-  $domain: 'td';
-  $prefix: helper-prefix();
-
-  @if $prefix != null
-  {
-    @each $value in $text-decoration
-    {
-      $class-name: $prefix + $domain + '-' + $value;
-      #{$class-name}
-      {
-        @include text-decoration($value);
-      }
-    }
-  }
-}

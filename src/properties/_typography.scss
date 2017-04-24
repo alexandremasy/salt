@@ -35,6 +35,7 @@
 //   Helpers
 //
 //   => Typography
-@include color-helper;
-@include text-align-helper;
-@include text-decoration-helper;
+// @include color-helper;
+// @include text-align-helper;
+// @include text-decoration-helper;
+@include helper-factory;

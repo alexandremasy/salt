@@ -1,14 +1,23 @@
 ////////////////////////////////////////////////////
 //
-//   Allowed values for text-decoration
+//   Typography :: text-decoration
 //
 ////////////////////////////////////////////////////
-$text-decoration-none:          "none";
-$text-decoration-overline:      "overline";
-$text-decoration-line-through:  "line-through";
-$text-decoration-underline:     "underline";
 
-$text-decoration:          (
+//
+//   Text-decoration domain
+//
+$text-decoration-domain:        'td';
+
+//
+//   Allowed values for text-decoration
+//
+$text-decoration-none:          none;
+$text-decoration-overline:      overline;
+$text-decoration-line-through:  line-through;
+$text-decoration-underline:     underline;
+
+$text-decoration:     (
                         $text-decoration-none,
                         $text-decoration-overline,
                         $text-decoration-line-through,

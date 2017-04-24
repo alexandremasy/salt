@@ -29,28 +29,3 @@
     @warn "#{$value} is not accepted by the color property";
   }
 }
-
-//
-//   Typography - color helper class
-//
-//   @author Alexandre Masy
-//   @version 1.0
-//   @group css-helper
-//
-@mixin color-helper
-{
-  $domain: 'c';
-  $prefix: helper-prefix();
-
-  @if $prefix != null
-  {
-    @each $value in $color
-    {
-      $class-name: $prefix + $domain + '-' + $value;
-      #{$class-name}
-      {
-        @include color($value);
-      }
-    }
-  }
-}

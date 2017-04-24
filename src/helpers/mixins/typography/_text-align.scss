@@ -25,28 +25,3 @@
     @warn "#{$value} is not accepted by the text-align property";
   }
 }
-
-//
-//   Typography - text-align helper class
-//
-//   @author Alexandre Masy
-//   @version 1.0
-//   @group css-helper
-//
-@mixin text-align-helper
-{
-  $domain: 'ta';
-  $prefix: helper-prefix();
-
-  @if $prefix != null
-  {
-    @each $value in $text-align
-    {
-      $class-name: $prefix + $domain + '-' + $value;
-      #{$class-name}
-      {
-        @include text-align($value);
-      }
-    }
-  }
-}

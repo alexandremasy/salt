@@ -1,12 +1,21 @@
 ////////////////////////////////////////////////////
 //
-//   Allowed values for text-align
+//   Typograhy :: text-align
 //
 ////////////////////////////////////////////////////
-$text-align-left:      "left";
-$text-align-center:    "center";
-$text-align-right:     "right";
-$text-align-justify:   "justify";
+
+//
+//  Text-align domain
+//
+$text-align-domain:    'ta';
+
+//
+//   Allowed values for text-align property
+//
+$text-align-left:      left;
+$text-align-center:    center;
+$text-align-right:     right;
+$text-align-justify:   justify;
 
 $text-align:          (
                         $text-align-left,

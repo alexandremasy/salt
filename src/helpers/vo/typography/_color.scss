@@ -1,11 +1,19 @@
 ////////////////////////////////////////////////////
 //
-//   Allowed values for color
+//   Typography :: Color
 //
 ////////////////////////////////////////////////////
 
-$color-transparent: transparent;
-$color-none: none;
+//
+//   Color domain
+//
+$color-domain:       'c';
+
+//
+//   Allowed values for color property
+//
+$color-transparent:  transparent;
+$color-none:         none;
 
 $color: (
   $color-transparent,
