@@ -9,7 +9,7 @@
     "sass-true": "^2.2.2"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node_modules/mocha/bin/mocha test/tests.js"
   },
   "repository": {
     "type": "git",
