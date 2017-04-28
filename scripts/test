@@ -36,4 +36,5 @@ if [ -n "$1" ]; then
   # bin/rake test "$1"
 else
   # bin/rake test
+  sass test/tests.scss
 fi
