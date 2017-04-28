@@ -8,48 +8,48 @@
 //
 //   1. Value Objects
 //
-@import "helpers/vo/_units";
+@import "vo/_units";
 
-@import "helpers/vo/_font-weights";
-@import "helpers/vo/_font-formats";
-@import "helpers/vo/_font-providers";
+@import "vo/_font-weights";
+@import "vo/_font-formats";
+@import "vo/_font-providers";
 
-@import "helpers/vo/typography/_color";
-@import "helpers/vo/typography/_font-size";
-@import "helpers/vo/typography/_letter-spacing";
-@import "helpers/vo/typography/_text-align";
-@import "helpers/vo/typography/_text-decoration";
-@import "helpers/vo/typography/_text-transform";
-@import "helpers/vo/typography/_word-break";
+@import "vo/typography/_color";
+@import "vo/typography/_font-size";
+@import "vo/typography/_letter-spacing";
+@import "vo/typography/_text-align";
+@import "vo/typography/_text-decoration";
+@import "vo/typography/_text-transform";
+@import "vo/typography/_word-break";
 
-@import "helpers/vo/_grid-media";
-@import "helpers/vo/_grid-intervals";
-@import "helpers/vo/_grid-operators";
+@import "vo/_grid-media";
+@import "vo/_grid-intervals";
+@import "vo/_grid-operators";
 
 //
 //   2. Functions
 //
-@import "helpers/functions/_grid-expression";
-@import "helpers/functions/_grid-breakpoint";
-@import "helpers/functions/_list-slice";
-@import "helpers/functions/_math-power";
-@import "helpers/functions/_font-local-path";
-@import "helpers/functions/_utils-strip-unit";
-@import "helpers/functions/_utils-helper-prefix";
+@import "functions/_grid-expression";
+@import "functions/_grid-breakpoint";
+@import "functions/_list-slice";
+@import "functions/_math-power";
+@import "functions/_font-local-path";
+@import "functions/_utils-strip-unit";
+@import "functions/_utils-helper-prefix";
 
 //
 //   3. Mixins
 //
-@import "helpers/mixins/_helper-factory";
-@import "helpers/mixins/_typography-default";
-@import "helpers/mixins/_typography-fontsize";
-@import "helpers/mixins/_typography-typeface";
+@import "mixins/_helper-factory";
+@import "mixins/_typography-default";
+@import "mixins/_typography-fontsize";
+@import "mixins/_typography-typeface";
 
-@import "helpers/mixins/typography/_color";
-@import "helpers/mixins/typography/_text-align";
-@import "helpers/mixins/typography/_text-decoration";
+@import "mixins/typography/_color";
+@import "mixins/typography/_text-align";
+@import "mixins/typography/_text-decoration";
 
-@import "helpers/mixins/_grid-breakpoints";
+@import "mixins/_grid-breakpoints";
 
 ////////////////////////////////////////////////////
 //

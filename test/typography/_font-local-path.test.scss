@@ -1,0 +1,23 @@
+// Testing Functions
+@mixin test {
+
+}
+@function font-local-path-test()
+{
+  @include test('Font Local Path [function]')
+  {
+    $base: (1, 1, 1);
+
+    $font-family: 'Open Sans';
+    $path: '../fonts/rubik/rubik-normal';
+
+    $test: font-local-path($font-family, $path);
+    $expect: url("../fonts/rubik/rubik-normal.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/rubik/rubik-normal.woff2") format("woff2"),
+    url("../fonts/rubik/rubik-normal.woff") format("woff"),
+    url("../fonts/rubik/rubik-normal.ttf") format("truetype"),
+    url("../fonts/rubik/rubik-normal.svg#Open Sans") format("svg");
+
+    @include assert-equal($test, $expect, 'Generate the path for a local font-face');
+  }
+}
