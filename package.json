@@ -22,7 +22,7 @@
     "sass-true": "^2.2.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sh scripts/test"
   },
   "repository": {
     "type": "git",

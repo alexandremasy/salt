@@ -1,0 +1,9 @@
+@import "../src/helpers/functions/_math";
+
+@import "../node_modules/bootcamp/dist/bootcamp";
+$bc-setting-verbose:  false;
+$bc-setting-warnings: false;
+
+@include runner-start;
+@import "specs/math";
+@include runner-end;

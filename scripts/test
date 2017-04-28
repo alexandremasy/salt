@@ -26,7 +26,7 @@ else
   # own from a `development` environment.
   export SALT_ENV="test"
 
-  script/update
+  scripts/update
 fi
 
 echo "==> Running tests…"
@@ -34,6 +34,7 @@ echo "==> Running tests…"
 if [ -n "$1" ]; then
   # pass arguments to test call. This is useful for calling a single test.
   # bin/rake test "$1"
+  sass test/tests.scss
 else
   # bin/rake test
   sass test/tests.scss
