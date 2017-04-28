@@ -30,12 +30,13 @@ else
 fi
 
 echo "==> Running tests…"
+pwd
 
 if [ -n "$1" ]; then
   # pass arguments to test call. This is useful for calling a single test.
   # bin/rake test "$1"
-  sass test/tests.scss
+  npm test
 else
   # bin/rake test
-  sass test/tests.scss
+  npm test
 fi

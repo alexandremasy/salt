@@ -18,3 +18,15 @@
 
   @return $result;
 }
+
+
+@function map-sum($map)
+{
+  $ret: 0;
+  @each $item in $first
+  {
+    $ret: $ret + $item;
+  }
+
+  @return $ret;
+}
