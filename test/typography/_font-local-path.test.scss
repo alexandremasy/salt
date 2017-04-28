@@ -1,8 +1,5 @@
 // Testing Functions
-@mixin test {
-
-}
-@function font-local-path-test()
+@mixin font-local-path-test()
 {
   @include test('Font Local Path [function]')
   {

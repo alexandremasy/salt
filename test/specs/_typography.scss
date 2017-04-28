@@ -1,21 +1,9 @@
 @include test-module('Typography')
 {
-  // Testing Functions
-  @include test('Font Local Path [function]')
-  {
-    $base: (1, 1, 1);
+  // Functions
+  @include font-local-path-test;
 
-    $font-family: 'Open Sans';
-    $path: '../fonts/rubik/rubik-normal';
+  // Mixins
 
-    $test: font-local-path($font-family, $path);
-    $expect: url("#{$path}.eot?#iefix") format("embedded-opentype"),
-             url("#{$path}.woff2") format("woff2"),
-             url("#{$path}.woff") format("woff"),
-             url("#{$path}.ttf") format("truetype"),
-             url("#{$path}.svg##{$font-family}") format("svg");
-
-    @include assert-equal($test, $expect, 'Generate the path for a local font-face');
-  }
-
+  // Helpers
 }
