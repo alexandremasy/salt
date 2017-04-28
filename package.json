@@ -1,0 +1,39 @@
+{
+  "name": "salt",
+  "version": "0.0.1",
+  "description": "Add some flavor to your product design workflow",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "autoprefixer": "^6.7.7",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-watch": "^4.3.11",
+    "sass-true": "^2.2.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "sass-true": "^2.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandremasy/salt.git"
+  },
+  "keywords": [
+    "sass"
+  ],
+  "author": "Alexandre Masy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexandremasy/salt/issues"
+  },
+  "homepage": "https://github.com/alexandremasy/salt#readme"
+}
