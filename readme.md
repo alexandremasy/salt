@@ -1,6 +1,6 @@
-# Salt
+# Salt [![Build Status](https://travis-ci.org/alexandremasy/salt.svg?branch=master)](https://travis-ci.org/alexandremasy/salt) [![Code Climate](https://codeclimate.com/github/alexandremasy/salt.svg)](https://codeclimate.com/github/alexandremasy/salt)
 
-[![Build Status](https://travis-ci.org/alexandremasy/salt.svg?branch=master)](https://travis-ci.org/alexandremasy/salt)
+> Add some flavor to your product design workflow
 
 ## Build
 
