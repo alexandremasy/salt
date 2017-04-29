@@ -29,11 +29,12 @@
 //
 //   2. Functions
 //
-@import "functions/_grid-expression";
-@import "functions/_grid-breakpoint";
+@import "functions/layout/_grid-expression";
+@import "functions/layout/_grid-breakpoint";
+@import "functions/typography/_font-local-path";
+
 @import "functions/_list-slice";
 @import "functions/_math-power";
-@import "functions/_font-local-path";
 @import "functions/_utils-strip-unit";
 @import "functions/_utils-helper-prefix";
 
@@ -57,7 +58,3 @@
 //
 ////////////////////////////////////////////////////
 @import "_settings";
-
-
-// @import "properties/_typography";
-// @import "properties/_breakpoint";

@@ -1,0 +1,23 @@
+@include media('>m')
+{
+  html
+  {
+    font-size: 1;
+  }
+}
+
+@include media('>m', '<xl')
+{
+  html
+  {
+    font-size: 1;
+  }
+}
+
+@include media('>m', '<xl', 'retina2x')
+{
+  html
+  {
+    font-size: 1;
+  }
+}
