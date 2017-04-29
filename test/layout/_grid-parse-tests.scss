@@ -1,0 +1,78 @@
+@mixin grid-parse-test
+{
+  //////////////////////////////////////////////////////////////////////////////
+  //
+  //  M || = M
+  //
+  //////////////////////////////////////////////////////////////////////////////
+  @include test('grid-parse {m} [function]')
+  {
+    $test: grid-parse('m');
+    $expect: 48rem;
+
+    @include assert-equal($test, $expect, 'm');
+  }
+
+  @include test('grid-parse {=m} [function]')
+  {
+    $test: grid-parse('=m');
+    $expect: 48rem;
+
+    @include assert-equal($test, $expect, '=m');
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //
+  //  >M || >= M
+  //
+  //////////////////////////////////////////////////////////////////////////////
+  @include test('grid-parse {>m} [function]')
+  {
+    $test: grid-parse('>m');
+    $expect: 48.01rem;
+
+    @include assert-equal($test, $expect, '>m');
+  }
+
+  @include test('grid-parse {>=m} [function]')
+  {
+    $test: grid-parse('>=m');
+    $expect: 48.01rem;
+
+    @include assert-equal($test, $expect, '>=m');
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //
+  //  <M || <= M
+  //
+  //////////////////////////////////////////////////////////////////////////////
+  @include test('grid-parse {<m} [function]')
+  {
+    $test: grid-parse('<m');
+    $expect: 47.99rem;
+
+    @include assert-equal($test, $expect, '<m');
+  }
+
+  @include test('grid-parse {<=m} [function]')
+  {
+    $test: grid-parse('<=m');
+    $expect: 47.99rem;
+
+    @include assert-equal($test, $expect, '<=m');
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //
+  //  Error
+  //
+  //////////////////////////////////////////////////////////////////////////////
+  @include test('grid-parse {<>m} [function]')
+  {
+    $test: grid-parse('<>m');
+    $expect: 47.99rem;
+
+    @include assert-equal($test, $expect, '<>m');
+  }
+}
