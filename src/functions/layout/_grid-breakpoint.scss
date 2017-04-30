@@ -25,12 +25,17 @@
 //   Get dimension prefix based on an operator
 //
 //   @param {String} $operator - Operator
-//   @return {String} - `min` or `max`
+//   @return {String} - `min` or `max` or `null` if the operator is not valid
 //   @access private
 //
 @function grid-breakpoint-prefix($operator)
 {
-  @return if(index(($less, $less-or-equal), $operator), 'max', 'min');
+  @if index($grid-operators, $operator)
+  {
+    @return if(index(($less, $less-or-equal), $operator), 'max', 'min');
+  }
+
+  @return null;
 }
 
 //
@@ -43,9 +48,14 @@
 //
 @function grid-breakpoint-dimension($expression, $operator)
 {
-  $operator-index: str-index($expression, $operator);
-  $parsed-dimension: str-slice($expression, 0, $operator-index - 1);
   $dimension: 'width';
+  $parsed-dimension: null;
+  
+  @if str-length($expression > 0)
+  {
+    $operator-index: str-index($expression, $operator);
+    $parsed-dimension: str-slice($expression, 0, $operator-index - 1);
+  }
 
   @if str-length($parsed-dimension) > 0
   {

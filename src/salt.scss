@@ -42,6 +42,7 @@
 //   3. Mixins
 //
 @import "mixins/_helper-factory";
+
 @import "mixins/_typography-default";
 @import "mixins/_typography-fontsize";
 @import "mixins/_typography-typeface";
@@ -50,7 +51,7 @@
 @import "mixins/typography/_text-align";
 @import "mixins/typography/_text-decoration";
 
-@import "mixins/_grid-breakpoints";
+@import "mixins/layout/_grid-breakpoints";
 
 ////////////////////////////////////////////////////
 //

@@ -5,6 +5,10 @@
   @include grid-parse-breakpoint-test;
   @include grid-parse-test;
 
+  @include grid-breakpoint-prefix-test;
+  @include grid-breakpoint-dimension-test;
+  @include grid-breakpoint-test;
+
   // Mixins
 
   // Helpers

@@ -1,0 +1,37 @@
+@mixin grid-breakpoint-dimension-test
+{
+  @include test-module('Grid Breakpoint // Dimension')
+  {
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  Width
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-breakpoint-dimension {width}')
+    {
+      $expression: '>m';
+      $operator: '>';
+
+      $test: grid-breakpoint-dimension($expression, $operator);
+      $expect: 'width';
+
+      @include assert-equal($test, $expect, '=');
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  Height
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-breakpoint-dimension {height}')
+    {
+      $expression: 'height>m';
+      $operator: '>';
+
+      $test: grid-breakpoint-dimension($expression, $operator);
+      $expect: 'height';
+
+      @include assert-equal($test, $expect, '=');
+    }
+  }
+}
