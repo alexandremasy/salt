@@ -1,0 +1,60 @@
+@mixin grid-parse-breakpoint-test
+{
+  @include test-module('Grid Parse // Breakpoint')
+  {
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  Known breakpoint
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-parse-breakpoint {=m}')
+    {
+      $test: grid-parse-breakpoint('=m', '=');
+      $expect: 48rem;
+
+      @include assert-equal($test, $expect, '=m');
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  Unknown breakpoint
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-parse-breakpoint {=p}')
+    {
+      $test: grid-parse-breakpoint('=p', '=');
+      $expect: null;
+
+      @include assert-equal($test, $expect, '=p');
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  Error
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-parse-breakpoint {empty}')
+    {
+      $test: grid-parse-breakpoint('', null);
+      $expect: null;
+
+      @include assert-equal($test, $expect, 'empty');
+    }
+
+    @include test('grid-parse-breakpoint {dummy}')
+    {
+      $test: grid-parse-breakpoint('dummy', null);
+      $expect: null;
+
+      @include assert-equal($test, $expect, 'dummy');
+    }
+
+    @include test('grid-parse-breakpoint {m - null-operator}')
+    {
+      $test: grid-parse-breakpoint('m', null);
+      $expect: 48rem;
+
+      @include assert-equal($test, $expect, 'dummy');
+    }
+  }
+}
