@@ -1,23 +1,20 @@
 var gulp = require("gulp");
 var exec = require('child_process').exec;
 
-gulp.task('tests', function(cb)
-{
-  exec('npm test', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-});
 
-gulp.task('gists', function(cb)
+function e(cmd)
 {
-  exec('sass --update gists:build --sourcemap=none --style=expanded', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-});
+  return function()
+  {
+    exec(cmd, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+    });
+  }
+}
+
+gulp.task('tests', e('npm test'));
+gulp.task('gists', e('sass --update gists:build --sourcemap=none --style=expanded'));
 
 gulp.task('watch', function()
 {
