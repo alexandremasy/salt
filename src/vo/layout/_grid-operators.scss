@@ -5,10 +5,11 @@
 ////////////////////////////////////////////////////
 
 $more: ">";
-$more-or-equal: ">=";
 $less: "<";
-$less-or-equal: "<=";
 $equal: '=';
+
+$more-or-equal: ">=";
+$less-or-equal: "<=";
 
 $grid-operators-one: (
   $more,

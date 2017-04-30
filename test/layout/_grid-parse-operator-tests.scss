@@ -4,7 +4,7 @@
   {
     //////////////////////////////////////////////////////////////////////////////
     //
-    //  = M
+    //  Equal
     //
     //////////////////////////////////////////////////////////////////////////////
     @include test('grid-parse-oparator {=m}')
@@ -15,9 +15,17 @@
       @include assert-equal($test, $expect, '=m');
     }
 
+    @include test('grid-parse-oparator {=xl}')
+    {
+      $test: grid-parse-operator('=xl');
+      $expect: '=';
+
+      @include assert-equal($test, $expect, '=xl');
+    }
+
     //////////////////////////////////////////////////////////////////////////////
     //
-    //  >M || >= M
+    //  more || more-or-equal
     //
     //////////////////////////////////////////////////////////////////////////////
     @include test('grid-parse-oparator {>m}')
@@ -36,9 +44,25 @@
       @include assert-equal($test, $expect, '>=m');
     }
 
+    @include test('grid-parse-oparator {>xl}')
+    {
+      $test: grid-parse-operator('>xl');
+      $expect: '>';
+
+      @include assert-equal($test, $expect, '>xl');
+    }
+
+    @include test('grid-parse-oparator {>=xl}')
+    {
+      $test: grid-parse-operator('>=xl');
+      $expect: '>=';
+
+      @include assert-equal($test, $expect, '>=xl');
+    }
+
     //////////////////////////////////////////////////////////////////////////////
     //
-    //  <M || <= M
+    //  less || less-or-equal
     //
     //////////////////////////////////////////////////////////////////////////////
     @include test('grid-parse-oparator {<m}')
@@ -55,6 +79,22 @@
       $expect: '<=';
 
       @include assert-equal($test, $expect, '<=m');
+    }
+
+    @include test('grid-parse-oparator {<xl}')
+    {
+      $test: grid-parse-operator('<xl');
+      $expect: '<';
+
+      @include assert-equal($test, $expect, '<xl');
+    }
+
+    @include test('grid-parse-oparator {<=xl}')
+    {
+      $test: grid-parse-operator('<=xl');
+      $expect: '<=';
+
+      @include assert-equal($test, $expect, '<=xl');
     }
 
     //////////////////////////////////////////////////////////////////////////////

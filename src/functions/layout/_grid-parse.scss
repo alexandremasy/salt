@@ -68,6 +68,22 @@
 //
 @function grid-parse-operator($expression)
 {
+  /**
+    1. loop through the operators
+        a. the one chars
+        b. the two chars
+
+    2. If there is a match
+        a. take a look at the following char
+          if it match the $equal operator
+            than we have the two chars operator
+          else
+            than we have a one chars operator 
+
+
+
+
+   */
   $l: str-length($expression);
   $collection: null;
   @if $l == 2

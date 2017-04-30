@@ -15,7 +15,7 @@
   }
 }
 
-@include media('>m', '<xl')
+@include media('<xl')
 {
   html
   {
@@ -23,10 +23,18 @@
   }
 }
 
-@include media('>m', '<xl', 'retina2x')
+@include media('>m', '<xl')
 {
   html
   {
     font-size: 1;
   }
 }
+//
+// @include media('>m', '<xl', 'retina2x')
+// {
+//   html
+//   {
+//     font-size: 1;
+//   }
+// }

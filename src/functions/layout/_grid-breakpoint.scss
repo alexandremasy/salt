@@ -50,14 +50,17 @@
 {
   $dimension: 'width';
   $parsed-dimension: null;
-  
-  @if str-length($expression > 0)
+
+  @debug 'expression: #{$expression}';
+  @debug 'operator: #{$operator}';
+
+  @if str-length($expression) > 0 and $operator != null
   {
     $operator-index: str-index($expression, $operator);
     $parsed-dimension: str-slice($expression, 0, $operator-index - 1);
   }
 
-  @if str-length($parsed-dimension) > 0
+  @if $parsed-dimension != null and str-length($parsed-dimension) > 0
   {
     $dimension: $parsed-dimension;
   }
