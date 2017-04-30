@@ -1,98 +1,97 @@
 @mixin grid-parse-operator-test
 {
-  // grid-parse-operator('=m') => '='
-  //      grid-parse-operator('>m') => '>'
-  //      grid-parse-operator('<m') => '<'
-
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  //  M || = M
-  //
-  //////////////////////////////////////////////////////////////////////////////
-  @include test('grid-parse-oparator {m} [function]')
+  @include test-module('Grid Parse // Operator')
   {
-    $test: grid-parse-operator('m');
-    $expect: null;
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  = M
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-parse-oparator {=m}')
+    {
+      $test: grid-parse-operator('=m');
+      $expect: '=';
 
-    @include assert-equal($test, $expect, 'm');
-  }
+      @include assert-equal($test, $expect, '=m');
+    }
 
-  @include test('grid-parse-oparator {=m} [function]')
-  {
-    $test: grid-parse-operator('=m');
-    $expect: '=';
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  >M || >= M
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-parse-oparator {>m}')
+    {
+      $test: grid-parse-operator('>m');
+      $expect: '>';
 
-    @include assert-equal($test, $expect, '=m');
-  }
+      @include assert-equal($test, $expect, '>m');
+    }
 
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  //  >M || >= M
-  //
-  //////////////////////////////////////////////////////////////////////////////
-  @include test('grid-parse-oparator {>m} [function]')
-  {
-    $test: grid-parse-operator('>m');
-    $expect: '>';
+    @include test('grid-parse-oparator {>=m}')
+    {
+      $test: grid-parse-operator('>=m');
+      $expect: '>=';
 
-    @include assert-equal($test, $expect, '>m');
-  }
+      @include assert-equal($test, $expect, '>=m');
+    }
 
-  @include test('grid-parse-oparator {>=m} [function]')
-  {
-    $test: grid-parse-operator('>=m');
-    $expect: '>=';
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  <M || <= M
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-parse-oparator {<m}')
+    {
+      $test: grid-parse-operator('<m');
+      $expect: '<';
 
-    @include assert-equal($test, $expect, '>=m');
-  }
+      @include assert-equal($test, $expect, '<m');
+    }
 
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  //  <M || <= M
-  //
-  //////////////////////////////////////////////////////////////////////////////
-  @include test('grid-parse-oparator {<m} [function]')
-  {
-    $test: grid-parse-operator('<m');
-    $expect: '<';
+    @include test('grid-parse-oparator {<=m}')
+    {
+      $test: grid-parse-operator('<=m');
+      $expect: '<=';
 
-    @include assert-equal($test, $expect, '<m');
-  }
+      @include assert-equal($test, $expect, '<=m');
+    }
 
-  @include test('grid-parse-oparator {<=m} [function]')
-  {
-    $test: grid-parse-operator('<=m');
-    $expect: '<=';
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  Error
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    @include test('grid-parse-oparator {m}')
+    {
+      $test: grid-parse-operator('m');
+      $expect: null;
 
-    @include assert-equal($test, $expect, '<=m');
-  }
+      @include assert-equal($test, $expect, 'm');
+    }
 
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  //  <>M || != M
-  //
-  //////////////////////////////////////////////////////////////////////////////
-  @include test('grid-parse-oparator {<>m} [function]')
-  {
-    $test: grid-parse-operator('<>m');
-    $expect: null;
+    @include test('grid-parse-oparator {<>m}')
+    {
+      $test: grid-parse-operator('<>m');
+      $expect: null;
 
-    @include assert-equal($test, $expect, '<>m');
-  }
+      @include assert-equal($test, $expect, '<>m');
+    }
 
-  @include test('grid-parse-oparator {!=m} [function]')
-  {
-    $test: grid-parse-operator('!=m');
-    $expect: null;
+    @include test('grid-parse-oparator {!=m}')
+    {
+      $test: grid-parse-operator('!=m');
+      $expect: null;
 
-    @include assert-equal($test, $expect, '!=m');
-  }
+      @include assert-equal($test, $expect, '!=m');
+    }
 
-  @include test('grid-parse-oparator {null} [function]')
-  {
-    $test: grid-parse-operator('');
-    $expect: null;
+    @include test('grid-parse-oparator {null}')
+    {
+      $test: grid-parse-operator('');
+      $expect: null;
 
-    @include assert-equal($test, $expect, '!=m');
+      @include assert-equal($test, $expect, '!=m');
+    }
   }
 }

@@ -10,11 +10,15 @@ $less: "<";
 $less-or-equal: "<=";
 $equal: '=';
 
-// order matters or < will be found before <=
-$grid-operators: (
-  $more-or-equal,
+$grid-operators-one: (
   $more,
-  $less-or-equal,
   $less,
   $equal
 );
+
+$grid-operators-two: (
+  $more-or-equal,
+  $less-or-equal
+);
+
+$grid-operators: join($grid-operators-one, $grid-operators-two);

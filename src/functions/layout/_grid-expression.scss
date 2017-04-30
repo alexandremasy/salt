@@ -7,6 +7,7 @@
 //   @return {Number}
 //
 //   @example scss
+//     grid-parse('m')  => 48em
 //     grid-parse('=m') => 48em
 //     grid-parse('>m') => 48.01em
 //     grid-parse('<m') => 47.99em
@@ -28,9 +29,9 @@
 
   @if $breakpoint == null
   {
-    @error 'Unknown breakpoint: `#{$expression}`';
     $breakpoint: 0;
     $interval: 0;
+    @return null;
   }
 
   $interval: map-get($grid-intervals, unit($breakpoint));
@@ -67,11 +68,25 @@
 //
 @function grid-parse-operator($expression)
 {
-  @each $operator in $grid-operators
+  $l: str-length($expression);
+  $collection: null;
+  @if $l == 2
   {
-    @if str-index($expression, $operator)
+    $collection: $grid-operators-one;
+  }
+  @else if $l == 3
+  {
+    $collection: $grid-operators-two;
+  }
+
+  @if $collection != null
+  {
+    @each $operator in $collection
     {
-      @return $operator;
+      @if str-index($expression, $operator)
+      {
+        @return $operator;
+      }
     }
   }
 

@@ -6,19 +6,32 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 //
+//   ## Grid parser // operator
+//
+.grid-operators
+{
+  equal: grid-parse-operator('=m');
+  more: grid-parse-operator('>m');
+  more-or-equal: grid-parse-operator('>=m');
+  less: grid-parse-operator('<m');
+  less-or-equal: grid-parse-operator('<=m');
+  unknown: grid-parse-operator('<>m');
+  no-expression: grid-parse-operator('>');
+  no-operator: grid-parse-operator('m');
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
 //   ## Grid parser
 //
-.grid-m
+.grid-parse
 {
-  width: grid-parse('=m');
-}
-
-.grid-more-m
-{
-  width: grid-parse('>m');
-}
-
-.grid-less-m
-{
-  width: grid-parse('<m');
+  equal: grid-parse('=m');
+  more: grid-parse('>m');
+  more-or-equal: grid-parse('>=m');
+  less: grid-parse('<m');
+  less-or-equal: grid-parse('<=m');
+  unknown: grid-parse('<>m');
+  no-expression: grid-parse('>');
+  no-operator: grid-parse('m');
 }
