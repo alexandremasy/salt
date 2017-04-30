@@ -9,6 +9,7 @@ function e(cmd)
     exec(cmd, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
+      console.log(err);
     });
   }
 }
