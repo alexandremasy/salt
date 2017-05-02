@@ -35,13 +35,13 @@
       //
       //
       //////////////////////////////////////////////////////////////////////////////
-      // @include test('grid-breakpoint {retina2x}')
-      // {
-      //   $expression: 'retina2x';
-      //   $test: grid-breakpoint($expression);
-      //   $expect: "(min-width: 48.01rem)";
-      //
-      //   @include assert-equal($test, $expect, 'retina2x');
-      // }
+      @include test('grid-breakpoint {retina2x}')
+      {
+        $expression: 'retina2x';
+        $test: grid-breakpoint($expression);
+        $expect: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)";
+
+        @include assert-equal($test, $expect, 'retina2x');
+      }
   }
 }
