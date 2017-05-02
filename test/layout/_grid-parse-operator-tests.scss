@@ -113,7 +113,15 @@
     @include test('grid-parse-oparator {<>m}')
     {
       $test: grid-parse-operator('<>m');
-      $expect: null;
+      $expect: '<';
+
+      @include assert-equal($test, $expect, '<>m');
+    }
+
+    @include test('grid-parse-oparator {<==}')
+    {
+      $test: grid-parse-operator('<==');
+      $expect: '<=';
 
       @include assert-equal($test, $expect, '<>m');
     }

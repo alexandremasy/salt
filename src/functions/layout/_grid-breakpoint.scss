@@ -51,8 +51,8 @@
   $dimension: 'width';
   $parsed-dimension: null;
 
-  @debug 'expression: #{$expression}';
-  @debug 'operator: #{$operator}';
+  // @debug 'expression: #{$expression}';
+  // @debug 'operator: #{$operator}';
 
   @if str-length($expression) > 0 and $operator != null
   {

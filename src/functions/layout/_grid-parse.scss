@@ -68,38 +68,43 @@
 //
 @function grid-parse-operator($expression)
 {
-  /**
-    1. loop through the operators
-        a. the one chars
-        b. the two chars
+  //
+  //   1. loop through the operators
+  //       a. the one chars
+  //       b. the two chars
+  //
+  //   2. If there is a match
+  //       a. take a look at the following char
+  //         if it match the $equal operator
+  //           than we have the two chars operator
+  //         else
+  //           than we have a one chars operator
+  //
 
-    2. If there is a match
-        a. take a look at the following char
-          if it match the $equal operator
-            than we have the two chars operator
-          else
-            than we have a one chars operator 
-
-
-
-
-   */
-  $l: str-length($expression);
-  $collection: null;
-  @if $l == 2
+  @each $operator in $grid-operators
   {
-    $collection: $grid-operators-one;
-  }
-  @else if $l == 3
-  {
-    $collection: $grid-operators-two;
-  }
-
-  @if $collection != null
-  {
-    @each $operator in $collection
+    $index: str-index($expression, $operator);
+    @if $index and $index == 1
     {
-      @if str-index($expression, $operator)
+      @if str-length($expression) >= ($index + 2)
+      {
+        $next: str-slice($expression, $index+1, $index+1);
+        @if $next == $equal
+        {
+          @each $operator in $grid-operators-two
+          {
+            @if str-index($expression, $operator)
+            {
+              @return $operator;
+            }
+          }
+        }
+        @else
+        {
+          @return $operator;
+        }
+      }
+      @else
       {
         @return $operator;
       }

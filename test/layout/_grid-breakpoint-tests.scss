@@ -25,7 +25,7 @@
       {
         $expression: '<xl';
         $test: grid-breakpoint($expression);
-        $expect: "(min-width: 48.01rem)";
+        $expect: "(max-width: 74.99rem)";
 
         @include assert-equal($test, $expect, '<xl');
       }
