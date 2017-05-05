@@ -24,7 +24,7 @@ gulp.task('watch', function()
   // on change on gists => build the gists
   gulp.watch('gists/**/*.scss', ['gists']);
   // on change on src => build the gists + launch the tests
-  gulp.watch('src/**/*.scss', ['gists', 'tests']);
+  gulp.watch('src/**/*.scss', ['gists']);
 });
 
 gulp.task('default', ['watch']);

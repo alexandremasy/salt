@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//   TYPOGRAPHY // Typefaces
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   => default typeface for the body
+//   @see https://booking.design/implementing-system-fonts-on-booking-com-a-lesson-learned-bdc984df627f
+$font-family-base: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !default;
+
+//
+//
+//   => heading
+$font-heading:              "Rubik";
+$font-heading-typefaces: (
+  $font-normal:             $font-google,
+  $font-bold:               $font-google
+) !default;
+
+//
+//   => body
+$font-body: "Arial";
+$font-body-typefaces: (
+  $font-normal:             '../fonts/arial/arial-normal',
+  $font-bold:               '../fonts/arial/arial-bold',
+);

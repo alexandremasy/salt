@@ -1,0 +1,76 @@
+//
+//
+//
+//
+$salt-palettes: () !default;
+@function palette($name, $colorname, $colorvalue: null)
+{
+  @debug "---------------";
+  @debug "name: #{$name}";
+  @debug "color: #{$colorname}";
+  @debug "value: #{$colorvalue}";
+
+  @if $colorname
+  {
+    @return palette-set-color($name, $colorname, $colorvalue);
+  }
+
+  @return palette-get-color($name, $colorname);
+}
+
+
+//
+//   Get the palette by it's name
+//
+//   @param {String} $name
+//
+@function palette-get($name)
+{
+  @if map-has-key($salt-palettes, $name)
+  {
+    @return map-get($salt-palettes, $name);
+  }
+
+  @return ();
+}
+
+@function palette-set($name, $palette)
+{
+  $salt-palettes: map-merge($salt-palettes, ($name: $palette));
+
+  @return null;
+}
+
+//
+//   Get the color in a palette
+//
+//   @param {String} $palettename
+//   @param {String} $colorname
+//   @return {Color}
+//
+@function palette-get-color($palettename, $colorname)
+{
+  $palette: palette-get($palettename);
+  @if map-has-key($palette, $colorname)
+  {
+    @return map-get($palette, $colorname);
+  }
+
+  @return null;
+}
+
+@function palette-set-color($palettename, $colorname, $colovalue)
+{
+  $map: ($colorname: $colorvalue);
+  $palette: palette-get($palettename);
+
+  // check if the color already exists
+    // if so, update
+    // if not,
+      // create
+      // save the new palette
+  $palette: map-merge($palette, ($colorname: $colovalue));
+  $p: palette-set($palettename, $palette);
+
+  @return $palette;
+}
