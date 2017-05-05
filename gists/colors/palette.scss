@@ -1,1 +1,6 @@
 @import "../../src/salt";
+
+html
+{
+  @include debug-map($salt-palettes);
+}

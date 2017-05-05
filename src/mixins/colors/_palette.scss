@@ -5,12 +5,15 @@
 $salt-palettes: () !default;
 @function palette($name, $colorname, $colorvalue: null)
 {
+  $name: if(type-of($name) == "string", unquote($name), $name);
+  $colorname: if(type-of($colorname) == "string", unquote($colorname), $colorname);
+
   @debug "---------------";
   @debug "name: #{$name}";
   @debug "color: #{$colorname}";
   @debug "value: #{$colorvalue}";
 
-  @if $colorname
+  @if $colorvalue
   {
     @return palette-set-color($name, $colorname, $colorvalue);
   }
@@ -26,6 +29,11 @@ $salt-palettes: () !default;
 //
 @function palette-get($name)
 {
+  $name: if(type-of($name) == "string", unquote($name), $name);
+
+  @debug "palette-get" $name type-of($name);
+  @debug "salt" $salt-palettes;
+
   @if map-has-key($salt-palettes, $name)
   {
     @return map-get($salt-palettes, $name);
@@ -36,7 +44,8 @@ $salt-palettes: () !default;
 
 @function palette-set($name, $palette)
 {
-  $salt-palettes: map-merge($salt-palettes, ($name: $palette));
+  $name: if(type-of($name) == "string", unquote($name), $name);
+  $salt-palettes: map-merge($salt-palettes, ($name: $palette)) !global;
 
   @return null;
 }
@@ -50,26 +59,32 @@ $salt-palettes: () !default;
 //
 @function palette-get-color($palettename, $colorname)
 {
+  $palettename: if(type-of($palettename) == "string", unquote($palettename), $palettename);
+  $colorname: if(type-of($colorname) == "string", unquote($colorname), $colorname);
+
+  @debug "palette-get-color #{$palettename}, #{$colorname}";
   $palette: palette-get($palettename);
+  @debug "palette" $palette;
+
   @if map-has-key($palette, $colorname)
   {
-    @return map-get($palette, $colorname);
+    $value: map-get($palette, $colorname);
+    @debug "return #{$value}";
+    @return $value;
   }
 
   @return null;
 }
 
-@function palette-set-color($palettename, $colorname, $colovalue)
+@function palette-set-color($palettename, $colorname, $colorvalue)
 {
-  $map: ($colorname: $colorvalue);
-  $palette: palette-get($palettename);
+  $palettename: if(type-of($palettename) == "string", unquote($palettename), $palettename);
+  $colorname: if(type-of($colorname) == "string", unquote($colorname), $colorname);
 
-  // check if the color already exists
-    // if so, update
-    // if not,
-      // create
-      // save the new palette
-  $palette: map-merge($palette, ($colorname: $colovalue));
+  $map: ($colorname: $colorvalue);
+
+  $palette: palette-get($palettename);
+  $palette: map-merge($palette, $map);
   $p: palette-set($palettename, $palette);
 
   @return $palette;

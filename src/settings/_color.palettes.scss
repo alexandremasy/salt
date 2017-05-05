@@ -1,16 +1,16 @@
 
 
-$grey00: #FFFFFF;
-$grey01: #F8F9FA;
-$grey02: #F1F3F5;
-$grey03: #E9ECEF;
-$grey04: #DEE2E6;
-$grey05: #CED4DA;
-$grey06: #ADB5BD;
-$grey07: #868E96;
-$grey08: #495057;
-$grey09: #343A40;
-$grey10: #212529;
+$grey00: palette('grey', 'grey00', #ffffff);
+// $grey01: palette('grey', 'grey01', #F8F9FA);
+// $grey02: palette('grey', 'grey02', #F1F3F5);
+// $grey03: palette('grey', 'grey03', #E9ECEF);
+// $grey04: palette('grey', 'grey04', #DEE2E6);
+// $grey05: palette('grey', 'grey05', #CED4DA);
+// $grey06: palette('grey', 'grey06', #ADB5BD);
+// $grey07: palette('grey', 'grey07', #868E96);
+// $grey08: palette('grey', 'grey08', #495057);
+// $grey09: palette('grey', 'grey09', #343A40);
+// $grey10: palette('grey', 'grey10', #212529);
 
 // $grey: palette('grey', 'grey00', $grey00),
 //        palette('grey', 'grey01', $grey01),
@@ -24,4 +24,4 @@ $grey10: #212529;
 //        palette('grey', 'grey09', $grey09),
 //        palette('grey', 'grey10', $grey10);
 
-$g: palette('grey', 'grey00', $grey00);
+// $g: palette('grey', 'grey00', $grey00);
