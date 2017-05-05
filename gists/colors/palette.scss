@@ -2,5 +2,5 @@
 
 html
 {
-  @include debug-map($salt-palettes);
+  color: palette("grey", "grey00");
 }
