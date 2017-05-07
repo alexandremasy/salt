@@ -7,7 +7,7 @@
 //       - `class` – generate a class helper
 //       - `placeholder` – generate a placeholder helper (%);
 //
-$helpers: class;
+$salt-helpers: class !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 //

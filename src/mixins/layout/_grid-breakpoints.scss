@@ -15,11 +15,15 @@
 //   @example scss - Mixing everything
 //      @include media('>=m', '<xl', 'retina3x') { }
 //
+$salt-inside-media: false;
+
 @mixin media($conditions...)
 {
+  $salt-inside-media: true !global;
   @if length($conditions) == 0
   {
     @content;
+    $salt-inside-media: false !global;
   }
   @else if length($conditions) > 0
   {
@@ -29,6 +33,7 @@
       @include media(slice($conditions, 2)...)
       {
         @content;
+        $salt-inside-media: false !global;
       }
     }
   }

@@ -17,3 +17,13 @@ $grey07: palette("grey", "grey07", #868E96);
 $grey08: palette("grey", "grey08", #495057);
 $grey09: palette("grey", "grey09", #343A40);
 $grey10: palette("grey", "grey10", #212529);
+
+
+
+
+//
+// Create mixins for every properties
+//   - Each mixin validate the given value
+//   - Can provide a default value
+//   - Extends a DRY value
+//

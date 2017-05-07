@@ -1,6 +1,8 @@
 //
 //   Typography - Text Align
-//   The text-align CSS property describes how inline content like text is aligned in its parent block element. text-align does not control the alignment of block elements, only their inline content.
+//     The text-align CSS property describes how inline content like text is
+//     aligned in its parent block element. text-align does not control the
+//     alignment of block elements, only their inline content.
 //
 //   @param {String} $value
 //
@@ -14,6 +16,8 @@
 //
 //   @see https://developer.mozilla.org/en/docs/Web/CSS/text-align
 //
+@include helper-factory-iterator($text-align, $text-align-domain, text-align);
+
 @mixin text-align($value)
 {
   @if index($text-align, $value) != null

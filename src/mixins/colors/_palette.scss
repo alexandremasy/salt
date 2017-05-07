@@ -52,13 +52,9 @@ $salt-palettes: () !default;
   // $colorname: if(type-of($colorname) == "string", unquote($colorname), $colorname);
   $palette: palette-get($palettename);
 
-  @debug 'name' $palettename;
-  @debug 'palette' $palette;
-
   @if map-has-key($palette, $colorname)
   {
     $value: map-get($palette, $colorname);
-    @debug "return #{$value}";
     @return $value;
   }
 

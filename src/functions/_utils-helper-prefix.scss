@@ -6,12 +6,12 @@
 //
 @function helper-prefix()
 {
-  @if $helpers == class
+  @if $salt-helpers == class
   {
     @return '.';
   }
 
-  @else if $helpers == placeholder
+  @else if $salt-helpers == placeholder
   {
     @return '%';
   }
