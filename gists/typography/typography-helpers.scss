@@ -10,9 +10,21 @@
 //   Order of the includes matters, and it is: normal, bold, italic, bold+italic.
 //
 // Typography
-@include helper-factory-iterator($text-align);
-
 html
 {
   @include text-align(center);
+  @include text-align(left, xs);
+
+  //
+  // @TODO Fix: include media does not work
+  //
+  @include media('<m')
+  {
+    @include text-align('right');
+  }
 }
+
+// body
+// {
+//   @include text-align(center);
+// }
