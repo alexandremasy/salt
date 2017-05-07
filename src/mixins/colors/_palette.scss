@@ -2,14 +2,9 @@
 //
 //
 //
-$salt-palettes: () !default;
-@function palette($name, $colorname, $colorvalue: null)
+$salt-palettes: ();
+@function palette($name, $colorname)
 {
-  @if $colorvalue
-  {
-    @return palette-set-color($name, $colorname, $colorvalue);
-  }
-
   @return palette-get-color($name, $colorname);
 }
 
@@ -21,26 +16,16 @@ $salt-palettes: () !default;
 //
 @function palette-get($name)
 {
-  $name: if(type-of($name) == "string", unquote($name), $name);
-
-  @if map-has-key($salt-palettes, $name)
+  @if map-has-key($color-palettes, $name)
   {
-    @return map-get($salt-palettes, $name);
+    @return map-get($color-palettes, $name);
   }
 
   @return ();
 }
 
-@function palette-set($name, $palette)
-{
-  $name: if(type-of($name) == "string", unquote($name), $name);
-  $salt-palettes: map-merge($salt-palettes, ($name: $palette)) !global;
-
-  @return null;
-}
-
 //
-//   Get the color in a palette
+//   Palette // Get the color in a palette
 //
 //   @param {String} $palettename
 //   @param {String} $colorname
@@ -48,8 +33,6 @@ $salt-palettes: () !default;
 //
 @function palette-get-color($palettename, $colorname)
 {
-  // $palettename: if(type-of($palettename) == "string", unquote($palettename), $palettename);
-  // $colorname: if(type-of($colorname) == "string", unquote($colorname), $colorname);
   $palette: palette-get($palettename);
 
   @if map-has-key($palette, $colorname)
@@ -57,20 +40,10 @@ $salt-palettes: () !default;
     $value: map-get($palette, $colorname);
     @return $value;
   }
+  @else
+  {
+    @error "Error: #{$colorname} is not present in the #{$palettename} palette";
+  }
 
   @return null;
-}
-
-@function palette-set-color($palettename, $colorname, $colorvalue)
-{
-  $palettename: if(type-of($palettename) == "string", unquote($palettename), $palettename);
-  $colorname: if(type-of($colorname) == "string", unquote($colorname), $colorname);
-
-  $map: ($colorname: $colorvalue);
-
-  $palette: palette-get($palettename);
-  $palette: map-merge($palette, $map);
-  $p: palette-set($palettename, $palette);
-
-  @return $palette;
 }
