@@ -1,8 +1,24 @@
 //
 //   Typography - Text Decoration
-//   The text-align CSS property describes how inline content like text is aligned in its parent block element. text-align does not control the alignment of block elements, only their inline content.
+//     The text-align CSS property describes how inline content like text is
+//     aligned in its parent block element. text-align does not control the
+//     alignment of block elements, only their inline content.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper
+//
+@if $salt-helpers != none
+{
+  @include helper-factory-iterator($text-decoration);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
 //
 //   @param {String} $value
+//   @param {String} $breakpoint
 //
 //   @author Alexandre Masy
 //   @version 1.0
@@ -14,14 +30,7 @@
 //
 //   @see https://developer.mozilla.org/en/docs/Web/CSS/text-decoration
 //
-@mixin text-decoration($value)
+@mixin text-decoration($value, $breakpoint: null)
 {
-  @if index($text-decoration, $value) != null
-  {
-    text-align: unquote($value);
-  }
-  @else
-  {
-    @warn "#{$value} is not accepted by the text-decoration property";
-  }
+  @include helper-factory-mixin($text-decoration, $breakpoint);
 }

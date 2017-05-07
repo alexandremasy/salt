@@ -3,23 +3,29 @@
 //   Typography :: text-decoration
 //
 ////////////////////////////////////////////////////
+$text-decoration: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
 
-//
-//   Text-decoration domain
-//
-$text-decoration-domain:        'td';
+  //
+  //   Domain
+  //
+  domain:                  'td',
 
-//
-//   Allowed values for text-decoration
-//
-$text-decoration-none:          none;
-$text-decoration-overline:      overline;
-$text-decoration-line-through:  line-through;
-$text-decoration-underline:     underline;
+  //
+  //   Property
+  //
+  property:                'text-decoration',
 
-$text-decoration:     (
-                        $text-decoration-none,
-                        $text-decoration-overline,
-                        $text-decoration-line-through,
-                        $text-decoration-underline
-                      );
+  //
+  //   Values
+  //
+  values: (
+    none:                  none,
+    justify:               justify,
+    line-through:          line-through,
+    underline:             underline
+  )
+) !default;

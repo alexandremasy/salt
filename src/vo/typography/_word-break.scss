@@ -3,21 +3,28 @@
 //   Typograhy :: word-break
 //
 ////////////////////////////////////////////////////
+$word-break: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
 
-//
-//  word-break domain
-//
-$word-break-domain:    'wb';
+  //
+  //   Domain
+  //
+  domain:                  'wb',
 
-//
-//   Allowed values for word-break property
-//
-$word-break-normal:     normal;
-$word-break-break-all:  break-all;
-$word-break-keep-all:   keep-all;
+  //
+  //   Property
+  //
+  property:                'word-break',
 
-$word-break:          (
-                        $word-break-normal,
-                        $word-break-break-all,
-                        $word-break-keep-all
-                      );
+  //
+  //   Values
+  //
+  values: (
+    normal:                normal,
+    break-all:             break-all,
+    keep-all:              keep-all
+  )
+) !default;

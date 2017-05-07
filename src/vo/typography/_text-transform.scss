@@ -3,23 +3,29 @@
 //   Typography :: text-transform
 //
 ////////////////////////////////////////////////////
+$text-transform: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
 
-//
-//   Text-transform domain
-//
-$text-transform-domain:        'tt';
+  //
+  //   Domain
+  //
+  domain:                  'tt',
 
-//
-//   Allowed values for text-transform
-//
-$text-transform-none:          none;
-$text-transform-uppercase:     uppercase;
-$text-transform-lowercase:     lowercase;
-$text-transform-capitalize:    capitalize;
+  //
+  //   Property
+  //
+  property:                'text-transform',
 
-$text-transform:     (
-                        $text-transform-none,
-                        $text-transform-uppercase,
-                        $text-transform-lowercase,
-                        $text-transform-capitalize
-                      );
+  //
+  //   Values
+  //
+  values: (
+    none:                 none,
+    uppercase:            uppercase,
+    lowercase:            lowercase,
+    capitalize:           capitalize
+  )
+) !default;
