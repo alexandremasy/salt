@@ -4,32 +4,31 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
-//   Responsive ?
-//
-$text-align-is-responsive: true !default;
-//
-//   Domain
-//
-$text-align-domain:        'ta' !default;
-//
-//   Property
-//
-$text-align-property:      'text-align' !default;
-//
-//   Values
-//
-$text-align-values: (
-  center:                  center,
-  justify:                 justify,
-  left:                    left,
-  right:                   right
-) !default;
-//
 //   Definition
 //
 $text-align: (
-  is-responsive:           $text-align-is-responsive,
-  domain:                  $text-align-domain,
-  property:                $text-align-property,
-  values:                  $text-align-values
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
+
+  //
+  //   Domain
+  //
+  domain:                  'ta',
+
+  //
+  //   Property
+  //
+  property:                'text-align',
+
+  //
+  //   Values
+  //
+  values: (
+    center:                center,
+    justify:               justify,
+    left:                  left,
+    right:                 right
+  )
 ) !default;
