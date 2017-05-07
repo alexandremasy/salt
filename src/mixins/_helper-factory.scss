@@ -88,9 +88,6 @@
   {
     @if $salt-inside-media
     {
-      // @TODO: Fix
-      // no extends possible
-      // have to output the property : value
       #{$property}: unquote($value);
     }
     @else
@@ -110,8 +107,7 @@
       }
       @else
       {
-        // no extends possible
-        @include helper-factory-helper($text-align, $value, $breakpoint);
+        #{$property}: unquote($value);
       }
     }
   }
