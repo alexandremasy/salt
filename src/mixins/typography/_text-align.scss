@@ -4,6 +4,17 @@
 //     aligned in its parent block element. text-align does not control the
 //     alignment of block elements, only their inline content.
 //
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper
+//
+@if $salt-helpers != none
+{
+  @include helper-factory-iterator($text-align);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
 //   @param {String} $value
 //
 //   @author Alexandre Masy
@@ -16,16 +27,9 @@
 //
 //   @see https://developer.mozilla.org/en/docs/Web/CSS/text-align
 //
-@include helper-factory-iterator($text-align, $text-align-domain, text-align);
-
-@mixin text-align($value)
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin text-align($value, $breakpoint: null)
 {
-  @if index($text-align, $value) != null
-  {
-    text-align: unquote($value);
-  }
-  @else
-  {
-    @warn "#{$value} is not accepted by the text-align property";
-  }
+  @include helper-factory-mixin($text-align, $value, $breakpoint);
 }

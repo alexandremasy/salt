@@ -1,58 +1,120 @@
 //
-//   Helper Factory
-//   This is here, in the wonderful industry that all the helper are created!
-//   Enjoy your journey through a wonderland of loops.
-//
-@mixin helper-factory
-{
-  // Typography
-  // @TODO join the color palette before generating the color helper
-  @include helper-factory-iterator($color, $color-domain, color);
-  // @include helper-factory-iterator($font-size, $font-size-domain, font-size);
-  @include helper-factory-iterator(map-merge($letter-spacing, $font-letter-spacing), $letter-spacing-domain, letter-spacing);
-  @include helper-factory-iterator($text-decoration, $text-decoration-domain, text-decoration);
-  @include helper-factory-iterator($text-transform, $text-transform-domain, text-transform);
-  @include helper-factory-iterator($word-break, $word-break-domain, word-break);
-}
-
-//
 //   Helper Factory – Iterator
 //   Iterate over the given list to generate the appropriate helper
 //
-//   @param {List,Map} $list – The list to iterate on
-//   @param {String} $domain – The domain used for the helper
-//   @param {String} $property - The property for which the helper is generated
+//   @param {Map} $property   A map containing the definition of the property
+//      @property {Boolean} is-responsive  Is the property responsive
+//      @property {String}  domain   The domain used for the helper generation
+//      @property {String}  property The css property
+//      @property {Map}     values   The allowed values for the property
 //
-@mixin helper-factory-iterator($list, $domain, $property)
+@mixin helper-factory-iterator($property)
 {
   $prefix: helper-prefix();
 
   @if $prefix != null
   {
-    @if type-of($list) == 'list'
+    @each $key, $value in map-get($property, values)
     {
-      @each $item in $list
-      {
-        $c: $prefix + $item;
-        @include helper-factory-helper($c, $property, $item);
-      }
+      @include helper-factory-helper($property, $key, $value);
     }
+  }
+}
 
-    @if type-of($list) == 'map'
+//
+//   Helper Factory // Helper
+//     Generate the class helper and the responsive one if needed
+//
+//   @param {Map} $property      A map containing the definition of the property
+//      @property {Boolean} is-responsive  Is the property responsive
+//      @property {String}  domain   The domain used for the helper generation
+//      @property {String}  property The css property
+//      @property {Map}     values   The allowed values for the property
+//   @param {String} $class         The domain for which generate the helper
+//   @param {String} $value         The class
+//
+@mixin helper-factory-helper($property, $class, $value)
+{
+  $prefix: helper-prefix();
+
+  $responsive: map-get($property, is-responsive);
+  $domain: map-get($property, domain);
+  $values: map-get($property, values);
+  $property: map-get($property, property);
+
+  $domain: $prefix + $domain;
+  #{$domain + '-' + $class}
+  {
+    #{$property}: $value;
+  }
+
+  @if $responsive
+  {
+    $breakpoints: map-keys($grid-breakpoints);
+    @each $breakpoint in $breakpoints
     {
-      @each $key, $value in $list
+      @include media('>'+$breakpoint)
       {
-        $c: $prefix + $key;
-        @include helper-factory-helper($c, $property, $value);
+        #{$domain + "-" + $breakpoint + '-' + $class}
+        {
+          #{$property}: $value;
+        }
       }
     }
   }
 }
 
-@mixin helper-factory-helper($class, $property, $value)
+//
+//   Helper Factory // Mixin
+//      If it is allowed and permitted we'll extends the appropriate property
+//      otherwise, we'll have to output the value
+//
+//   @param {Map} $property      A map containing the definition of the property
+//      @property {Boolean} is-responsive  Is the property responsive
+//      @property {String}  domain   The domain used for the helper generation
+//      @property {String}  property The css property
+//      @property {Map}     values   The allowed values for the property
+//   @param {String} $value         The class
+//   @param {String} $breakpoint   The breakpoint to constraint the value to
+//
+@mixin helper-factory-mixin($property, $value, $breakpoint: null)
 {
-  #{$class}
+  $responsive: map-get($property, is-responsive);
+  $domain: map-get($property, domain);
+  $values: map-get($property, values);
+  $property: map-get($property, property);
+
+  @if map-has-key($values, $value)
   {
-    #{$property}: $value;
+    @if $salt-inside-media
+    {
+      // no extends possible
+      @include helper-factory-helper($text-align, $value, $breakpoint);
+    }
+    @else
+    {
+      @if $salt-helpers != none
+      {
+        $prefix: helper-prefix();
+
+        // extends possible
+        $ex: $prefix + $domain + '-' + $value;
+        @if $breakpoint
+        {
+          $ex: $prefix + $domain + '-' + $breakpoint + '-' + $value;
+        }
+
+        @extend #{$ex};
+      }
+      @else
+      {
+        // no extends possible
+        @include helper-factory-helper($text-align, $value, $breakpoint);
+      }
+    }
+  }
+  @else
+  {
+    @error "#{$value} is not accepted by the #{$property} property. Accepted values" $values;
   }
 }

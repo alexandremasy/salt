@@ -10,11 +10,9 @@
 //   Order of the includes matters, and it is: normal, bold, italic, bold+italic.
 //
 // Typography
-// @TODO join the color palette before generating the color helper
-@include helper-factory-iterator($color, $color-domain, color);
-// @include helper-factory-iterator($font-size, $font-size-domain, font-size);
-@include helper-factory-iterator(map-merge($letter-spacing, $font-letter-spacing), $letter-spacing-domain, letter-spacing);
-@include helper-factory-iterator($text-align, $text-align-domain, text-align);
-@include helper-factory-iterator($text-decoration, $text-decoration-domain, text-decoration);
-@include helper-factory-iterator($text-transform, $text-transform-domain, text-transform);
-@include helper-factory-iterator($word-break, $word-break-domain, word-break);
+@include helper-factory-iterator($text-align);
+
+html
+{
+  @include text-align(center);
+}

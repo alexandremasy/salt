@@ -1,35 +1,7 @@
 @import "../../src/salt";
 
 
-$red: #ff0000;
-
-.c-red
-{
-  color: $red;
-}
-
-
-@mixin red
-{
-  @debug 'salt-inside-media' $salt-inside-media;
-  @if $salt-inside-media
-  {
-    color: $red;
-  }
-  @else
-  {
-    @extend .c-red;
-  }
-}
-
 html
 {
   color: palette("grey", "grey00");
-
-  @include media('<m')
-  {
-    @include red;
-  }
-
-  @include red;
 }
