@@ -45,7 +45,7 @@
   $domain: $prefix + $domain;
   #{$domain + '-' + $class}
   {
-    #{$property}: $value;
+    #{$property}: unquote($value);
   }
 
   @if $responsive
@@ -57,7 +57,7 @@
       {
         #{$domain + "-" + $breakpoint + '-' + $class}
         {
-          #{$property}: $value;
+          #{$property}: unquote($value);
         }
       }
     }
@@ -88,8 +88,10 @@
   {
     @if $salt-inside-media
     {
+      // @TODO: Fix
       // no extends possible
-      @include helper-factory-helper($text-align, $value, $breakpoint);
+      // have to output the property : value
+      #{$property}: unquote($value);
     }
     @else
     {

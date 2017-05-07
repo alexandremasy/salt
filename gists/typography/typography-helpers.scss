@@ -13,14 +13,14 @@
 html
 {
   @include text-align(center);
-  @include text-align(left, xs);
+  @include text-align(left, m);
 
   //
   // @TODO Fix: include media does not work
   //
-  @include media('<m')
+  @include media('>m')
   {
-    @include text-align('right');
+    @include text-align('left');
   }
 }
 
