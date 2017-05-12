@@ -12,4 +12,4 @@ sass src/salt.scss build/salt.css
 
 ## Documentation
 
-Take a look at the [documentation](wiki)
+Take a look at the [documentation](https://github.com/alexandremasy/salt/wiki)
