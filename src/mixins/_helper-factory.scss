@@ -45,7 +45,7 @@
   $domain: $prefix + $domain;
   #{$domain + '-' + $class}
   {
-    #{$property}: unquote($value);
+    #{$property}: if(type-of($value) == 'string', unquote($value), $value);
   }
 
   @if $responsive
@@ -57,7 +57,7 @@
       {
         #{$domain + "-" + $breakpoint + '-' + $class}
         {
-          #{$property}: unquote($value);
+          #{$property}: if(type-of($value) == 'string', unquote($value), $value);
         }
       }
     }
@@ -79,6 +79,16 @@
 //
 @mixin helper-factory-mixin($property, $value, $breakpoint: null)
 {
+  @if index((null, ''), $property)
+  {
+    @error "Error: The given property is not valid:" $property;
+  }
+
+  @if index((null, ''), $value)
+  {
+    @error "Error: The given value is not valid for #{map-get($property, property)}:" $value;
+  }
+
   $responsive: map-get($property, is-responsive);
   $domain: map-get($property, domain);
   $values: map-get($property, values);
@@ -113,6 +123,6 @@
   }
   @else
   {
-    @error "#{$value} is not accepted by the #{$property} property. Accepted values" $values;
+    @error "Error: The given value is not valid for #{map-get($property, property)}:" $value;
   }
 }

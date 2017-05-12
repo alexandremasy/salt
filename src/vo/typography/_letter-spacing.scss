@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////////
 //
-//   Typograhy :: word-break
+//   Typography :: letter-spacing
 //
 ////////////////////////////////////////////////////
-$salt-word-break: (
+$salt-letter-spacing: (
   //
   //   Responsive ?
   //
@@ -12,19 +12,17 @@ $salt-word-break: (
   //
   //   Domain
   //
-  domain:                  'wb',
+  domain:                  'ls',
 
   //
   //   Property
   //
-  property:                'word-break',
+  property:                'letter-spacing',
 
   //
   //   Values
   //
   values: (
-    normal:                normal,
-    break-all:             break-all,
-    keep-all:              keep-all
+    normal:                normal
   )
 ) !default;

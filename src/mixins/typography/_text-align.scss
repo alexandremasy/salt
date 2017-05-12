@@ -10,7 +10,7 @@
 //
 @if $salt-helpers != none
 {
-  @include helper-factory-iterator($text-align);
+  @include helper-factory-iterator($salt-text-align);
 }
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -34,5 +34,5 @@
 //
 @mixin text-align($value, $breakpoint: null)
 {
-  @include helper-factory-mixin($text-align, $value, $breakpoint);
+  @include helper-factory-mixin($salt-text-align, $value, $breakpoint);
 }

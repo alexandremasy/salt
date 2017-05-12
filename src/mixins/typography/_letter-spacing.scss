@@ -1,0 +1,44 @@
+//
+//   Typography - Letter Spacing
+//     The letter-spacing CSS property specifies spacing behavior between text
+//     characters.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Settings
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$values: (
+  values: map-merge($typography-letter-spacing, map-get($salt-letter-spacing, values))
+);
+$salt-letter-spacing: map-merge($salt-letter-spacing, $values) !global;
+//
+//   Helper
+//
+@if $salt-helpers != none
+{
+  @include helper-factory-iterator($salt-letter-spacing);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include letter-spacing(normal);     => letter-spacing: normal;
+//     @include letter-spacing(xxs);        => letter-spacing: <xxs>;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/letter-spacing
+//
+@mixin letter-spacing($value, $breakpoint: null)
+{
+  @include helper-factory-mixin($salt-letter-spacing, $value, $breakpoint);
+}
