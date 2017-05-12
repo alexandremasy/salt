@@ -30,16 +30,16 @@
 
 @import "settings/_global";
 
-@import "settings/_typography.typeface";
-@import "settings/_typography.font-size";
-@import "settings/_typography.line-height";
-@import "settings/_typography.letter-spacing";
-@import "settings/_typography.text-indent";
+@import "settings/typography/_typography.typeface";
+@import "settings/typography/_typography.font-size";
+@import "settings/typography/_typography.line-height";
+@import "settings/typography/_typography.letter-spacing";
+@import "settings/typography/_typography.text-indent";
 
-@import "settings/_layout.grid";
-@import "settings/_layout.breakpoint";
+@import "settings/layout/_layout.grid";
+@import "settings/layout/_layout.breakpoint";
 
-@import "settings/_color.palettes";
+@import "settings/color/_color.palettes";
 
 ////////////////////////////////////////////////////////////////////////////////
 //

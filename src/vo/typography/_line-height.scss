@@ -1,0 +1,28 @@
+////////////////////////////////////////////////////
+//
+//   Typography :: line-height
+//
+////////////////////////////////////////////////////
+$salt-line-height: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
+
+  //
+  //   Domain
+  //
+  domain:                  'lh',
+
+  //
+  //   Property
+  //
+  property:                'line-height',
+
+  //
+  //   Values
+  //
+  values: (
+    normal:                normal
+  )
+) !default;

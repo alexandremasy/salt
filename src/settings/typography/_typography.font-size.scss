@@ -4,31 +4,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
-//   Solution A
-//
-//   Set the size of the font for mobile / desktop
-$font-size-base: 16px !default;
-
-//
-//   => heading
-$font-size-heading: (
-  xxs:    (10px/$font-size-base, 10px/$font-size-base),
-  xs:     (12px/$font-size-base, 12px/$font-size-base),
-  s:      (14px/$font-size-base, 16px/$font-size-base),
-  m:      (16px/$font-size-base, 20px/$font-size-base),
-  l:      (18px/$font-size-base, 28px/$font-size-base),
-  xl:     (24px/$font-size-base, 32px/$font-size-base),
-  xxl:    (28px/$font-size-base, 46px/$font-size-base)
-);
-
-//
-//   => body
-$font-size-body: $font-size-heading !default;
-
-//////////////////////////////////////////////////////////////////////////////
-//
-//   Solution B
-//
 //   => Base
 //   Set the size of the font for mobile / desktop
 //
