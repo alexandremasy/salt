@@ -1,4 +1,4 @@
-# Salt [![Build Status](https://travis-ci.org/alexandremasy/salt.svg?branch=master)](https://travis-ci.org/alexandremasy/salt) [![Code Climate](https://codeclimate.com/github/alexandremasy/salt.svg)](https://codeclimate.com/github/alexandremasy/salt)
+# [WIP] Salt [![Build Status](https://travis-ci.org/alexandremasy/salt.svg?branch=master)](https://travis-ci.org/alexandremasy/salt) [![Code Climate](https://codeclimate.com/github/alexandremasy/salt.svg)](https://codeclimate.com/github/alexandremasy/salt)
 
 > Add some flavor to your product design workflow
 
@@ -9,3 +9,7 @@
 ```
 sass src/salt.scss build/salt.css
 ```
+
+## Documentation
+
+Take a look at the [documentation](wiki)
