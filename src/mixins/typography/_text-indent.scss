@@ -1,0 +1,47 @@
+//
+//   Typography - Text Indent
+//     The text-indent property specifies the amount of indentation (empty
+//     space) should be left before lines of text in a block. By default, this
+//     controls the indentation of only the first formatted line of the block,
+//     but the hanging and each-line keywords can be used to change this
+//     behavior.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Settings
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$values: (
+  values: map-merge($typography-text-indent, map-get($salt-text-indent, values))
+);
+$salt-text-indent: map-merge($salt-text-indent, $values) !global;
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper
+//
+@if $salt-helpers != none
+{
+  @include helper-factory-iterator($salt-text-indent);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include text-indent(xxs);        => text-indent: <xxs>;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/text-indent
+//
+@mixin text-indent($value, $breakpoint: null)
+{
+  @include helper-factory-mixin($salt-text-indent, $value, $breakpoint);
+}

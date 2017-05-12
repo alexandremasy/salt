@@ -1,0 +1,27 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Typograhy :: text-indent
+//
+////////////////////////////////////////////////////////////////////////////////
+$salt-text-indent: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
+
+  //
+  //   Domain
+  //
+  domain:                  'ti',
+
+  //
+  //   Property
+  //
+  property:                'text-indent',
+
+  //
+  //   Values
+  //
+  values: (
+  )
+) !default;

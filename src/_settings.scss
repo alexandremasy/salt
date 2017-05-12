@@ -40,7 +40,13 @@ $salt-helpers: placeholder !default;
 //
 //       d. letter-spacing
 //
-@import "settings/_typography.letterspacing.scss";
+@import "settings/_typography.letterspacing";
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//       e. text-indent
+//
+@import "settings/_typography.text-indent";
 
 ////////////////////////////////////////////////////////////////////////////////
 

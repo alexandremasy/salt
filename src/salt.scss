@@ -14,6 +14,7 @@
 @import "vo/typography/_letter-spacing";
 @import "vo/typography/_text-align";
 @import "vo/typography/_text-decoration";
+@import "vo/typography/_text-indent";
 @import "vo/typography/_text-transform";
 @import "vo/typography/_word-break";
 
@@ -60,5 +61,6 @@
 //
 @import "mixins/typography/_letter-spacing";
 @import "mixins/typography/_text-align";
-@import "mixins/typography/_word-break";
 @import "mixins/typography/_text-decoration";
+@import "mixins/typography/_text-indent";
+@import "mixins/typography/_word-break";
