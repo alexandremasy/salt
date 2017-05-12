@@ -1,0 +1,37 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Grid
+//
+//       a. Base
+//       b. Breakpoints
+//       c. Sizes
+//       d. Layout
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//       a. Base
+//          It is advised to have the same value for the grid-base and
+//          font-size-base
+//
+$grid-base: $font-size-base;
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//   c. Sizes
+//
+$grid-sizes: (
+  xxs:  .25,
+  xs:   .5,
+  s:    .75,
+  m:    1,
+  l:    1.5,
+  xl:   2,
+  xxl:  4
+);
+
+//
+//   d. Layout
+//
+$grid-colums: 12;
+// $grid-gutter: nth($grid-sizes, m) * 1em;

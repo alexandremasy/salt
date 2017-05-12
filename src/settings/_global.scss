@@ -1,0 +1,8 @@
+//
+//   Define the style of helper
+//   Available values:
+//       - `none` – do not generate the helper
+//       - `class` – generate a class helper
+//       - `placeholder` – generate a placeholder helper (%);
+//
+$salt-helpers: placeholder !default;

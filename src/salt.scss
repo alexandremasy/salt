@@ -27,7 +27,19 @@
 //   Settings
 //
 ////////////////////////////////////////////////////////////////////////////////
-@import "_settings";
+
+@import "settings/_global";
+
+@import "settings/_typography.typeface";
+@import "settings/_typography.font-size";
+@import "settings/_typography.line-height";
+@import "settings/_typography.letter-spacing";
+@import "settings/_typography.text-indent";
+
+@import "settings/_layout.grid";
+@import "settings/_layout.breakpoint";
+
+@import "settings/_color.palettes";
 
 ////////////////////////////////////////////////////////////////////////////////
 //
