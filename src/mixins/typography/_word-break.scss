@@ -1,0 +1,35 @@
+//
+//   Typography - Word Break
+//     The word-break CSS property is used to specify whether to break lines
+//     within words.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper
+//
+@if $salt-helpers != none
+{
+  @include helper-factory-iterator($salt-word-break);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include word-break(normal);       => word-break: normal;
+//     @include word-break(break-all);    => word-break: break-all;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/word-break
+//
+@mixin word-break($value, $breakpoint: null)
+{
+  @include helper-factory-mixin($salt-word-break, $value, $breakpoint);
+}

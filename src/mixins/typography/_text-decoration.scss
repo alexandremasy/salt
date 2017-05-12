@@ -10,7 +10,7 @@
 //
 @if $salt-helpers != none
 {
-  @include helper-factory-iterator($text-decoration);
+  @include helper-factory-iterator($salt-text-decoration);
 }
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,5 +32,5 @@
 //
 @mixin text-decoration($value, $breakpoint: null)
 {
-  @include helper-factory-mixin($text-decoration, $breakpoint);
+  @include helper-factory-mixin($salt-text-decoration, $breakpoint);
 }
