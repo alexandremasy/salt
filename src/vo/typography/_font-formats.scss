@@ -6,23 +6,23 @@
 $salt-typography-font-formats: (
   eot: (
     extension: 'eot',
-    format: 'embedded-opentype',
+    type: 'embedded-opentype',
     post: '?#iefiex'
   ),
   woff: (
     extension: 'woff',
-    format: 'woff'
+    type: 'woff'
   ),
   woff2: (
     extension: 'woff2',
-    format: 'woff2'
+    type: 'woff2'
   ),
   ttf: (
     extension: 'ttf',
-    format: 'truetype'
+    type: 'truetype'
   ),
   svg: (
     extension: 'svg',
-    format: 'svg'
+    type: 'svg'
   )
 ) !default;
