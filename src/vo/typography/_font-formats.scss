@@ -1,0 +1,28 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//   TYPOGRAPHY // Font formats
+//
+////////////////////////////////////////////////////////////////////////////////
+$salt-typography-font-formats: (
+  eot: (
+    extension: 'eot',
+    format: 'embedded-opentype',
+    post: '?#iefiex'
+  ),
+  woff: (
+    extension: 'woff',
+    format: 'woff'
+  ),
+  woff2: (
+    extension: 'woff2',
+    format: 'woff2'
+  ),
+  ttf: (
+    extension: 'ttf',
+    format: 'truetype'
+  ),
+  svg: (
+    extension: 'svg',
+    format: 'svg'
+  )
+) !default;

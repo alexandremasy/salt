@@ -4,18 +4,5 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
-//   => heading
-$font-line-height-base: 1.5;
-
-$font-heading-line-height: (
-  xxs:    (1.2,   1.2),
-  xs:     (1.2,   1.2),
-  s:      (1.2,   1.2),
-  m:      (1.3,   1.2),
-  l:      (1.35,  1.3),
-  xl:     (1.4,   1.4),
-  xxl:    (1.45,  1.4)
-);
-//
-//   => body
-$font-body-line-height: $font-heading-line-height;
+//   => Default
+$salt-typography-line-height: 1.5;

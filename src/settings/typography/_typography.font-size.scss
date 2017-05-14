@@ -7,27 +7,27 @@
 //   => Base
 //   Set the size of the font for mobile / desktop
 //
-$font-size-base: 16px !default;
+$salt-typography-font-size: 16px !default;
 
 //
 //   => Scale
 //   Set the scale as an number for mobile / desktop
 //   @see http://type-scale.com/
 //
-$font-size-scale: (1.5, 1.3) !default;
+// $font-size-scale: (1.5, 1.3) !default;
 
 //
 //   => Sizes
 //   Compute the size for the ratios
 //
-$font-size-heading: (
-  xxs:    (exponent(nth($font-size-scale, 1), -2),  exponent(nth($font-size-scale, 2), -2)),
-  xs:     (exponent(nth($font-size-scale, 1), -1),  exponent(nth($font-size-scale, 2), -1)),
-  s:      (exponent(nth($font-size-scale, 1), 0),   exponent(nth($font-size-scale, 2), 0)),
-  m:      (exponent(nth($font-size-scale, 1), 1),   exponent(nth($font-size-scale, 2), 1)),
-  l:      (exponent(nth($font-size-scale, 1), 2),   exponent(nth($font-size-scale, 2), 2)),
-  xl:     (exponent(nth($font-size-scale, 1), 3),   exponent(nth($font-size-scale, 2), 3)),
-  xxl:    (exponent(nth($font-size-scale, 1), 4),   exponent(nth($font-size-scale, 2), 4))
-) !default;
-
-$font-size-body: $font-size-heading !default;
+// $font-size-heading: (
+//   xxs:    (exponent(nth($font-size-scale, 1), -2),  exponent(nth($font-size-scale, 2), -2)),
+//   xs:     (exponent(nth($font-size-scale, 1), -1),  exponent(nth($font-size-scale, 2), -1)),
+//   s:      (exponent(nth($font-size-scale, 1), 0),   exponent(nth($font-size-scale, 2), 0)),
+//   m:      (exponent(nth($font-size-scale, 1), 1),   exponent(nth($font-size-scale, 2), 1)),
+//   l:      (exponent(nth($font-size-scale, 1), 2),   exponent(nth($font-size-scale, 2), 2)),
+//   xl:     (exponent(nth($font-size-scale, 1), 3),   exponent(nth($font-size-scale, 2), 3)),
+//   xxl:    (exponent(nth($font-size-scale, 1), 4),   exponent(nth($font-size-scale, 2), 4))
+// ) !default;
+//
+// $font-size-body: $font-size-heading !default;

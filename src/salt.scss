@@ -7,10 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 @import "vo/_units";
 
-@import "vo/_font-weights";
-@import "vo/_font-formats";
-@import "vo/_font-providers";
-
+@import "vo/typography/_font-weights";
+@import "vo/typography/_font-formats";
+@import "vo/typography/_font-providers";
 @import "vo/typography/_letter-spacing";
 @import "vo/typography/_text-align";
 @import "vo/typography/_text-decoration";
