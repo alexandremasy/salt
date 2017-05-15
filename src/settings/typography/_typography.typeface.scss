@@ -4,52 +4,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
-//   default typeface for the body
+//   default font-family for the body
 //   @see https://booking.design/implementing-system-fonts-on-booking-com-a-lesson-learned-bdc984df627f
 $salt-typography-font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !default;
 
 //
-//   => heading
-// $font-heading:              "Rubik";
-// $font-heading-typefaces: (
-//   $font-normal:             $font-google,
-//   $font-bold:               $font-google
-// ) !default;
+//   default font-size for the body
 //
-// //
-// //   => body
-// $font-body: "Arial";
-// $font-body-typefaces: (
-//   $font-normal:             '../fonts/arial/arial-normal',
-//   $font-bold:               '../fonts/arial/arial-bold',
-// );
+$salt-typography-font-size: 16px !default;
+
+//
+//   default line-height for the body
+//
+$salt-typography-line-height: 1.5 !default;
+
+//
+//   all the fonts in the application
+//
+$salt-typography-fonts: ();
 
 ////////////////////////////////////////////////////////////////////////////////
-//
-//   Font Formal Syntax
-//
-// $entry: <family> || <typefaces> || <sizes> || <line-height>
-// where
-//   <family> = <string>
-//   <typefaces> = [(<weight>: [<url> | <provider>])*]
-//   <sizes> = [(<scale>: (<length>, <length>)*]
-//   <line-height> = [(<scale>: (<length>, <length>))*]
-//   <provider> = <url> || $font-google
-//
-// $entry: (
-//   [family: <string>,?]
-//   typefaces: (
-//     <weight>: url | <provider>
-//   ),
-//   sizes: (
-//     <scale>: <length>
-//   ),
-//   line-height: (
-//     <scale>: <length>
-//   )
-// );
-////////////////////////////////////////////////////////////////////////////////
-
+// 
 // # Helper
 // .f-[<family>]?-?[<typefaces> || <sizes> || <line-height>]
 //
@@ -58,5 +33,3 @@ $salt-typography-font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Robot
 //   => @include font(heading, weight bold)
 //   => @include font(heading, size xxl)
 //   => @include font(heading, line-height xxl)
-
-////////////////////////////////////////////////////////////////////////////////

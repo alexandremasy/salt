@@ -1,0 +1,40 @@
+//
+//   Add a font to the collection of all the availabe font for the application
+//
+//   @param {Map} $font – A map with all the font information
+//   @return {Map}
+@function add-font($font)
+{
+  @if (!map-has-key($font, family) or !map-has-key($font, typefaces) or !map-has-key($font, sizes) or !map-has-key($font, line-height))
+  {
+    @error "Error: The given font is not complete. You have to provide all the mandatory informations." map-get($font, family);
+  }
+
+  // is the font already exists ?
+  $fonts: $salt-typography-fonts;
+  $found: false;
+  $i: 0;
+  $n: 0;
+  @each $f in $fonts
+  {
+    $i: $i+1;
+    @if map-get($f, family) == map-get($font, family)
+    {
+      $found: true;
+      $n: $i;
+    }
+  }
+
+  // replace with the new value if it exists
+  @if $found
+  {
+    set-nth($fonts, $n, $font);
+  }
+  @else
+  {
+    append($fonts, $font);
+  }
+  $salt-typography-fonts: $fonts !global;
+
+  @return $font;
+}
