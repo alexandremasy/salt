@@ -6,3 +6,9 @@
 //       - `placeholder` – generate a placeholder helper (%);
 //
 $salt-helpers: placeholder !default;
+
+
+//
+//   The list of the helper generator
+//
+$salt-helper-generators: ();
