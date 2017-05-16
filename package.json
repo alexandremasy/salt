@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.9.1",
     "mocha": "^3.3.0",
     "sass-true": "^2.2.2"
   },

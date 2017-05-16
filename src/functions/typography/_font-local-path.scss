@@ -47,7 +47,7 @@
     $type: map-get($format, type);
     $post: map-get($format, post);
 
-    $u: $path + '/' + $filename + "." + $extension + $post
+    $u: $path + '/' + $filename + "." + $extension + $post;
     $f: format("embedded-opentype");
 
     $src: append($src, url($u) $f, comma);

@@ -30,8 +30,6 @@
 @import "settings/_global";
 
 @import "settings/typography/_typography.typeface";
-@import "settings/typography/_typography.font-size";
-@import "settings/typography/_typography.line-height";
 @import "settings/typography/_typography.letter-spacing";
 @import "settings/typography/_typography.text-indent";
 
@@ -45,9 +43,13 @@
 //   Functions
 //
 ////////////////////////////////////////////////////////////////////////////////
+@import "functions/typography/_font-local-path";
+@import "functions/typography/_add-font";
+
+
 @import "functions/layout/_grid-parse";
 @import "functions/layout/_grid-breakpoint";
-@import "functions/typography/_font-local-path";
+
 
 @import "functions/_list-slice";
 @import "functions/_utils-strip-unit";
