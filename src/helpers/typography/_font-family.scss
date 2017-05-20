@@ -1,0 +1,120 @@
+//
+//   Typography - Font Family
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Global value
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$font-family: null;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Definition
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$salt-font-family: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
+
+  //
+  //   Domain
+  //
+  domain:                  'ff',
+
+  //
+  //   Property
+  //
+  property:                'font-family',
+
+  //
+  //   Values
+  //
+  values: (
+  )
+) !default;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Commit properties
+//   (Re-)generate the property definition based on the dynamic values
+//   (settings).
+//
+//   @return {Map} Return the new property defition.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@function font-family-commit-properties()
+{
+  $list: ();
+  @each $font in $salt-typography-fonts
+  {
+    $name: map-get($font, family);
+    @if map-has-key($font, name)
+    {
+      $name: map-get($font, name);
+    }
+
+    @if (map-has-key($list, $name) == false)
+    {
+      $f: (
+        to-lower-case($name): $name
+      );
+      $list: map-merge($list, $f);
+    }
+  }
+
+  $values: (
+    values: map-merge($list, map-get($salt-font-family, values))
+  );
+  $font-family: map-merge($salt-font-family, $values) !global;
+
+  @return $font-family;
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper generator
+//   Generate the property helper
+//
+////////////////////////////////////////////////////////////////////////////////
+@mixin font-family-helper-generator()
+{
+  @if $font-family == null
+  {
+    $p: call(font-family-commit-properties);
+  }
+  @include helper-factory-iterator($font-family);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include font-family(transparent);     => font-family: transparent;
+//     @include font-family(<palettefont-family>);  => font-family: <palettefont-family>;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/font-family
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin font-family($value, $breakpoint: null)
+{
+  @if $font-family == null
+  {
+    $p: call(font-family-commit-properties);
+  }
+  @include helper-factory-mixin($font-family, $value, $breakpoint);
+}
