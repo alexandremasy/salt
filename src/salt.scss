@@ -10,12 +10,6 @@
 @import "vo/typography/_font-weights";
 @import "vo/typography/_font-formats";
 @import "vo/typography/_font-providers";
-@import "vo/typography/_letter-spacing";
-@import "vo/typography/_text-align";
-@import "vo/typography/_text-decoration";
-@import "vo/typography/_text-indent";
-@import "vo/typography/_text-transform";
-@import "vo/typography/_word-break";
 
 @import "vo/layout/_grid-media";
 @import "vo/layout/_grid-intervals";
@@ -62,6 +56,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 @import "mixins/_helper-factory";
+@import "mixins/_salt-helpers";
+
 @import "mixins/layout/_grid-breakpoints";
 @import "mixins/colors/_palette";
 
@@ -69,11 +65,15 @@
 @import "mixins/_typography-fontsize";
 @import "mixins/_typography-typeface";
 
+////////////////////////////////////////////////////////////////////////////////
 //
-//   Helpers
+//   Properties / Helpers
 //
-@import "mixins/typography/_letter-spacing";
-@import "mixins/typography/_text-align";
-@import "mixins/typography/_text-decoration";
-@import "mixins/typography/_text-indent";
-@import "mixins/typography/_word-break";
+////////////////////////////////////////////////////////////////////////////////
+@import "helpers/typography/_letter-spacing";
+@import "helpers/typography/_line-height";
+@import "helpers/typography/_text-align";
+@import "helpers/typography/_text-decoration";
+@import "helpers/typography/_text-indent";
+@import "helpers/typography/_text-transform";
+@import "helpers/typography/_word-break";

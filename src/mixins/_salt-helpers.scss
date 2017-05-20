@@ -1,0 +1,21 @@
+//
+//   Salt - Helper
+//   Output the helper based on the style
+//
+//   @param {String} $style
+//
+@mixin salt-helpers($style: $salt-helpers-style)
+{
+  $salt-helpers-style: $style !global;
+
+  //
+  //   Typography
+  //
+  @include letter-spacing-helper-generator();
+  @include line-height-helper-generator();
+  @include text-align-helper-generator();
+  @include text-decoration-helper-generator();
+  @include text-indent-helper-generator();
+  @include text-transform-helper-generator();
+  @include word-break-helper-generator();
+}

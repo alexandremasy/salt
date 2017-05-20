@@ -1,0 +1,103 @@
+//
+//   Typography - Text Transform
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Global value
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$text-transform: null;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Definition
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$salt-text-transform: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
+
+  //
+  //   Domain
+  //
+  domain:                  'tt',
+
+  //
+  //   Property
+  //
+  property:                'text-transform',
+
+  //
+  //   Values
+  //
+  values: (
+    none:                 none,
+    uppercase:            uppercase,
+    lowercase:            lowercase,
+    capitalize:           capitalize
+  )
+) !default;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Commit properties
+//   (Re-)generate the property definition based on the dynamic values
+//   (settings).
+//
+//   @return {Map} Return the new property defition.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@function text-transform-commit-properties()
+{
+  $text-transform: $salt-text-transform !global;
+  @return $text-transform;
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper generator
+//   Generate the property helper
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin text-transform-helper-generator()
+{
+  @if $text-transform == null
+  {
+    $p: call(text-transform-commit-properties);
+  }
+  @include helper-factory-iterator($text-transform);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include text-transform(uppercase);       => text-transform: uppercase;
+//     @include text-transform(lowercase);       => text-transform: lowercase;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/text-transform
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin text-transform($value, $breakpoint: null)
+{
+  @if $text-transform == null
+  {
+    $p: call(text-transform-commit-properties);
+  }
+  @include helper-factory-mixin($salt-text-transform, $value, $breakpoint);
+}
