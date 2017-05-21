@@ -11,13 +11,14 @@
   //
   //   Typography
   //
-  @include color-helper-generator();
-  @include font-family-helper-generator();
-  @include letter-spacing-helper-generator();
-  @include line-height-helper-generator();
-  @include text-align-helper-generator();
-  @include text-decoration-helper-generator();
-  @include text-indent-helper-generator();
-  @include text-transform-helper-generator();
-  @include word-break-helper-generator();
+  // @include color-helper-generator();
+  // @include font-family-helper-generator();
+  @include font-style-helper-generator();
+  // @include letter-spacing-helper-generator();
+  // @include line-height-helper-generator();
+  // @include text-align-helper-generator();
+  // @include text-decoration-helper-generator();
+  // @include text-indent-helper-generator();
+  // @include text-transform-helper-generator();
+  // @include word-break-helper-generator();
 }
