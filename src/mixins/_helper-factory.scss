@@ -10,14 +10,9 @@
 //
 @mixin helper-factory-iterator($property)
 {
-  $prefix: helper-prefix();
-
-  @if $prefix != null
+  @each $key, $value in map-get($property, values)
   {
-    @each $key, $value in map-get($property, values)
-    {
-      @include helper-factory-helper($property, $key, $value);
-    }
+    @include helper-factory-helper($property, $key, $value);
   }
 }
 
@@ -30,8 +25,8 @@
 //      @property {String}  domain   The domain used for the helper generation
 //      @property {String}  property The css property
 //      @property {Map}     values   The allowed values for the property
-//   @param {String} $class         The domain for which generate the helper
-//   @param {String} $value         The class
+//   @param {String} $class      The css classname for which generate the helper
+//   @param {String} $value      The property value
 //
 @mixin helper-factory-helper($property, $class, $value)
 {

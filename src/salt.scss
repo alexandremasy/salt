@@ -39,6 +39,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 @import "functions/typography/_font-local-path";
 @import "functions/typography/_add-font";
+@import "functions/typography/_font-size";
 
 
 @import "functions/layout/_grid-parse";
@@ -73,6 +74,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 @import "helpers/typography/_color";
 @import "helpers/typography/_font-family";
+@import "helpers/typography/_font-size";
 @import "helpers/typography/_font-style";
 @import "helpers/typography/_letter-spacing";
 @import "helpers/typography/_line-height";

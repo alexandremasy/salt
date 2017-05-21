@@ -1,0 +1,127 @@
+//
+//   Typography - Font Size
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Global value
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$font-size: null;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Definition
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$salt-font-size: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           false,
+
+  //
+  //   Domain
+  //
+  domain:                  'fs',
+
+  //
+  //   Property
+  //
+  property:                'font-size',
+
+  //
+  //   Values
+  //
+  values: (
+  )
+) !default;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Commit properties
+//   (Re-)generate the property definition based on the dynamic values
+//   (settings).
+//
+//   @return {Map} Return the new property defition.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@function font-size-commit-properties()
+{
+  $list: ();
+  $values: map-get($salt-font-size, values);
+
+
+  @each $font in $salt-typography-fonts
+  {
+    $name: map-get($font, family);
+    @if map-has-key($font, name)
+    {
+      $name: map-get($font, name);
+    }
+
+    // list through predefined values
+    // list through dynamic values
+    $values: map-merge($values, map-get($font, sizes));
+    @each $cvalue, $value in $values
+    {
+      $key: $name + '-' + $cvalue;
+      // @TODO Generate the font-size restriction for responsive;
+      // How to incorporate the media restriction ?
+      $value: font-size(nth($value, 1), nth($value, 2));
+      $list: map-set($list, $key, $value);
+    }
+  }
+
+  $values: (
+    values: map-merge($list, map-get($salt-font-size, values))
+  );
+  $font-size: map-merge($salt-font-size, $values) !global;
+
+  @return $font-size;
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper generator
+//   Generate the property helper
+//
+////////////////////////////////////////////////////////////////////////////////
+@mixin font-size-helper-generator()
+{
+  @if $font-size == null
+  {
+    $p: call(font-size-commit-properties);
+  }
+  @include helper-factory-iterator($font-size);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include font-size(transparent);     => font-size: transparent;
+//     @include font-size(<palettefont-size>);  => font-size: <palettefont-size>;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/font-size
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin font-size($value, $breakpoint: null)
+{
+  @if $font-size == null
+  {
+    $p: call(font-size-commit-properties);
+  }
+  @include helper-factory-mixin($font-size, $value, $breakpoint);
+}

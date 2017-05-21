@@ -1,0 +1,16 @@
+//
+//   Font-size
+//   Generate a responsive constraint font-size
+//
+//   @param {Length} $font-size-min
+//   @param {Length} $font-size-max
+//   @return {CSSExpression}
+//
+@function font-size($font-size-min, $font-size-max)
+{
+  $unit: 1rem;
+  $breakpoint-min: grid-parse('xxs');
+  $breakpoint-max: grid-parse('xxl');
+
+  @return calc(#{strip-unit($font-size-min)} + (#{strip-unit($font-size-max)} - #{strip-unit($font-size-min)}) * (100vw - #{$breakpoint-min}) / (#{strip-unit($breakpoint-max)} - #{strip-unit($breakpoint-min)}));
+}
