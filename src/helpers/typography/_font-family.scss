@@ -61,10 +61,7 @@ $salt-font-family: (
 
     @if (map-has-key($list, $name) == false)
     {
-      $f: (
-        to-lower-case($name): $name
-      );
-      $list: map-merge($list, $f);
+      $list: map-set($list, $name, $name);
     }
   }
 

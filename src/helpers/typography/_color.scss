@@ -52,8 +52,23 @@ $salt-color: (
 //
 @function color-commit-properties()
 {
-  // @TODO Merge the dataset from the palette variable
-  $color: $salt-color !global;
+  $list: ();
+
+  @each $pname, $palette in $color-palettes
+  {
+    @each $cname, $color in $palette
+    {
+      $key: $pname + '-' + $cname;
+      $list: map-set($list, $key, $color);
+    }
+  }
+
+  @debug $list;
+
+  $values: (
+    values: map-merge($list, map-get($salt-color, values))
+  );
+  $color: map-merge($salt-color, $values) !global;
 
   @return $color;
 }

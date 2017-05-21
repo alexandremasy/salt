@@ -1,0 +1,17 @@
+//
+//  Set the value of a map entry
+//  If the key already exists replace the value
+//  If not, then add it to the map
+//
+//  @param {Map} $map
+//  @param {String} $key
+//  @param {*} $value
+//  @return {Map} - Return the merged map
+//
+@function map-set($map, $key, $value)
+{
+  $data: (
+    to-lower-case($key): $value
+  );
+  @return map-merge($map, $data);
+}
