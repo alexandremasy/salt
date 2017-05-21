@@ -19,7 +19,7 @@ $salt-font-size: (
   //
   //   Responsive ?
   //
-  is-responsive:           false,
+  is-responsive:           true,
 
   //
   //   Domain
@@ -30,6 +30,11 @@ $salt-font-size: (
   //   Property
   //
   property:                'font-size',
+
+  //
+  //   Template ?
+  //
+  template:                true,
 
   //
   //   Values
@@ -53,7 +58,6 @@ $salt-font-size: (
   $list: ();
   $values: map-get($salt-font-size, values);
 
-
   @each $font in $salt-typography-fonts
   {
     $name: map-get($font, family);
@@ -68,9 +72,11 @@ $salt-font-size: (
     @each $cvalue, $value in $values
     {
       $key: $name + '-' + $cvalue;
-      // @TODO Generate the font-size restriction for responsive;
-      // How to incorporate the media restriction ?
-      $value: font-size(nth($value, 1), nth($value, 2));
+      // @TODO: How to incorporate the media restriction ?
+      // @TODO: Find a way to have a multiline property definition. Something like a template with replace placeholder.
+      //        replace(template, value1, value2, value3...)
+
+      // $value: font-size(nth($value, 1), nth($value, 2));
       $list: map-set($list, $key, $value);
     }
   }
@@ -85,6 +91,29 @@ $salt-font-size: (
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
+//   Template
+//   Template used to output the value
+//
+//   @param {length} $min
+//   @param {length} $max
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin font-size-template($min, $max)
+{
+  font-size: font-size($min, $max);
+  @include media('<xxs')
+  {
+    font-size: $min;
+  }
+  @include media('>xxl')
+  {
+    font-size: $max;
+  }
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
 //   Helper generator
 //   Generate the property helper
 //
@@ -95,7 +124,38 @@ $salt-font-size: (
   {
     $p: call(font-size-commit-properties);
   }
-  @include helper-factory-iterator($font-size);
+
+  @each $key, $value in map-get($font-size, values)
+  {
+    $prefix: helper-prefix();
+    $domain: $prefix + map-get($font-size, domain);
+    $responsive: map-get($font-size, is-responsive);
+    $property: map-get($font-size, property);
+
+    $min: nth($value, 1);
+    $max: nth($value, 2);
+
+    #{$domain + '-' + $key}
+    {
+      @include font-size-template($min, $max);
+    }
+
+    @if $responsive
+    {
+      $breakpoints: map-keys($grid-breakpoints);
+      @each $breakpoint in $breakpoints
+      {
+        @include media('>'+$breakpoint)
+        {
+          #{$domain + "-" + $breakpoint + '-' + $key}
+          {
+            // @TODO: Is it correct to output the size this way ? When in size xxs just set the size as it ? Constrained to the size of the breakpoint and up ?
+            #{$property}: font-size($min, $max);
+          }
+        }
+      }
+    }
+  }
 }
 //
 ////////////////////////////////////////////////////////////////////////////////

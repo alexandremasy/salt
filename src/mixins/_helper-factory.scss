@@ -33,11 +33,9 @@
   $prefix: helper-prefix();
 
   $responsive: map-get($property, is-responsive);
-  $domain: map-get($property, domain);
-  $values: map-get($property, values);
+  $domain: $prefix + map-get($property, domain);
   $property: map-get($property, property);
 
-  $domain: $prefix + $domain;
   #{$domain + '-' + $class}
   {
     #{$property}: if(type-of($value) == 'string', unquote($value), $value);
