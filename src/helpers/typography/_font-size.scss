@@ -132,8 +132,13 @@ $salt-font-size: (
     $responsive: map-get($font-size, is-responsive);
     $property: map-get($font-size, property);
 
-    $min: nth($value, 1);
-    $max: nth($value, 2);
+    $min: $value;
+    $max: $value;
+    @if length($value) == 2
+    {
+      $min: nth($value, 1);
+      $max: nth($value, 2);
+    }
 
     #{$domain + '-' + $key}
     {

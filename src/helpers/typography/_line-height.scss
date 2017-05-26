@@ -19,7 +19,7 @@ $salt-line-height: (
   //
   //   Responsive ?
   //
-  is-responsive:           true,
+  is-responsive:           false,
 
   //
   //   Domain
@@ -51,11 +51,56 @@ $salt-line-height: (
 //
 @function line-height-commit-properties()
 {
-  // @TODO Merge the dataset from the font variable
+  $list: ();
+  $values: map-get($salt-line-height, values);
 
-  $line-height: $salt-line-height !global;
+  @each $font in $salt-typography-fonts
+  {
+    $name: map-get($font, family);
+    @if map-has-key($font, name)
+    {
+      $name: map-get($font, name);
+    }
+
+    // list through predefined values
+    // list through dynamic values
+    $values: map-merge($values, map-get($font, sizes));
+    @each $cvalue, $value in $values
+    {
+      $key: $name + '-' + $cvalue;
+      $list: map-set($list, $key, $value);
+    }
+  }
+
+  $values: (
+    values: map-merge($list, map-get($salt-line-height, values))
+  );
+  $line-height: map-merge($salt-line-height, $values) !global;
 
   @return $line-height;
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Template
+//   Template used to output the value
+//
+//   @param {length} $min
+//   @param {length} $max
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin line-height-template($min, $max)
+{
+  line-height: line-height($min, $max);
+  @include media('<xxs')
+  {
+    line-height: $min;
+  }
+  @include media('>xxl')
+  {
+    line-height: $max;
+  }
 }
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +115,48 @@ $salt-line-height: (
   {
     $p: call(line-height-commit-properties);
   }
-  @include helper-factory-iterator($line-height);
+
+  @each $key, $value in map-get($line-height, values)
+  {
+    $prefix: helper-prefix();
+    $domain: $prefix + map-get($line-height, domain);
+    $responsive: map-get($line-height, is-responsive);
+    $property: map-get($line-height, property);
+
+    @if length($value) == 2
+    {
+      $min: nth($value, 1);
+      $max: nth($value, 2);
+
+      #{$domain + '-' + $key}
+      {
+        @include line-height-template($min, $max);
+      }
+    }
+    @else
+    {
+      #{$domain + '-' + $key}
+      {
+        #{$property}: #{$value};
+      }
+    }
+
+    @if $responsive
+    {
+      $breakpoints: map-keys($grid-breakpoints);
+      @each $breakpoint in $breakpoints
+      {
+        @include media('>'+$breakpoint)
+        {
+          #{$domain + "-" + $breakpoint + '-' + $key}
+          {
+            // @TODO: Is it correct to output the size this way ? When in size xxs just set the size as it ? Constrained to the size of the breakpoint and up ?
+            #{$property}: line-height($min, $max);
+          }
+        }
+      }
+    }
+  }
 }
 //
 ////////////////////////////////////////////////////////////////////////////////
