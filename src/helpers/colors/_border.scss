@@ -1,0 +1,41 @@
+////////////////////////////////////////////////////
+//
+//              Colors
+//
+////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin border-color($name, $init: false) {
+  @if map-has-key($c-colors, $name) {
+    $value: map-get($c-colors, $name);
+
+    @if $g-in-media or $init {
+      border-color: $value;
+    } @else {
+      @extend #{$helper-prefix}bc-#{$name};
+    }
+  } @else {
+    @error $name "Unknown color for border-color" $c-colors;
+  }
+}
+
+@mixin bc($name) {
+  @include border-color($name);
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $color, $hex in $c-colors {
+  #{$helper-prefix}bc-#{"" + $color} {
+    @include border-color($color, true);
+  }
+}

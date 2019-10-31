@@ -1,0 +1,145 @@
+////////////////////////////////////////////////////
+//
+//              6. Icons
+//
+////////////////////////////////////////////////////
+
+$icon-euro: "\e931";
+$icon-percent: "\e932";
+$icon-exclamation: "\e92e";
+$icon-position: "\e92f";
+$icon-upload: "\e930";
+$icon-angle-bottom: "\e900";
+$icon-angle-left: "\e901";
+$icon-angle-right: "\e902";
+$icon-angle-top: "\e903";
+$icon-arrow-bottom: "\e904";
+$icon-arrow-left: "\e905";
+$icon-arrow-right: "\e906";
+$icon-arrow-top: "\e907";
+$icon-burger: "\e908";
+$icon-call: "\e909";
+$icon-caret-bottom: "\e90a";
+$icon-caret-left: "\e90b";
+$icon-caret-right: "\e90c";
+$icon-caret-top: "\e90d";
+$icon-cart: "\e90e";
+$icon-check: "\e90f";
+$icon-checkout: "\e910";
+$icon-clone: "\e911";
+$icon-cross: "\e912";
+$icon-dashboard: "\e913";
+$icon-delete: "\e914";
+$icon-delivery: "\e915";
+$icon-dot-dot-dot: "\e916";
+$icon-download: "\e917";
+$icon-email: "\e918";
+$icon-facebook: "\e919";
+$icon-filter: "\e91a";
+$icon-folder: "\e91b";
+$icon-folder-add: "\e91c";
+$icon-folder-move: "\e91d";
+$icon-help: "\e91e";
+$icon-hidden: "\e91f";
+$icon-l8n: "\e920";
+$icon-locate: "\e921";
+$icon-login: "\e922";
+$icon-meal: "\e923";
+$icon-meal-add: "\e924";
+$icon-minus: "\e925";
+$icon-open: "\e926";
+$icon-pickup: "\e927";
+$icon-plus: "\e928";
+$icon-search: "\e929";
+$icon-settings: "\e92a";
+$icon-star: "\e92b";
+$icon-time: "\e92c";
+$icon-visible: "\e92d";
+
+$f-icons: (
+  icon-euro: $icon-euro,
+  icon-percent: $icon-percent,
+  icon-exclamation: $icon-exclamation,
+  icon-position: $icon-position,
+  icon-upload: $icon-upload,
+  icon-angle-bottom: $icon-angle-bottom,
+  icon-angle-left: $icon-angle-left,
+  icon-angle-right: $icon-angle-right,
+  icon-angle-top: $icon-angle-top,
+  icon-arrow-bottom: $icon-arrow-bottom,
+  icon-arrow-left: $icon-arrow-left,
+  icon-arrow-right: $icon-arrow-right,
+  icon-arrow-top: $icon-arrow-top,
+  icon-burger: $icon-burger,
+  icon-call: $icon-call,
+  icon-caret-bottom: $icon-caret-bottom,
+  icon-caret-left: $icon-caret-left,
+  icon-caret-right: $icon-caret-right,
+  icon-caret-top: $icon-caret-top,
+  icon-cart: $icon-cart,
+  icon-check: $icon-check,
+  icon-checkout: $icon-checkout,
+  icon-clone: $icon-clone,
+  icon-cross: $icon-cross,
+  icon-dashboard: $icon-dashboard,
+  icon-delete: $icon-delete,
+  icon-delivery: $icon-delivery,
+  icon-dot-dot-dot: $icon-dot-dot-dot,
+  icon-download: $icon-download,
+  icon-email: $icon-email,
+  icon-facebook: $icon-facebook,
+  icon-filter: $icon-filter,
+  icon-folder: $icon-folder,
+  icon-folder-add: $icon-folder-add,
+  icon-folder-move: $icon-folder-move,
+  icon-help: $icon-help,
+  icon-hidden: $icon-hidden,
+  icon-l8n: $icon-l8n,
+  icon-locate: $icon-locate,
+  icon-login: $icon-login,
+  icon-meal: $icon-meal,
+  icon-meal-add: $icon-meal-add,
+  icon-minus: $icon-minus,
+  icon-open: $icon-open,
+  icon-pickup: $icon-pickup,
+  icon-plus: $icon-plus,
+  icon-search: $icon-search,
+  icon-settings: $icon-settings,
+  icon-star: $icon-star,
+  icon-time: $icon-time,
+  icon-visible: $icon-visible
+);
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin icon($name, $init: false) {
+  $value: map-get($f-icons, $name);
+
+  @if $g-in-media or $init {
+    &::before {
+      content: unicode($value);
+    }
+  } @else {
+    @extend #{$helper-prefix}#{$name};
+  }
+}
+
+@function unicode($str) {
+  @return unquote('"\\#{$str}"');
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $icon in $f-icons {
+  #{$helper-prefix}#{$name} {
+    @include icon($name, true);
+  }
+}

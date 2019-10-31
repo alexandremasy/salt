@@ -1,0 +1,96 @@
+////////////////////////////////////////////////////
+//
+//              Padding
+//
+////////////////////////////////////////////////////
+
+$b-paddings: (
+  p: padding,
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left,
+  px: (
+    padding-left,
+    padding-right
+  ),
+  py: (
+    padding-top,
+    padding-bottom
+  )
+);
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin padding($name, $direction: p, $init: false) {
+  @if (not map-has-key($b-paddings, $direction)) {
+    @error $name 'is not a valid type of padding';
+  }
+
+  $prop: nth(nth($b-paddings, 1), 2);
+  @each $opt, $p in $b-paddings {
+    @if $opt == $direction {
+      $prop: $p;
+    }
+  }
+
+  $value: null;
+  @each $n, $space in $b-spaces {
+    @if $n == $name {
+      $value: $space;
+    }
+  }
+
+  @if $g-in-media or $init {
+    @if length($prop) > 1 {
+      @each $p in $prop {
+        #{$p}: $value;
+      }
+    } @else {
+      #{$prop}: $value;
+    }
+  } @else {
+    // @debug $prop $value $direction $name;
+    @extend #{$helper-prefix}#{$direction}-#{$name};
+  }
+}
+
+@mixin p($name) {
+  @include padding($name, p);
+}
+@mixin pt($name) {
+  @include padding($name, pt);
+}
+@mixin pr($name) {
+  @include padding($name, pr);
+}
+@mixin pb($name) {
+  @include padding($name, pb);
+}
+@mixin pl($name) {
+  @include padding($name, pl);
+}
+@mixin px($name) {
+  @include padding($name, px);
+}
+@mixin py($name) {
+  @include padding($name, py);
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $space in $b-spaces {
+  @each $propname, $prop in $b-paddings {
+    #{$helper-prefix}#{"" + $propname}-#{"" + $name} {
+      @include padding($name, $propname, true);
+    }
+  }
+}

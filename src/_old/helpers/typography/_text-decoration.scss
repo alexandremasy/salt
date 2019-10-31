@@ -1,0 +1,103 @@
+//
+//   Typography - Text Decoration
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Global value
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$text-decoration: null;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Definition
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$salt-text-decoration: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
+
+  //
+  //   Domain
+  //
+  domain:                  'td',
+
+  //
+  //   Property
+  //
+  property:                'text-decoration',
+
+  //
+  //   Values
+  //
+  values: (
+    none:                  none,
+    justify:               justify,
+    line-through:          line-through,
+    underline:             underline
+  )
+) !default;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Commit properties
+//   (Re-)generate the property definition based on the dynamic values
+//   (settings).
+//
+//   @return {Map} Return the new property defition.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@function text-decoration-commit-properties()
+{
+  $text-decoration: $salt-text-decoration !global;
+  @return $text-decoration;
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper generator
+//   Generate the property helper
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin text-decoration-helper-generator()
+{
+  @if $text-decoration == null
+  {
+    $p: call(text-decoration-commit-properties);
+  }
+  @include helper-factory-iterator($text-decoration);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include text-decoration(none);       => text-decoration: none;
+//     @include text-decoration(underline);  => text-decoration: underline;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/text-decoration
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin text-decoration($value, $breakpoint: null)
+{
+  @if $text-decoration == null
+  {
+    $p: call(text-decoration-commit-properties);
+  }
+  @include helper-factory-mixin($text-decoration, $breakpoint);
+}

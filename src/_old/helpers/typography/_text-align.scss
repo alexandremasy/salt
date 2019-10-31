@@ -1,0 +1,103 @@
+//
+//   Typography - Text Align
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Global value
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$text-align: null;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Definition
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+$salt-text-align: (
+  //
+  //   Responsive ?
+  //
+  is-responsive:           true,
+
+  //
+  //   Domain
+  //
+  domain:                  'ta',
+
+  //
+  //   Property
+  //
+  property:                'text-align',
+
+  //
+  //   Values
+  //
+  values: (
+    center:                center,
+    justify:               justify,
+    left:                  left,
+    right:                 right
+  )
+) !default;
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Commit properties
+//   (Re-)generate the property definition based on the dynamic values
+//   (settings).
+//
+//   @return {Map} Return the new property defition.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@function text-align-commit-properties()
+{
+  $text-align: $salt-text-align !global;
+  @return $text-align;
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helper generator
+//   Generate the property helper
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin text-align-helper-generator()
+{
+  @if $text-align == null
+  {
+    $p: call(text-align-commit-properties);
+  }
+  @include helper-factory-iterator($text-align);
+}
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Mixin
+//
+//   @param {String} $value
+//   @param {String} $breakpoint
+//
+//   @author Alexandre Masy
+//   @version 1.0
+//   @group css-mixin
+//
+//   @example SCSS – Usage
+//     @include text-align(center);   => text-align: center;
+//     @include text-align('center'); => text-align: center;
+//
+//   @see https://developer.mozilla.org/en/docs/Web/CSS/text-align
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+@mixin text-align($value, $breakpoint: null)
+{
+  @if $text-align == null
+  {
+    $p: call(text-align-commit-properties);
+  }
+  @include helper-factory-mixin($text-align, $value, $breakpoint);
+}

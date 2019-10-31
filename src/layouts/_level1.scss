@@ -1,0 +1,84 @@
+.layout-level1 {
+  &.main,
+  .main {
+    @include pt(xxxs);
+    margin-top: 4.5rem;
+    @include media(">m") {
+      margin-top: 5rem;
+    }
+  }
+
+  ////////////////////////////////////////////////////
+  //
+  //                   Intro
+  //
+  ////////////////////////////////////////////////////
+  $root: ".intro";
+
+  #{$root} {
+    @include mt(xxxl);
+  }
+
+  #{$root}__container {
+    @include b-flex;
+    @include b-flex(between);
+    @include b-flex(baseline);
+  }
+
+  #{$root}__filters {
+    @include b-flex;
+    @include b-flex(middle);
+
+    .button + .button {
+      @include ml(m);
+    }
+  }
+
+  ////////////////////////////////////////////////////
+  //
+  //                   Filters
+  //
+  ////////////////////////////////////////////////////
+  .level1__filters {
+    @include b-flex;
+    @include b-flex(between);
+    @include b-flex(middle);
+    @include mt(m);
+  }
+
+  .level1__filterssearch {
+    .input__field {
+      border-radius: 5rem;
+      border-width: 2px;
+      @include bg(transparent);
+      @include py(xs);
+      outline: 0;
+
+      &:focus {
+        @include bg(white);
+      }
+    }
+
+    .input__icon {
+      top: 0.55rem;
+    }
+  }
+
+  .level1__filtersgroup {
+    @include b-relative;
+  }
+
+  .level1__filterssecond {
+    @include b-flex;
+    @include b-flex(middle);
+  }
+
+  ////////////////////////////////////////////////////
+  //
+  //                   stats
+  //
+  ////////////////////////////////////////////////////
+  .c-stats {
+    @include mt(m);
+  }
+}

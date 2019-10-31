@@ -1,0 +1,60 @@
+////////////////////////////////////////////////////
+//
+//              Duration
+//              transition-duration | animation-duration
+//
+////////////////////////////////////////////////////
+
+$a-durations: (
+  xxs: 50ms,
+  xs: 100ms,
+  s: 300ms,
+  m: 500ms,
+  l: 700ms,
+  xl: 1000ms,
+  xxl: 1500ms
+) !default;
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin transition-duration($name, $init: false) {
+  $value: map-get($a-durations, $name);
+
+  @if $g-in-media or $init {
+    transition-duration: $value;
+  } @else {
+    @extend #{$helper-prefix}td-#{$name};
+  }
+}
+
+@mixin animation-duration($name, $init: false) {
+  $value: map-get($a-durations, $name);
+
+  @if $g-in-media or $init {
+    transition-duration: $value;
+  } @else {
+    @extend #{$helper-prefix}td-#{$name};
+  }
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $value in $a-durations {
+  #{$helper-prefix}td-#{"" + $name} {
+    @include transition-duration($name, true);
+  }
+}
+
+@each $name, $value in $a-durations {
+  #{$helper-prefix}ad-#{"" + $name} {
+    @include animation-duration($name, true);
+  }
+}

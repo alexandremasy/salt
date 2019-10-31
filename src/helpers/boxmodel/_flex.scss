@@ -1,0 +1,82 @@
+////////////////////////////////////////////////////
+//
+//              Flex
+//
+////////////////////////////////////////////////////
+
+$b-flexs: (
+  justify-content: (
+    start: flex-start,
+    center: center,
+    end: flex-end,
+    between: space-between,
+    around: space-around
+  ),
+  align-items: (
+    top: flex-start,
+    middle: center,
+    bottom: flex-end,
+    baseline: baseline
+  ),
+  flex-direction: (
+    row: row,
+    column: column
+  ),
+  flex-grow: (
+    1: 1,
+    2: 2,
+    3: 3
+  ),
+  flex-wrap: (
+    wrap: wrap,
+    no-wrap: no-wrap
+  )
+);
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+$b-flexs-flat: ();
+@each $prop, $value in $b-flexs {
+  $b-flexs-flat: map-merge($b-flexs-flat, $value);
+}
+
+@mixin b-flex($name: null, $init: false) {
+  $prop: null;
+  $value: null;
+
+  @if map-has-key($b-flexs-flat, $name) {
+    @each $p, $values in $b-flexs {
+      @if map-has-key($values, $name) {
+        $vvalue: map-get($values, $name);
+
+        @if $g-in-media or $init {
+          #{$p}: $vvalue;
+        } @else {
+          @extend #{$helper-prefix}b-flex-#{$name};
+        }
+      }
+    }
+  } @else if ($name == null) {
+    @include display(flex);
+  } @else {
+    @error $name "Unknow key for flex";
+  }
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $prop, $values in $b-flexs {
+  @each $vname, $vvalue in $values {
+    #{$helper-prefix}b-flex-#{"" + $vname} {
+      @include b-flex($vname, true);
+    }
+  }
+}

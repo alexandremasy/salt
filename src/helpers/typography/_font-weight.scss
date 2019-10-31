@@ -4,9 +4,16 @@
 //
 ////////////////////////////////////////////////////
 
-$f-transforms: (
-  lowercase: lowercase,
-  uppercase: uppercase
+$f-weights: (
+  thin: 100,
+  "extra-light": 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  "semi-bold": 600,
+  bold: 700,
+  "extra-bold": 800,
+  black: 900
 ) !default;
 
 ////////////////////////////////////////////////////
@@ -15,11 +22,11 @@ $f-transforms: (
 //
 ////////////////////////////////////////////////////
 
-@mixin text-transform($name, $init: false) {
-  $value: map-get($f-transforms, $name);
+@mixin font-weight($name, $init: false) {
+  $value: map-get($f-weights, $name);
 
   @if $g-in-media or $init {
-    text-transform: $value;
+    font-weight: $value;
   } @else {
     @extend #{$helper-prefix}f-#{$name};
   }
@@ -31,8 +38,8 @@ $f-transforms: (
 //
 ////////////////////////////////////////////////////
 
-@each $name, $value in $f-transforms {
+@each $name, $value in $f-weights {
   #{$helper-prefix}f-#{"" + $name} {
-    @include text-transform($name, true);
+    @include font-weight($name, true);
   }
 }

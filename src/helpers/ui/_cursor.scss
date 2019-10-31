@@ -4,9 +4,13 @@
 //
 ////////////////////////////////////////////////////
 
-$f-transforms: (
-  lowercase: lowercase,
-  uppercase: uppercase
+$ui-cursors: (
+  pointer: pointer,
+  help: help,
+  progress: progress,
+  move: move,
+  zoom-in: zoom-in,
+  zoom-out: zoom-out
 ) !default;
 
 ////////////////////////////////////////////////////
@@ -15,13 +19,13 @@ $f-transforms: (
 //
 ////////////////////////////////////////////////////
 
-@mixin text-transform($name, $init: false) {
-  $value: map-get($f-transforms, $name);
+@mixin cursor($name, $init: false) {
+  $value: map-get($ui-cursors, $name);
 
   @if $g-in-media or $init {
-    text-transform: $value;
+    cursor: $value;
   } @else {
-    @extend #{$helper-prefix}f-#{$name};
+    @extend #{$helper-prefix}ui-#{$name};
   }
 }
 
@@ -31,8 +35,8 @@ $f-transforms: (
 //
 ////////////////////////////////////////////////////
 
-@each $name, $value in $f-transforms {
-  #{$helper-prefix}f-#{"" + $name} {
-    @include text-transform($name, true);
+@each $name, $value in $ui-cursors {
+  #{$helper-prefix}ui-#{"" + $name} {
+    @include cursor($name, true);
   }
 }

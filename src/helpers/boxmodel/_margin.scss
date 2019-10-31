@@ -1,0 +1,91 @@
+////////////////////////////////////////////////////
+//
+//              Margin
+//
+////////////////////////////////////////////////////
+
+$b-margins: (
+  m: margin,
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+  mx: (
+    margin-left,
+    margin-right
+  ),
+  my: (
+    margin-top,
+    margin-bottom
+  )
+);
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin margin($name, $direction: m, $init: false) {
+  $prop: nth(nth($b-margins, 1), 2);
+  @each $opt, $p in $b-margins {
+    @if $opt == $direction {
+      $prop: $p;
+    }
+  }
+
+  $value: null;
+  @each $n, $space in $b-spaces {
+    @if $n == $name {
+      $value: $space;
+    }
+  }
+
+  @if $g-in-media or $init {
+    @if length($prop) > 1 {
+      @each $p in $prop {
+        #{$p}: $value;
+      }
+    } @else {
+      #{$prop}: $value;
+    }
+  } @else {
+    @extend #{$helper-prefix}#{$direction}-#{$name};
+  }
+}
+
+@mixin m($name) {
+  @include margin($name, m);
+}
+@mixin mt($name) {
+  @include margin($name, mt);
+}
+@mixin mr($name) {
+  @include margin($name, mr);
+}
+@mixin mb($name) {
+  @include margin($name, mb);
+}
+@mixin ml($name) {
+  @include margin($name, ml);
+}
+@mixin mx($name) {
+  @include margin($name, mx);
+}
+@mixin my($name) {
+  @include margin($name, my);
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $space in $b-spaces {
+  @each $propname, $prop in $b-margins {
+    #{$helper-prefix}#{"" + $propname}-#{"" + $name} {
+      @include margin($name, $propname, true);
+    }
+  }
+}

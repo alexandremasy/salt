@@ -1,0 +1,59 @@
+////////////////////////////////////////////////////
+//
+//              Alignement
+//
+////////////////////////////////////////////////////
+
+$b-zindex: (
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  11: 11,
+  12: 12,
+  default: 1,
+  docked: 4,
+  dropdown: 3000,
+  cookie: 5000,
+  tooltip: 5500,
+  toolbar: 6000,
+  modal: 9000
+) !default;
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin z-index($name, $init: false) {
+  $value: map-get($b-zindex, $name);
+
+  @if $g-in-media or $init {
+    z-index: $value;
+  } @else {
+    @extend #{$helper-prefix}z-#{$name};
+  }
+}
+
+@mixin z($name) {
+  @include z-index($name);
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $value in $b-zindex {
+  #{$helper-prefix}z-#{"" + $name} {
+    @include z-index($name, true);
+  }
+}

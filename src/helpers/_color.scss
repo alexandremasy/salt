@@ -1,0 +1,94 @@
+////////////////////////////////////////////////////
+//
+//              1. blue
+//
+////////////////////////////////////////////////////
+
+$blue100: #f5f8fa;
+$blue300: #80c2e4;
+$blue500: #0085ca;
+$blue700: #003591;
+$blue800: #162056;
+
+////////////////////////////////////////////////////
+//
+//              2. grey
+//
+////////////////////////////////////////////////////
+
+$transparent: transparent;
+$current: currentColor;
+$none: none;
+$white: #fff;
+$grey100: #f2f4f4;
+$grey200: #e3e6e8;
+$grey300: #c6cdd0;
+$grey400: #a8b3b8;
+$grey500: #76838a;
+$grey600: #5c6970;
+$grey700: #425056;
+$grey800: #28363d;
+$grey900: #172126;
+$black: $grey900;
+
+////////////////////////////////////////////////////
+//
+//              3. Red
+//
+////////////////////////////////////////////////////
+
+$red500: #d52b1e;
+
+////////////////////////////////////////////////////
+//
+//              4. Yellow
+//
+////////////////////////////////////////////////////
+
+$yellow500: #ffc72c;
+
+////////////////////////////////////////////////////
+//
+//              5. Utility
+//
+////////////////////////////////////////////////////
+$c-palettes: (
+  blue: (
+    blue100: $blue100,
+    blue300: $blue300,
+    blue500: $blue500,
+    blue700: $blue700,
+    blue800: $blue800
+  ),
+  red: (
+    red500: $red500
+  ),
+  yellow: (
+    yellow500: $yellow500
+  ),
+  grey: (
+    transparent: $transparent,
+    current: $current,
+    none: $none,
+    white: $white,
+    black: $black,
+    grey100: $grey100,
+    grey200: $grey200,
+    grey300: $grey300,
+    grey400: $grey400,
+    grey500: $grey500,
+    grey600: $grey600,
+    grey700: $grey700,
+    grey800: $grey800,
+    grey900: $grey900
+  )
+);
+
+$c-colors: ();
+@each $palette, $values in $c-palettes {
+  $c-colors: map-merge($c-colors, $values);
+}
+
+@import "./colors/color";
+@import "./colors/background";
+@import "./colors/border";

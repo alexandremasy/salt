@@ -1,0 +1,63 @@
+.layout-cms {
+  .main {
+    @include py(xxxl);
+  }
+
+  h1 {
+    @include my(m);
+
+    @include f(heading);
+    @include f(light);
+    @include f(h100);
+    @include f(blue700);
+    line-height: 1.25;
+  }
+
+  h2 {
+    @include my(m);
+
+    @include f(heading);
+    @include f(light);
+    @include f(h200);
+    @include f(blue700);
+    line-height: 1.25;
+  }
+
+  h3 {
+    @include my(m);
+
+    @include f(heading);
+    @include f(light);
+    @include f(h300);
+    @include f(grey600);
+    line-height: 1.25;
+  }
+
+  h4 {
+    @include my(m);
+
+    @include f(heading);
+    @include f(light);
+    @include f(h400);
+    @include f(grey600);
+    line-height: 1.25;
+  }
+
+  p {
+    @include my(m);
+
+    @include f(body);
+    @include f(b200);
+    line-height: 1.5;
+    @include f(grey800);
+  }
+
+  ul {
+    @include my(m);
+    @include ml(l);
+
+    list-style: circle;
+    @include f(grey800);
+    line-height: 1.5;
+  }
+}

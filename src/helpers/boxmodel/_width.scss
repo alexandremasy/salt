@@ -1,0 +1,59 @@
+////////////////////////////////////////////////////
+//
+//              Width
+//
+////////////////////////////////////////////////////
+
+$b-widths: (
+  w: width,
+  minw: min-width,
+  maxw: max-width
+);
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin width($name, $direction: w, $init: false) {
+  $prop: nth(nth($b-widths, 1), 2);
+  @each $opt, $p in $b-widths {
+    @if $opt == $direction {
+      $prop: $p;
+    }
+  }
+
+  $value: null;
+  @each $n, $space in $b-spaces {
+    @if $n == $name {
+      $value: $space;
+    }
+  }
+
+  @if $g-in-media or $init {
+    @if length($prop) > 1 {
+      @each $p in $prop {
+        #{$p}: $value;
+      }
+    } @else {
+      #{$prop}: $value;
+    }
+  } @else {
+    @extend #{$helper-prefix}#{$direction}-#{$name};
+  }
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $space in $b-spaces {
+  @each $propname, $prop in $b-widths {
+    #{$helper-prefix}#{"" + $propname}-#{"" + $name} {
+      @include width($name, $propname, true);
+    }
+  }
+}

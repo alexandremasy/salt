@@ -1,0 +1,91 @@
+////////////////////////////////////////////////////
+//
+//              Positions
+//
+////////////////////////////////////////////////////
+
+$b-positions: (
+  relative: relative,
+  absolute: absolute,
+  fixed: fixed,
+  sticky: sticky
+) !default;
+
+$b-directions: (
+  t: top,
+  l: left,
+  b: bottom,
+  r: right
+) !default;
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin position($name, $init: false) {
+  $value: map-get($b-positions, $name);
+
+  @if $g-in-media or $init {
+    position: $value;
+  } @else {
+    @extend #{$helper-prefix}b-#{$name};
+  }
+}
+
+@mixin b-relative {
+  @include position(relative);
+}
+@mixin b-absolute {
+  @include position(absolute);
+}
+@mixin b-fixed {
+  @include position(fixed);
+}
+@mixin b-sticky {
+  @include position(sticky);
+}
+
+@mixin direction($direction, $name, $init: false) {
+  $value: map-get($b-spaces, $name);
+  $prop: map-get($b-directions, $direction);
+
+  @if $g-in-media or $init {
+    #{$prop}: $value;
+  } @else {
+    @extend #{$helper-prefix}#{$direction}-#{$name};
+  }
+}
+
+@mixin t($name) {
+  @include direction(t, $name);
+}
+@mixin l($name) {
+  @include direction(l, $name);
+}
+@mixin b($name) {
+  @include direction(b, $name);
+}
+@mixin r($name) {
+  @include direction(r, $name);
+}
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $value in $b-positions {
+  #{$helper-prefix}b-#{"" + $name} {
+    @include position($name, true);
+  }
+}
+
+@each $name, $space in $b-spaces {
+  @each $dname, $dprop in $b-directions {
+    #{$helper-prefix}#{"" + $dname}-#{"" + $name} {
+      @include direction($dname, $name, true);
+    }
+  }
+}

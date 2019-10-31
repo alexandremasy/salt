@@ -1,0 +1,37 @@
+////////////////////////////////////////////////////
+//
+//              Colors
+//
+////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin color($name, $init: false) {
+  @if map-has-key($c-colors, $name) {
+    $value: map-get($c-colors, $name);
+
+    @if $g-in-media or $init {
+      color: $value;
+    } @else {
+      @extend #{$helper-prefix}f-#{"" + $name};
+    }
+  } @else {
+    @error $name "Unknown color for color" $c-colors;
+  }
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $color, $hex in $c-colors {
+  #{$helper-prefix}f-#{"" + $color} {
+    @include color($color, true);
+  }
+}

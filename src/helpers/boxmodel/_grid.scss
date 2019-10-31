@@ -1,0 +1,44 @@
+////////////////////////////////////////////////////
+//
+//              Grid template
+//
+////////////////////////////////////////////////////
+
+@mixin grid-template($check, $cols, $list) {
+  $props: null;
+  $c: unquote("ui-list");
+
+  @if $check {
+    $props: append($props, 4rem);
+    $c: append($c, check);
+  }
+
+  @each $col in $cols {
+    $props: append($props, $col * 1fr);
+    $c: append($c, $col);
+  }
+
+  @if $list {
+    $props: append($props, 3rem);
+    $c: append($c, list);
+  }
+
+  .#{to-string($c, "-")} {
+    grid-template-columns: $props;
+  }
+}
+
+@function to-string($list, $glue: "") {
+  $result: "";
+
+  @for $i from 1 through length($list) {
+    $e: inspect(nth($list, $i));
+    @if $i != length($list) {
+      $result: #{$result}#{$e}#{$glue};
+    } @else {
+      $result: #{$result}#{$e};
+    }
+  }
+
+  @return $result;
+}

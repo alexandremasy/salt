@@ -1,0 +1,72 @@
+////////////////////////////////////////////////////
+//
+//              Alignement
+//
+////////////////////////////////////////////////////
+
+$b-display: (
+  block: block,
+  flex: flex,
+  inblock: inline-block,
+  inflex: inline-flex,
+  hidden: none,
+  none: none,
+  grid: grid
+) !default;
+
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin display($name, $init: false) {
+  $value: map-get($b-display, $name);
+
+  @if $g-in-media or $init {
+    display: $value;
+  } @else {
+    @extend #{$helper-prefix}b-#{$name};
+  }
+}
+
+@mixin b-block {
+  @include display(block);
+}
+
+// Is declared in the _flex.scss file
+// @mixin b-flex {
+//   @include display(flex);
+// }
+
+@mixin b-inblock {
+  @include display(inblock);
+}
+
+@mixin b-inflex {
+  @include display(inflex);
+}
+
+@mixin b-hidden {
+  @include display(hidden);
+}
+
+@mixin b-none {
+  @include display(hidden);
+}
+
+@mixin b-grid {
+  @include display(grid);
+}
+
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@each $name, $value in $b-display {
+  #{$helper-prefix}b-#{"" + $name} {
+    @include display($name, true);
+  }
+}

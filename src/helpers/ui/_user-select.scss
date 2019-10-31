@@ -4,9 +4,8 @@
 //
 ////////////////////////////////////////////////////
 
-$f-transforms: (
-  lowercase: lowercase,
-  uppercase: uppercase
+$ui-selects: (
+  no-select: none
 ) !default;
 
 ////////////////////////////////////////////////////
@@ -15,13 +14,13 @@ $f-transforms: (
 //
 ////////////////////////////////////////////////////
 
-@mixin text-transform($name, $init: false) {
-  $value: map-get($f-transforms, $name);
+@mixin user-select($name, $init: false) {
+  $value: map-get($ui-selects, $name);
 
   @if $g-in-media or $init {
-    text-transform: $value;
+    user-select: $value;
   } @else {
-    @extend #{$helper-prefix}f-#{$name};
+    @extend #{$helper-prefix}ui-#{$name};
   }
 }
 
@@ -31,8 +30,8 @@ $f-transforms: (
 //
 ////////////////////////////////////////////////////
 
-@each $name, $value in $f-transforms {
-  #{$helper-prefix}f-#{"" + $name} {
-    @include text-transform($name, true);
+@each $name, $value in $ui-selects {
+  #{$helper-prefix}ui-#{"" + $name} {
+    @include user-select($name, true);
   }
 }

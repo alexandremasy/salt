@@ -1,117 +1,169 @@
+////////////////////////////////////////////////////
 //
-//   Typography - Font Family
+//              Typefaces
 //
-////////////////////////////////////////////////////////////////////////////////
-//
-//   Global value
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-$font-family: null;
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-//   Definition
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-$salt-font-family: (
-  //
-  //   Responsive ?
-  //
-  is-responsive:           true,
+////////////////////////////////////////////////////
 
-  //
-  //   Domain
-  //
-  domain:                  'ff',
+$f-heading: "Edenred";
+$f-body: "Montserrat";
+$f-icon: "edenred-icons";
 
-  //
-  //   Property
-  //
-  property:                'font-family',
-
-  //
-  //   Values
-  //
-  values: (
+$f-faces: (
+  heading: (
+    family: $f-heading,
+    type: custom,
+    root: "/statics/fonts/edenred/",
+    weights: (
+      300: "EdenredLight-Regular",
+      400: "Edenred-Regular",
+      500: "EdenredMedium-Regular",
+      700: "EdenredBold-Regular",
+      900: "EdenredBlack-Regular"
+    )
+  ),
+  body: (
+    family: $f-body,
+    type: google,
+    weights: (
+      300,
+      400,
+      500,
+      600
+    )
+  ),
+  icon: (
+    family: $f-icon,
+    type: custom,
+    root: "/statics/fonts/icons/",
+    weights: (
+      400: edenred-icons
+    )
   )
-) !default;
+);
+
+$f-default:
+  // Safari for OS X and iOS (San Francisco) -apple-system,
+  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android system-ui,
+  // Chrome < 56 for OS X (San Francisco) BlinkMacSystemFont,
+  // Windows "Segoe UI",
+  // Android "Roboto",
+  // Basic web fallback "Helvetica Neue", Arial,
+  sans-serif !default;
+
+////////////////////////////////////////////////////
 //
-////////////////////////////////////////////////////////////////////////////////
+//              Mixin
 //
-//   Commit properties
-//   (Re-)generate the property definition based on the dynamic values
-//   (settings).
-//
-//   @return {Map} Return the new property defition.
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-@function font-family-commit-properties()
-{
-  $list: ();
-  @each $font in $salt-typography-fonts
-  {
-    $name: map-get($font, family);
-    @if map-has-key($font, name)
-    {
-      $name: map-get($font, name);
+////////////////////////////////////////////////////
+
+@mixin typeface-google($name, $weights) {
+  $w: "";
+  @each $weight in $weights {
+    $w: $w + "," + $weight;
+  }
+  $w: str-slice($w, 2);
+
+  $url: "//fonts.googleapis.com/css?family=#{$name}:#{$w}";
+  @import url($url);
+}
+
+@mixin typeface-custom($name, $weights, $root) {
+  @each $weight, $fname in $weights {
+    $src: $root + $fname;
+    $woff: $src + ".woff";
+    $woff2: $src + ".woff2";
+    $style: normal;
+
+    @if str-index(inspect($weight), i) != null {
+      $style: italic;
+      $weight: str-slice(inspect($weight), 1, -2);
     }
 
-    @if (map-has-key($list, $name) == false)
-    {
-      $list: map-set($list, $name, $name);
+    @font-face {
+      font-family: $name;
+      font-weight: $weight;
+      font-style: $style;
+      src: url($woff2) format("woff2"), url($woff) format("woff");
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
   }
-
-  $values: (
-    values: map-merge($list, map-get($salt-font-family, values))
-  );
-  $font-family: map-merge($salt-font-family, $values) !global;
-
-  @return $font-family;
 }
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-//   Helper generator
-//   Generate the property helper
-//
-////////////////////////////////////////////////////////////////////////////////
-@mixin font-family-helper-generator()
-{
-  @if $font-family == null
-  {
-    $p: call(font-family-commit-properties);
+
+@mixin font-family($name, $init: false) {
+  @if $name == "heading" {
+    @if $g-in-media or $init {
+      font-family: $f-heading, $f-default;
+    } @else {
+      @extend #{$helper-prefix}f-heading;
+    }
+  } @else if $name == "body" {
+    @if $g-in-media or $init {
+      font-family: $f-body, $f-default;
+    } @else {
+      @extend #{$helper-prefix}f-body;
+    }
+  } @else if $name == "icon" {
+    @if $g-in-media or $init {
+      font-family: $f-icon;
+      speak: none;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      // Better Font Rendering
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    } @else {
+      @extend #{$helper-prefix}f-icon;
+    }
   }
-  @include helper-factory-iterator($font-family);
 }
+
+////////////////////////////////////////////////////
 //
-////////////////////////////////////////////////////////////////////////////////
+//              Helper
 //
-//   Mixin
-//
-//   @param {String} $value
-//   @param {String} $breakpoint
-//
-//   @author Alexandre Masy
-//   @version 1.0
-//   @group css-mixin
-//
-//   @example SCSS – Usage
-//     @include font-family(transparent);     => font-family: transparent;
-//     @include font-family(<palettefont-family>);  => font-family: <palettefont-family>;
-//
-//   @see https://developer.mozilla.org/en/docs/Web/CSS/font-family
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-@mixin font-family($value, $breakpoint: null)
-{
-  @if $font-family == null
-  {
-    $p: call(font-family-commit-properties);
+////////////////////////////////////////////////////
+
+#{$helper-prefix}f-heading {
+  @include font-family(heading, true);
+}
+#{$helper-prefix}f-body {
+  @include font-family(body, true);
+}
+
+@if $mode == "application" {
+  [class^="icon-"],
+  [class*=" icon-"],
+  .icon,
+  #{$helper-prefix}f-icon {
+    @include font-family(icon, true);
   }
-  @include helper-factory-mixin($font-family, $value, $breakpoint);
+} @else {
+  #{$helper-prefix}f-icon {
+    @include font-family(icon, true);
+  }
+}
+
+////////////////////////////////////////////////////
+//
+//              Declarations
+//
+////////////////////////////////////////////////////
+
+@if $mode == "application" {
+  @each $face, $defs in $f-faces {
+    $family: map-get($defs, "family");
+    $type: map-get($defs, "type");
+    $weights: map-get($defs, "weights");
+    $root: map-get($defs, "root");
+
+    @if $type == "google" {
+      @include typeface-google($family, $weights);
+    } @else {
+      @include typeface-custom($family, $weights, $root);
+    }
+  }
 }
