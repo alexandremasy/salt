@@ -1,30 +1,33 @@
-var gulp = require("gulp");
-var exec = require('child_process').exec;
-
+const { src, dest, watch, parallel } = require('gulp');
+const exec = require('child_process').exec;
 
 function e(cmd)
 {
-  return function()
-  {
+  return new Promise((resolve, reject) => {
     exec(cmd, function (err, stdout, stderr) {
+      let r = {
+        err: err,
+        stdout: stdout,
+        stderr: stderr
+      };
       console.log(stdout);
       console.log(stderr);
       console.log(err);
+      resolve(r);
     });
-  }
+  });
 }
 
-gulp.task('tests', e('npm test'));
-gulp.task('gists', e('sass --update gists:build --sourcemap=none --style=expanded'));
+function tests(){
+  return e('sass --update tests:build --sourcemap=none --style=expanded');
+}
 
-gulp.task('watch', function()
-{
-  // on change on test => launch the tests
-  gulp.watch('test/**/*.scss', ['tests']);
+function w(){
   // on change on gists => build the gists
-  gulp.watch('gists/**/*.scss', ['gists']);
+  watch('tests/**/*.scss', tests);
   // on change on src => build the gists + launch the tests
-  gulp.watch('src/**/*.scss', ['gists']);
-});
+  watch('src/**/*.scss', tests);
+}
 
-gulp.task('default', ['watch']);
+exports.default = tests
+exports.watch = w

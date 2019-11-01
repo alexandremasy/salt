@@ -3,13 +3,17 @@
   "version": "0.0.1",
   "description": "Add some flavor to your product design workflow",
   "main": "gulpfile.js",
-  "dependencies": {},
+  "dependencies": {
+    "sass": "^1.23.3"
+  },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "mocha": "^3.3.0",
     "sass-true": "^2.2.2"
   },
   "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
     "test": "node_modules/mocha/bin/mocha test/tests.js"
   },
   "repository": {
