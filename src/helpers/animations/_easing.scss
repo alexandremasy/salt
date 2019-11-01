@@ -5,9 +5,8 @@
 ////////////////////////////////////////////////////
 
 @mixin animation-timing-function($name, $init: false) {
-  $value: map-get($a-easings, $name);
-
   @if $g-in-media or $init {
+    $value: map-get($a-easings, $name);
     animation-timing-function: $value;
   } @else {
     @extend #{$helper-prefix}a-#{$name};
@@ -15,9 +14,8 @@
 }
 
 @mixin transition-timing-function($name, $init: false) {
-  $value: map-get($a-easings, $name);
-
   @if $g-in-media or $init {
+    $value: map-get($a-easings, $name);
     transition-timing-function: $value;
   } @else {
     @extend #{$helper-prefix}t-#{$name};
