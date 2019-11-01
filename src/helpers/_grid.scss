@@ -26,7 +26,7 @@ $g-count: 14;
   .container,
   .container-small,
   .container-fluid {
-    @extend .mx-auto;
+    // @extend .mx-auto;
   }
 
   .container {
