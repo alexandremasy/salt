@@ -8,7 +8,12 @@ $helper-prefix: "%";
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-.duration-xxs{
+.duration-long{
   @include transition-duration(xxs);
   @include animation-duration(xxs);
+}
+
+.duration-short{
+  @include a(m);
+  @include t(m);
 }

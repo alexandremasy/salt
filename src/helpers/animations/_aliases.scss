@@ -1,0 +1,33 @@
+////////////////////////////////////////////////////
+//
+//              Mixin a (animation)
+//
+////////////////////////////////////////////////////
+@mixin a($name) {
+  // easing
+  @if (map-has-key($a-easings, $name)) {
+    @include animation-timing-function($name);
+  }
+
+  // durations
+  @if (map-has-key($a-durations, $name)) {
+    @include animation-duration($name);
+  }
+}
+
+////////////////////////////////////////////////////
+//
+//              Mixin t (transition)
+//
+////////////////////////////////////////////////////
+@mixin t($name) {
+  // easing
+  @if (map-has-key($a-easings, $name)) {
+    @include transition-timing-function($name);
+  }
+
+  // durations
+  @if (map-has-key($a-durations, $name)) {
+    @include transition-duration($name);
+  }
+}
