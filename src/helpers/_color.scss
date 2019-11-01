@@ -49,7 +49,20 @@ $yellow500: #ffc72c;
 
 ////////////////////////////////////////////////////
 //
-//              5. Utility
+//              5. State
+//
+////////////////////////////////////////////////////
+
+$toValidate: #e1b844;
+$toPrepare: #6cdeb4;
+$inPreparation: #3396c7;
+$toCollect: #81c5e7;
+$done: #d2effe;
+$cancelled: #a8b3b8;
+
+////////////////////////////////////////////////////
+//
+//              6. Utility
 //
 ////////////////////////////////////////////////////
 $c-palettes: (
@@ -81,6 +94,14 @@ $c-palettes: (
     grey700: $grey700,
     grey800: $grey800,
     grey900: $grey900
+  ),
+  states: (
+    to-validate: $toValidate,
+    to-prepare: $toPrepare,
+    in-preparation: $inPreparation,
+    to-collect: $toCollect,
+    done: $done,
+    cancelled: $cancelled
   )
 );
 

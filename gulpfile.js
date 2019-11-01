@@ -19,7 +19,7 @@ function e(cmd)
 }
 
 function tests(){
-  return e('sass --update tests:build --sourcemap=none --style=expanded');
+  return e('sass --update tests:build --sourcemap=none --style=expanded --load-path=src');
 }
 
 function w(){

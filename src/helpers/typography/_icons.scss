@@ -4,6 +4,15 @@
 //
 ////////////////////////////////////////////////////
 
+$icon-copy: "\e93b";
+$icon-birthday: "\e933";
+$icon-dark: "\e934";
+$icon-delay: "\e935";
+$icon-light: "\e936";
+$icon-message: "\e937";
+$icon-notification: "\e938";
+$icon-pen: "\e939";
+$icon-status: "\e93a";
 $icon-euro: "\e931";
 $icon-percent: "\e932";
 $icon-exclamation: "\e92e";
@@ -57,6 +66,15 @@ $icon-time: "\e92c";
 $icon-visible: "\e92d";
 
 $f-icons: (
+  icon-birthday: $icon-birthday,
+  icon-copy: $icon-copy,
+  icon-dark: $icon-dark,
+  icon-delay: $icon-delay,
+  icon-light: $icon-light,
+  icon-message: $icon-message,
+  icon-notification: $icon-notification,
+  icon-pen: $icon-pen,
+  icon-status: $icon-status,
   icon-euro: $icon-euro,
   icon-percent: $icon-percent,
   icon-exclamation: $icon-exclamation,

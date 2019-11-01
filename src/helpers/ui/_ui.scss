@@ -1,0 +1,21 @@
+@mixin ui($name) {
+  // box-sizing
+  @if (map-has-key($ui-sizings, $name)) {
+    @include box-sizing($name);
+  }
+
+  // cursor
+  @if (map-has-key($ui-cursors, $name)) {
+    @include cursor($name);
+  }
+
+  // pointer-events
+  @if (map-has-key($ui-events, $name)) {
+    @include pointer-events($name);
+  }
+
+  // user-select
+  @if (map-has-key($ui-selects, $name)) {
+    @include user-select($name);
+  }
+}

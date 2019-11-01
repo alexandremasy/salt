@@ -1,0 +1,46 @@
+@mixin f($name) {
+  // font-faces
+  @if (map-has-key($f-faces, $name)) {
+    @include font-family($name);
+  }
+
+  // font-size
+  @if (map-has-key($f-sizes, $name)) {
+    @include font-size($name);
+  }
+
+  // font-style
+  @if (map-has-key($f-styles, $name)) {
+    @include font-style($name);
+  }
+
+  // font-weight
+  @if (map-has-key($f-weights, $name)) {
+    @include font-weight($name);
+  }
+
+  // text-align
+  @if (map-has-key($f-aligns, $name)) {
+    @include text-align($name);
+  }
+
+  // text-decoration
+  @if (map-has-key($f-decorations, $name)) {
+    @include text-decoration($name);
+  }
+
+  // text-decoration
+  @if (map-has-key($f-transforms, $name)) {
+    @include text-transform($name);
+  }
+
+  // word-break
+  @if (map-has-key($f-wraps, $name)) {
+    @include word-break($name);
+  }
+
+  // color
+  @if (map-has-key($c-colors, $name)) {
+    @include color($name);
+  }
+}

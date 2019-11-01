@@ -7,6 +7,7 @@
 $f-heading: "Edenred";
 $f-body: "Montserrat";
 $f-icon: "edenred-icons";
+$f-code: "Roboto Mono";
 
 $f-faces: (
   heading: (
@@ -31,6 +32,13 @@ $f-faces: (
       600
     )
   ),
+  code: (
+    family: $f-code,
+    type: google,
+    weights: (
+      400
+    )
+  ),
   icon: (
     family: $f-icon,
     type: custom,
@@ -41,14 +49,20 @@ $f-faces: (
   )
 );
 
+/* prettier-ignore */
 $f-default:
-  // Safari for OS X and iOS (San Francisco) -apple-system,
-  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android system-ui,
-  // Chrome < 56 for OS X (San Francisco) BlinkMacSystemFont,
-  // Windows "Segoe UI",
-  // Android "Roboto",
-  // Basic web fallback "Helvetica Neue", Arial,
-  sans-serif !default;
+  // Safari for OS X and iOS (San Francisco)
+  -apple-system,
+  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+  system-ui,
+  // Chrome < 56 for OS X (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  "Roboto",
+  // Basic web fallback
+  "Helvetica Neue", Arial, sans-serif !default;
 
 ////////////////////////////////////////////////////
 //
@@ -104,6 +118,12 @@ $f-default:
     } @else {
       @extend #{$helper-prefix}f-body;
     }
+  } @else if $name == "code" {
+    @if $g-in-media or $init {
+      font-family: $f-code, $f-default;
+    } @else {
+      @extend #{$helper-prefix}f-code;
+    }
   } @else if $name == "icon" {
     @if $g-in-media or $init {
       font-family: $f-icon;
@@ -132,6 +152,9 @@ $f-default:
 }
 #{$helper-prefix}f-body {
   @include font-family(body, true);
+}
+#{$helper-prefix}f-code {
+  @include font-family(code, true);
 }
 
 @if $mode == "application" {
