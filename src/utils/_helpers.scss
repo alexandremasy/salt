@@ -10,9 +10,8 @@
 }
 
 @function salt-helper-classname($domains, $helpers, $property){
-  $helper: map-get($alt, helper);
-  $prefix: map-get($helper, prefix);
-  $separator: map-get($helper, separator);
+  $prefix: salt-helpers-prefix();
+  $separator: salt-helpers-separator();
   $key: salt-helper-key($domains, $helpers);
 
   @if str-length($key) == 0 {
@@ -24,10 +23,16 @@
 }
 
 @mixin salt-helper($css-property, $alt-collection, $alt-property, $domains, $helpers, $init: false){
-  @if $g-in-media or $init{
+  @if salt-helper-enabled(){
+    @if salt-media-active() or $init {
+      $value: map-get($alt-collection, $alt-property);
+      #{$css-property}: $value;
+    } @else {
+      @extend #{salt-helper-classname($domains, $helpers, $alt-property)};
+    }
+  }
+  @else{
     $value: map-get($alt-collection, $alt-property);
     #{$css-property}: $value;
-  } @else{
-    @extend #{salt-helper-classname($domains, $helpers, $alt-property)};
   }
 }

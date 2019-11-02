@@ -26,15 +26,17 @@
 //
 ////////////////////////////////////////////////////
 
-$collection: map-get($alt-animation, durations);
-$domains: map-get($alt-animation, domains);
+@if salt-helper-enabled(){
+  $collection: map-get($alt-animation, durations);
+  $domains: map-get($alt-animation, domains);
 
-@each $name, $value in $collection {
-  #{salt-helper-classname($domains, (animation, duration), $name)} {
-    @include animation-duration($name, true);
-  }
+  @each $name, $value in $collection {
+    #{salt-helper-classname($domains, (animation, duration), $name)} {
+      @include animation-duration($name, true);
+    }
 
-  #{salt-helper-classname($domains, (transition, duration), $name)} {
-    @include transition-duration($name, true);
+    #{salt-helper-classname($domains, (transition, duration), $name)} {
+      @include transition-duration($name, true);
+    }
   }
 }

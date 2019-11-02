@@ -14,9 +14,13 @@ $alt: (
   // The font will not be rendered, only the styles used by the component.
   mode: "application",
 
-  helper: (
+  helpers: (
+    // Enable/Disable the helpers generation
+    enabled: false,
+
     // Helper prefix
     // Prefix for the helpers generation
+    // In scss/sass you can use placeholder by using % as a prefix
     prefix: ".",
 
     // Helper separator

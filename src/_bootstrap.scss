@@ -4,6 +4,7 @@
 //
 ////////////////////////////////////////////////////
 
+@import "utils/global";
 @import "utils/helpers";
 
 @import "utils/grid-breakpoint";
@@ -17,7 +18,7 @@
 //            Helpers
 //
 ////////////////////////////////////////////////////
-// @import "helpers/animations/index";
+@import "helpers/animations/index";
 @import "helpers/boxmodel/index";
 
 // @import "helpers/color";

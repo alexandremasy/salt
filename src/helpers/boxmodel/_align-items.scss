@@ -4,7 +4,7 @@
 //
 ////////////////////////////////////////////////////
 
-@mixin display($name, $init: false) {
+@mixin align-items($name, $init: false) {
   $collection: map-get($alt-boxmodels, 'display');
   $domains: map-get($alt-boxmodels, domains);
   $helpers: ('display');
@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////
 
-@if salt-helper-enabled(){
+@if $alt-helpers-enabled(){
   $collection: map-get($alt-boxmodels, 'display');
   $domains: map-get($alt-boxmodels, domains);
 

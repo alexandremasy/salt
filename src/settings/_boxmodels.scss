@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////
 //
-//  Display
-//  @see https://developer.mozilla.org/fr/docs/Web/CSS/display
+//  Box Model
 //
 ////////////////////////////////////////////////////
 $alt-boxmodels: (
@@ -9,6 +8,23 @@ $alt-boxmodels: (
 
   domains: (
     display: 'b'
+  ),
+
+  lengths: (
+    "xxxxl": 5rem,
+    "xxxl": 3.375rem,
+    "xxl": 2rem,
+    "xl": 1.5rem,
+    "l": 1.25rem,
+    "m": 1rem,
+    "s": .75rem,
+    "xs": .5rem,
+    "xxs": .25rem,
+    "xxxs": .125rem
+  ),
+
+  align-items: (
+    
   ),
 
   display: (
