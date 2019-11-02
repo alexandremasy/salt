@@ -13,3 +13,12 @@ sass src/salt.scss build/salt.css
 ## Documentation
 
 Take a look at the [documentation](https://github.com/alexandremasy/salt/wiki)
+
+
+
+
+## Todo
+
+- Scope variables
+- Sass vs css variable
+- Generation loop only on application mode. On demand for the dsm mode

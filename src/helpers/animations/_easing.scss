@@ -5,21 +5,17 @@
 ////////////////////////////////////////////////////
 
 @mixin animation-timing-function($name, $init: false) {
-  @if $g-in-media or $init {
-    $value: map-get($a-easings, $name);
-    animation-timing-function: $value;
-  } @else {
-    @extend #{$helper-prefix}a-#{$name};
-  }
+  $collection: map-get($alt-animation, easings);
+  $domains: map-get($alt-animation, domains);
+  $helpers: (animation, easing);
+  @include salt-helper(animation-timing-function, $collection, $name, $domains, $helpers, $init);
 }
 
 @mixin transition-timing-function($name, $init: false) {
-  @if $g-in-media or $init {
-    $value: map-get($a-easings, $name);
-    transition-timing-function: $value;
-  } @else {
-    @extend #{$helper-prefix}t-#{$name};
-  }
+  $collection: map-get($alt-animation, easings);
+  $domains: map-get($alt-animation, domains);
+  $helpers: (transition, easing);
+  @include salt-helper(transition-timing-function, $collection, $name, $domains, $helpers, $init);
 }
 
 ////////////////////////////////////////////////////
@@ -28,13 +24,17 @@
 //
 ////////////////////////////////////////////////////
 
-@each $name, $value in $a-easings {
-  #{$helper-prefix}a-#{"" + $name} {
+$collection: map-get($alt-animation, easings);
+$domains: map-get($alt-animation, domains);
+$animation-key: get-domain-key($domains, (animation, easing));
+$transition-key: get-domain-key($domains, (transition, easing));
+
+@each $name, $value in $collection {
+  #{$helper-prefix}#{$animation-key}#{$helper-separator}#{$name} {
     @include animation-timing-function($name, true);
   }
-}
-@each $name, $value in $a-easings {
-  #{$helper-prefix}t-#{"" + $name} {
+
+  #{$helper-prefix}#{$transition-key}#{$helper-separator}#{$name} {
     @include transition-timing-function($name, true);
   }
 }

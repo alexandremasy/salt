@@ -3,16 +3,22 @@
 //              Mixin a (animation)
 //
 ////////////////////////////////////////////////////
-@mixin a($name) {
+@mixin animation($name) {
   // easing
-  @if (map-has-key($a-easings, $name)) {
+  $collection: map-get($alt-animation, easings);
+  @if (map-has-key($collection, $name)) {
     @include animation-timing-function($name);
   }
 
   // durations
-  @if (map-has-key($a-durations, $name)) {
+  $collection: map-get($alt-animation, durations);
+  @if (map-has-key($collection, $name)) {
     @include animation-duration($name);
   }
+}
+
+@mixin a($name){
+  @include animation($name);
 }
 
 ////////////////////////////////////////////////////
@@ -20,14 +26,20 @@
 //              Mixin t (transition)
 //
 ////////////////////////////////////////////////////
-@mixin t($name) {
+@mixin transition($name) {
   // easing
-  @if (map-has-key($a-easings, $name)) {
+  $collection: map-get($alt-animation, easings);
+  @if (map-has-key($collection, $name)) {
     @include transition-timing-function($name);
   }
 
   // durations
-  @if (map-has-key($a-durations, $name)) {
+  $collection: map-get($alt-animation, durations);
+  @if (map-has-key($collection, $name)) {
     @include transition-duration($name);
   }
+}
+
+@mixin t($name){
+  @include transition($name);
 }

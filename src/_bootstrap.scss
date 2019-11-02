@@ -5,6 +5,7 @@
 ////////////////////////////////////////////////////
 
 @import "utils/domains";
+@import "utils/helpers";
 
 @import "utils/grid-breakpoint";
 @import "utils/grid-parse";
@@ -17,10 +18,9 @@
 //            Helpers
 //
 ////////////////////////////////////////////////////
-@import "helpers/breakpoint";
-@import "helpers/animations/animation";
-@import "helpers/color";
-@import "helpers/typography";
-@import "helpers/boxmodel";
-@import "helpers/ui";
-@import "helpers/grid";
+@import "helpers/animations/index";
+// @import "helpers/color";
+// @import "helpers/typography";
+// @import "helpers/boxmodel";
+// @import "helpers/ui";
+// @import "helpers/grid";

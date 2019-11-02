@@ -1,0 +1,9 @@
+@mixin salt-helper($css-property, $alt-collection, $alt-property, $domains, $helpers, $init: false){
+  @if $g-in-media or $init{
+    $value: map-get($alt-collection, $alt-property);
+    #{$css-property}: $value;
+  } @else{
+    $dkey: get-domain-key($domains, $helpers);
+    @extend #{$helper-prefix}#{$dkey}#{$helper-separator}#{$alt-property};
+  }
+}

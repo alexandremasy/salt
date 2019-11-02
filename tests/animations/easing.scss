@@ -1,0 +1,19 @@
+$mode: "dsm";
+$helper-prefix: "%";
+@import "salt";
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Durations
+//
+////////////////////////////////////////////////////////////////////////////////
+
+.easing-xxs{
+  @include transition-timing-function(quad-in);
+  @include animation-timing-function(quad-in);
+}
+
+.duration-aliases-m{
+  @include a(out);
+  @include t(out);
+}
