@@ -15,16 +15,19 @@
   $separator: map-get($helper, separator);
   $key: salt-helper-key($domains, $helpers);
 
-  @return #{$prefix}#{$key}#{$separator}#{$property};
+  @if str-length($key) == 0 {
+    @return #{$prefix}#{$property};
+  }
+  @else{
+    @return #{$prefix}#{$key}#{$separator}#{$property};
+  }
 }
-
 
 @mixin salt-helper($css-property, $alt-collection, $alt-property, $domains, $helpers, $init: false){
   @if $g-in-media or $init{
     $value: map-get($alt-collection, $alt-property);
     #{$css-property}: $value;
   } @else{
-    $dkey: salt-helper-key($domains, $helpers);
-    @extend #{$helper-prefix}#{$dkey}#{$helper-separator}#{$alt-property};
+    @extend #{salt-helper-classname($domains, $helpers, $alt-property)};
   }
 }
