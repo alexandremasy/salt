@@ -1,9 +1,30 @@
+@function salt-helper-key($domains, $helpers) {
+  $ret: '';
+  @each $helper in $helpers {
+    @if map-has-key($domains, $helper) {
+      $ret: $ret + map-get($domains, $helper);
+    }
+  }
+
+  @return $ret;
+}
+
+@function salt-helper-classname($domains, $helpers, $property){
+  $helper: map-get($alt, helper);
+  $prefix: map-get($helper, prefix);
+  $separator: map-get($helper, separator);
+  $key: salt-helper-key($domains, $helpers);
+
+  @return #{$prefix}#{$key}#{$separator}#{$property};
+}
+
+
 @mixin salt-helper($css-property, $alt-collection, $alt-property, $domains, $helpers, $init: false){
   @if $g-in-media or $init{
     $value: map-get($alt-collection, $alt-property);
     #{$css-property}: $value;
   } @else{
-    $dkey: get-domain-key($domains, $helpers);
+    $dkey: salt-helper-key($domains, $helpers);
     @extend #{$helper-prefix}#{$dkey}#{$helper-separator}#{$alt-property};
   }
 }

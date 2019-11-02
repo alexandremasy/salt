@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////////////
 //
 //              Mixin
@@ -9,6 +8,7 @@
   $collection: map-get($alt-animation, durations);
   $domains: map-get($alt-animation, domains);
   $helpers: (animation, duration);
+
   @include salt-helper(animation-duration, $collection, $name, $domains, $helpers, $init);
 }
 
@@ -16,26 +16,25 @@
   $collection: map-get($alt-animation, durations);
   $domains: map-get($alt-animation, domains);
   $helpers: (transition, duration);
+  
   @include salt-helper(transition-duration, $collection, $name, $domains, $helpers, $init);
 }
 
 ////////////////////////////////////////////////////
 //
-//              Helper
+//              Helpers
 //
 ////////////////////////////////////////////////////
 
 $collection: map-get($alt-animation, durations);
 $domains: map-get($alt-animation, domains);
-$animation-key: get-domain-key($domains, (animation, duration));
-$transition-key: get-domain-key($domains, (transition, duration));
 
 @each $name, $value in $collection {
-  #{$helper-prefix}#{$animation-key}#{$helper-separator}#{$name} {
+  #{salt-helper-classname($domains, (animation, easing), $name)} {
     @include animation-duration($name, true);
   }
 
-  #{$helper-prefix}#{$transition-key}#{$helper-separator}#{$name} {
+  #{salt-helper-classname($domains, (transition, easing), $name)} {
     @include transition-duration($name, true);
   }
 }
