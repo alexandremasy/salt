@@ -1,0 +1,20 @@
+////////////////////////////////////////////////////
+//
+//              Helper
+//
+////////////////////////////////////////////////////
+
+@if salt-helper-enabled(){
+  $collection: map-get($animation, easings);
+  $domains: map-get($animation, domains);
+
+  @each $name, $value in $collection {
+    #{salt-helper-classname($domains, (animation, easing), $name)} {
+      @include animation-timing-function($name, true);
+    }
+
+    #{salt-helper-classname($domains, (transition, easing), $name)} {
+      @include transition-timing-function($name, true);
+    }
+  }
+}

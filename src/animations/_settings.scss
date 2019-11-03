@@ -1,0 +1,55 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Animations
+//
+////////////////////////////////////////////////////////////////////////////////
+$enabled: true !default;
+
+$domains: (
+  transition: t,
+  animation: a,
+  duration: '',
+  easing: ''
+) !default;
+
+$durations: (
+  xxs: 50ms,
+  xs:  150ms,
+  s:   300ms,
+  m:   500ms,
+  l:   750ms,
+  xl:  1000ms,
+  xxl: 1500ms
+) !default;
+
+$easings: (
+  "in": ease-in,
+  "out": ease-out,
+  "in-out": ease-in-out,
+  "snap": cubic-bezier(0, 1, .5, 1),
+  "linear": cubic-bezier(.25, .25, .75, .75),
+  "quad-in": cubic-bezier(.55, .085, .68, .53),
+  "cubic-in": cubic-bezier(.55, .055, .675, .19),
+  "quart-in": cubic-bezier(.895, .03, .685, .22),
+  "quint-in": cubic-bezier(.755, .05, .855, .06),
+  "sine-in": cubic-bezier(.47, 0, .745, .715),
+  "expo-in": cubic-bezier(.95, .05, .795, .035),
+  "circ-in": cubic-bezier(.6, .04, .98, .335),
+  "back-in": cubic-bezier(.6, -.28, .735, .045),
+  "quad-out": cubic-bezier(.25, .46, .45, .94),
+  "cubic-out": cubic-bezier(.215, .61, .355, 1),
+  "quart-out": cubic-bezier(.165, .84, .44, 1),
+  "quint-out": cubic-bezier(.23, 1, .32, 1),
+  "sine-out": cubic-bezier(.39, .575, .565, 1),
+  "expo-out": cubic-bezier(.19, 1, .22, 1),
+  "circ-out": cubic-bezier(.075, .82, .165, 1),
+  "back-out": cubic-bezier(.175, .885, .32, 1.275),
+  "quad-in-out": cubic-bezier(.455, .03, .515, .955),
+  "cubic-in-out": cubic-bezier(.645, .045, .355, 1),
+  "quart-in-out": cubic-bezier(.77, 0, .175, 1),
+  "quint-in-out": cubic-bezier(.86, 0, .07, 1),
+  "sine-in-out": cubic-bezier(.445, .05, .55, .95),
+  "expo-in-out": cubic-bezier(1, 0, 0, 1),
+  "circ-in-out": cubic-bezier(.785, .135, .15, .86),
+  "back-in-out": cubic-bezier(.68, -.55, .265, 1.55)
+) !default;

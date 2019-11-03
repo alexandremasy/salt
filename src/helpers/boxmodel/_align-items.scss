@@ -5,9 +5,9 @@
 ////////////////////////////////////////////////////
 
 @mixin align-items($name, $init: false) {
-  $collection: map-get($boxmodels, 'display');
-  $domains: map-get($boxmodels, domains);
-  $helpers: ('display');
+  $collection: map-get($boxmodel, 'align-items');
+  $domains: map-get($boxmodel, domains);
+  $helpers: ('box-model', 'align-items');
 
   @include salt-helper(display, $collection, $name, $domains, $helpers, $init);
 }
@@ -18,12 +18,12 @@
 //
 ////////////////////////////////////////////////////
 
-@if $alt-helpers-enabled(){
-  $collection: map-get($boxmodels, 'display');
-  $domains: map-get($boxmodels, domains);
+@if salt-helper-enabled(){
+  $collection: map-get($boxmodel, 'align-items');
+  $domains: map-get($boxmodel, domains);
 
   @each $name, $value in $collection {
-    #{salt-helper-classname($domains, ('display'), $name)} {
+    #{salt-helper-classname($domains, ('box-model', 'align-items'), $name)} {
       @include display($name, true);
     }
   }

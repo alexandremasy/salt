@@ -14,21 +14,6 @@
 // The font will not be rendered, only the styles used by the component.
 $mode: "application" !default;
 
-$helpers: (
-  // Enable/Disable the helpers generation
-  enabled: true,
-
-  // Helper prefix
-  // Prefix for the helpers generation
-  // In scss/sass you can use placeholder by using % as a prefix
-  prefix: ".",
-
-  // Helper separator
-  // Character used between the parts of the helpers generation
-  // {domains}<separator>{property}<separator>{value}
-  separator: '-',
-) !default;
-
 // Variable
 // `scss`
 // All the variables are declared in a scss supported format. Compatible with IE.
@@ -36,3 +21,22 @@ $helpers: (
 // `css`
 // All the variables are declared as css variable. Not compatible with IE, but Edge.
 $variable: scss !default;
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//   Helpers
+//
+////////////////////////////////////////////////////////////////////////////////
+
+// Enable/Disable the helpers generation
+$helpers-enabled: true !default;
+
+// Helper prefix
+// Prefix for the helpers generation
+// In scss/sass you can use placeholder by using % as a prefix
+$helpers-prefix: "." !default;
+
+// Helper separator
+// Character used between the parts of the helpers generation
+// {domains}<separator>{property}<separator>{value}
+$helpers-separator: '-' !default;

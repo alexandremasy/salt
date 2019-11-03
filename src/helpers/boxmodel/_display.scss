@@ -5,9 +5,9 @@
 ////////////////////////////////////////////////////
 
 @mixin display($name, $init: false) {
-  $collection: map-get($boxmodels, 'display');
-  $domains: map-get($boxmodels, domains);
-  $helpers: ('display');
+  $collection: map-get($boxmodel, 'display');
+  $domains: map-get($boxmodel, domains);
+  $helpers: ('box-model', 'display');
 
   @include salt-helper(display, $collection, $name, $domains, $helpers, $init);
 }
@@ -19,11 +19,11 @@
 ////////////////////////////////////////////////////
 
 @if salt-helper-enabled(){
-  $collection: map-get($boxmodels, 'display');
-  $domains: map-get($boxmodels, domains);
+  $collection: map-get($boxmodel, 'display');
+  $domains: map-get($boxmodel, domains);
 
   @each $name, $value in $collection {
-    #{salt-helper-classname($domains, ('display'), $name)} {
+    #{salt-helper-classname($domains, ('box-model', 'display'), $name)} {
       @include display($name, true);
     }
   }

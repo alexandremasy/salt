@@ -13,11 +13,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .easing-xxs{
-  @include salt.transition-timing-function(quad-in);
-  @include salt.animation-timing-function(quad-in);
+  // @include salt.transition-timing-function(quad-in);
+  // @include salt.animation-timing-function(quad-in);
 }
 
 .duration-aliases-m{
-  @include salt.a(out);
-  @include salt.t(out);
+  // @include salt.a(out);
+  // @include salt.t(out);
 }

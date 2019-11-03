@@ -3,15 +3,15 @@
 }
 
 @function salt-hepers-enabled() {
-  @return map-get($helpers, enabled);
+  @return $helpers-enabled;
 }
 
 @function salt-helpers-prefix() {
-  @return map-get($helpers, prefix);
+  @return $helpers-prefix;
 }
 
 @function salt-helpers-separator() {
-  @return map-get($helpers, separator);
+  @return $helpers-separator;
 }
 
 @function salt-variable() {
