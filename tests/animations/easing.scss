@@ -8,14 +8,16 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-//   Display
+//   Durations
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-.display{
-  @include salt.display(block);
+.easing-xxs{
+  @include salt.transition-timing-function(quad-in);
+  @include salt.animation-timing-function(quad-in);
 }
 
-.display-hidden{
-  // @include salt.display(hidden);
+.duration-aliases-m{
+  @include salt.a(out);
+  @include salt.t(out);
 }

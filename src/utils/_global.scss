@@ -1,24 +1,21 @@
 @function salt-mode() {
-  @return map-get($alt, mode);
+  @return $mode;
 }
 
 @function salt-hepers-enabled() {
-  $helpers: map-get($alt, helpers);
   @return map-get($helpers, enabled);
 }
 
 @function salt-helpers-prefix() {
-  $helpers: map-get($alt, helpers);
   @return map-get($helpers, prefix);
 }
 
 @function salt-helpers-separator() {
-  $helpers: map-get($alt, helpers);
   @return map-get($helpers, separator);
 }
 
 @function salt-variable() {
-  @return map-get($alt, variable);
+  @return $variable;
 }
 
 @function salt-media-active(){

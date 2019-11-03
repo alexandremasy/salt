@@ -5,16 +5,16 @@
 ////////////////////////////////////////////////////
 
 @mixin animation-timing-function($name, $init: false) {
-  $collection: map-get($alt-animation, easings);
-  $domains: map-get($alt-animation, domains);
+  $collection: map-get($animation, easings);
+  $domains: map-get($animation, domains);
   $helpers: (animation, easing);
 
   @include salt-helper(animation-timing-function, $collection, $name, $domains, $helpers, $init);
 }
 
 @mixin transition-timing-function($name, $init: false) {
-  $collection: map-get($alt-animation, easings);
-  $domains: map-get($alt-animation, domains);
+  $collection: map-get($animation, easings);
+  $domains: map-get($animation, domains);
   $helpers: (transition, easing);
 
   @include salt-helper(transition-timing-function, $collection, $name, $domains, $helpers, $init);
@@ -27,8 +27,8 @@
 ////////////////////////////////////////////////////
 
 @if salt-helper-enabled(){
-  $collection: map-get($alt-animation, easings);
-  $domains: map-get($alt-animation, domains);
+  $collection: map-get($animation, easings);
+  $domains: map-get($animation, domains);
 
   @each $name, $value in $collection {
     #{salt-helper-classname($domains, (animation, easing), $name)} {

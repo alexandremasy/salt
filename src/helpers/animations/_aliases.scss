@@ -5,13 +5,13 @@
 ////////////////////////////////////////////////////
 @mixin animation($name) {
   // easing
-  $collection: map-get($alt-animation, easings);
+  $collection: map-get($animation, easings);
   @if (map-has-key($collection, $name)) {
     @include animation-timing-function($name);
   }
 
   // durations
-  $collection: map-get($alt-animation, durations);
+  $collection: map-get($animation, durations);
   @if (map-has-key($collection, $name)) {
     @include animation-duration($name);
   }
@@ -28,13 +28,13 @@
 ////////////////////////////////////////////////////
 @mixin transition($name) {
   // easing
-  $collection: map-get($alt-animation, easings);
+  $collection: map-get($animation, easings);
   @if (map-has-key($collection, $name)) {
     @include transition-timing-function($name);
   }
 
   // durations
-  $collection: map-get($alt-animation, durations);
+  $collection: map-get($animation, durations);
   @if (map-has-key($collection, $name)) {
     @include transition-duration($name);
   }

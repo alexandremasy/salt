@@ -5,8 +5,8 @@
 ////////////////////////////////////////////////////
 
 @mixin align-items($name, $init: false) {
-  $collection: map-get($alt-boxmodels, 'display');
-  $domains: map-get($alt-boxmodels, domains);
+  $collection: map-get($boxmodels, 'display');
+  $domains: map-get($boxmodels, domains);
   $helpers: ('display');
 
   @include salt-helper(display, $collection, $name, $domains, $helpers, $init);
@@ -19,8 +19,8 @@
 ////////////////////////////////////////////////////
 
 @if $alt-helpers-enabled(){
-  $collection: map-get($alt-boxmodels, 'display');
-  $domains: map-get($alt-boxmodels, domains);
+  $collection: map-get($boxmodels, 'display');
+  $domains: map-get($boxmodels, domains);
 
   @each $name, $value in $collection {
     #{salt-helper-classname($domains, ('display'), $name)} {

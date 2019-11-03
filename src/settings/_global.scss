@@ -3,38 +3,36 @@
 //   Global configuration
 //
 ////////////////////////////////////////////////////////////////////////////////
-$alt: (
-  // Output mode
-  // `application`
-  // The generated file is considered as the primary application styles file.
-  // All the helper will be generated, the font will be declared, the body default values, ...
-  //
-  // `dsm`
-  // The style is used to style a component and is part of a global ecosystem.
-  // The font will not be rendered, only the styles used by the component.
-  mode: "application",
 
-  helpers: (
-    // Enable/Disable the helpers generation
-    enabled: false,
+// Output mode
+// `application`
+// The generated file is considered as the primary application styles file.
+// All the helper will be generated, the font will be declared, the body default values, ...
+//
+// `dsm`
+// The style is used to style a component and is part of a global ecosystem.
+// The font will not be rendered, only the styles used by the component.
+$mode: "application" !default;
 
-    // Helper prefix
-    // Prefix for the helpers generation
-    // In scss/sass you can use placeholder by using % as a prefix
-    prefix: ".",
+$helpers: (
+  // Enable/Disable the helpers generation
+  enabled: true,
 
-    // Helper separator
-    // Character used between the parts of the helpers generation
-    // {domains}<separator>{property}<separator>{value}
-    separator: '-',
-  ),
+  // Helper prefix
+  // Prefix for the helpers generation
+  // In scss/sass you can use placeholder by using % as a prefix
+  prefix: ".",
 
-  // Variable
-  // `scss`
-  // All the variables are declared in a scss supported format. Compatible with IE.
-  //
-  // `css`
-  // All the variables are declared as css variable. Not compatible with IE, but Edge.
-  variable: scss
-
+  // Helper separator
+  // Character used between the parts of the helpers generation
+  // {domains}<separator>{property}<separator>{value}
+  separator: '-',
 ) !default;
+
+// Variable
+// `scss`
+// All the variables are declared in a scss supported format. Compatible with IE.
+//
+// `css`
+// All the variables are declared as css variable. Not compatible with IE, but Edge.
+$variable: scss !default;
