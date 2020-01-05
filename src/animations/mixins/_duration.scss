@@ -3,40 +3,20 @@
 //              Mixin
 //
 ////////////////////////////////////////////////////
+@use '../settings' as settings;
 
 @mixin animation-duration($name, $init: false){
-  $collection: map-get($animation, durations);
-  $domains: map-get($animation, domains);
+  $collection: settings.$durations;
+  $domains: settings.$domains;
   $helpers: (animation, duration);
 
   @include salt-helper(animation-duration, $collection, $name, $domains, $helpers, $init);
 }
 
 @mixin transition-duration($name, $init: false) {
-  $collection: map-get($animation, durations);
-  $domains: map-get($animation, domains);
+  $collection: settings.$durations;
+  $domains: settings.$domains;
   $helpers: (transition, duration);
 
   @include salt-helper(transition-duration, $collection, $name, $domains, $helpers, $init);
-}
-
-////////////////////////////////////////////////////
-//
-//              Helpers
-//
-////////////////////////////////////////////////////
-
-@if salt-helper-enabled(){
-  $collection: map-get($animation, durations);
-  $domains: map-get($animation, domains);
-
-  @each $name, $value in $collection {
-    #{salt-helper-classname($domains, (animation, duration), $name)} {
-      @include animation-duration($name, true);
-    }
-
-    #{salt-helper-classname($domains, (transition, duration), $name)} {
-      @include transition-duration($name, true);
-    }
-  }
 }

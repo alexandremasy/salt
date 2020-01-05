@@ -2,7 +2,7 @@
   $mode: "dsm",
 
   $helpers: (
-    prefix: "%"
+    prefix: "%" !default
   )
 );
 

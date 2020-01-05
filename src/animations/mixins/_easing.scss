@@ -3,40 +3,20 @@
 //              Mixin
 //
 ////////////////////////////////////////////////////
+@use '../settings' as settings;
 
 @mixin animation-timing-function($name, $init: false) {
-  $collection: map-get($animation, easings);
-  $domains: map-get($animation, domains);
+  $collection: settings.$easings;
+  $domains: settings.$domains;
   $helpers: (animation, easing);
 
   @include salt-helper(animation-timing-function, $collection, $name, $domains, $helpers, $init);
 }
 
 @mixin transition-timing-function($name, $init: false) {
-  $collection: map-get($animation, easings);
-  $domains: map-get($animation, domains);
+  $collection: setings.$easings;
+  $domains: settings.$domains;
   $helpers: (transition, easing);
 
   @include salt-helper(transition-timing-function, $collection, $name, $domains, $helpers, $init);
-}
-
-////////////////////////////////////////////////////
-//
-//              Helper
-//
-////////////////////////////////////////////////////
-
-@if salt-helper-enabled(){
-  $collection: map-get($animation, easings);
-  $domains: map-get($animation, domains);
-
-  @each $name, $value in $collection {
-    #{salt-helper-classname($domains, (animation, easing), $name)} {
-      @include animation-timing-function($name, true);
-    }
-
-    #{salt-helper-classname($domains, (transition, easing), $name)} {
-      @include transition-timing-function($name, true);
-    }
-  }
 }

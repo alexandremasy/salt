@@ -104,23 +104,16 @@ $boxmodel-display: (
 ) !default;
 
 $boxmodel-z-index: (
-  1: 1,
-  2: 2,
-  3: 3,
-  4: 4,
-  5: 5,
-  6: 6,
-  7: 7,
-  8: 8,
-  9: 9,
-
+  deep: -9999,
   default: 1,
-  docked: 1000,
-
-  popin: 2000,
-  tooltip: 2100,
-  dropdown: 2200,
-
-  toolbar: 6000,
-  modal: 9000
+  masked: 100,
+  mask: 200,
+  sticky: 300,
+  header: 400,
+  toast: 500,
+  dropdown: 600
+  overlay: 700,
+  spinner: 800,
+  modal: 900,
+  popup: 950
 ) !default;
