@@ -1,9 +1,6 @@
 @use "salt" with(
   $mode: "dsm",
-
-  $helpers: (
-    prefix: "%" !default
-  )
+  $helpers-prefix: "%"
 );
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -13,8 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .duration-xxs{
-  // @include salt.transition-duration(xxs);
-  // @include salt.animation-duration(xxs);
+  @include salt.transition-duration(xs);
+  @include salt.animation-duration(xxl);
 }
 
 .duration-aliases-m{
