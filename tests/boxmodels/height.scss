@@ -1,7 +1,4 @@
-@use "salt" with(
-  $mode: "dsm",
-  $helpers-prefix: "%"
-);
+@use "salt";
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -16,4 +13,9 @@
 
 .minheight{
   @include salt.min-height(xs);
+}
+
+
+.other{
+  @include salt.height(xl);
 }

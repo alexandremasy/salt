@@ -34,7 +34,7 @@ $helpers-enabled: true !default;
 // Helper prefix
 // Prefix for the helpers generation
 // In scss/sass you can use placeholder by using % as a prefix
-$helpers-prefix: "." !default;
+$helpers-prefix: "%" !default;
 
 // Helper separator
 // Character used between the parts of the helpers generation
