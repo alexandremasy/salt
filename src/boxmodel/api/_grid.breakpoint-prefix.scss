@@ -1,0 +1,14 @@
+//
+//   Get dimension prefix based on an operator
+//
+//   @param {String} $operator - Operator
+//   @return {String} - `min` or `max` or `null` if the operator is not valid
+//   @access private
+//
+@function grid-breakpoint-prefix($operator) {
+  @if index($g-operators, $operator) {
+    @return if(index(($less, $less-or-equal), $operator), "max", "min");
+  }
+
+  @return null;
+}

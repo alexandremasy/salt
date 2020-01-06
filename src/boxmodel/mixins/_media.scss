@@ -1,0 +1,34 @@
+//
+//   Generates a media query based on a list of conditions
+//
+//   @param {Arglist}   $conditions  - Media query conditions
+//
+//   @example scss - With a single set breakpoint
+//      @include media('>m') { }
+//
+//   @example scss - With two set breakpoints
+//      @include media('>m', '<=l') { }
+//
+//   @example scss - With a static expression
+//      @include media('retina2x') { }
+//
+//   @example scss - Mixing everything
+//      @include media('>=m', '<xl', 'retina3x') { }
+//
+$g-in-media: false;
+
+@mixin media($conditions...) {
+  $g-in-media: true !global;
+  @if length($conditions) == 0 {
+    @content;
+    $g-in-media: false !global;
+  } @else if length($conditions) > 0 {
+    @media #{unquote(grid-breakpoint(nth($conditions, 1)))} {
+      // Recursive call
+      @include media(list-slice($conditions, 2) ...) {
+        @content;
+        $g-in-media: false !global;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+//
+//   Parse an expression to return a valid media-query expression
+//
+//   @param {String} $expression - Expression to parse
+//   @return {String} - Valid media query
+//
+@function grid-breakpoint($expression) {
+  // If it is part of $g-media, it has no operator
+  // then there is no need to go any further, just return the value
+  @if map-has-key($g-media, $expression) {
+    @return map-get($g-media, $expression);
+  }
+
+  $operator: grid-parse-operator($expression);
+  $dimension: grid-breakpoint-dimension($expression, $operator);
+  $prefix: grid-breakpoint-prefix($operator);
+  $value: grid-parse($expression);
+
+  @return "(#{$prefix}-#{$dimension}: #{$value})";
+}

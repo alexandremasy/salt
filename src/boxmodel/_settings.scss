@@ -1,0 +1,205 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// Box Models
+//
+////////////////////////////////////////////////////////////////////////////////
+
+$enabled: true !default;
+
+$domains: (
+  align-items: 'b',
+  display: 'b',
+  flex: 'b',
+  height: 'b',
+  margin: 'b',
+  padding: 'b',
+  position: 'b',
+  width: 'b',
+  z-index: 'b',
+) !default;
+
+
+$sizes: (
+  "xxxxl": 5rem,
+  "xxxl": 3.375rem,
+  "xxl": 2rem,
+  "xl": 1.5rem,
+  "l": 1.25rem,
+  "m": 1rem,
+  "s": .75rem,
+  "xs": .5rem,
+  "xxs": .25rem,
+  "xxxs": .125rem
+) !default;
+
+$align-items: (
+  normal: normal,
+  stretch: stretch,
+  center: center,
+  start: start,
+  end: end,
+  flex-start: flex-start,
+  flex-end: flex-end,
+  self-start: self-start,
+  self-end: self-end,
+  first: first,
+  first-baseline: first baseline,
+  last-baseline: last baseline,
+  safe-center: safe center,
+  unsafe-center: unsafe center,
+  inherit: inherit,
+  initial: initial,
+  unset: unset
+) !default;
+
+$display: (
+// display-outside
+  block: block,
+  inline: inline,
+  run-in: run-in,
+
+// display-inside
+  flow: flow,
+  flow-root: flow-root,
+  table: table,
+  flex: flex,
+  grid: grid,
+  ruby: ruby,
+
+// display-outside && display-inside
+  block-flow: block flow,
+  flex-run-in: flex run-in,
+
+// display-listitem
+  list-item: list-item,
+  list-item-block: list-item block,
+  list-item-inline: list-item inline,
+  list-item-flow: list-item flow,
+  list-item-flow-root: list-item flow-root,
+  list-item-block-flow: list-item block flow,
+  list-item-block-flow-root: list-item block flow-root,
+  list-item-flow-block: flow list-item block,
+
+// display-internal
+  table-row-group: table-row-group,
+  table-header-group: table-header-group,
+  table-footer-group: table-footer-group,
+  table-row: table-row,
+  table-cell: table-cell,
+  table-column-group: table-column-group,
+  table-column: table-column,
+  table-caption: table-caption,
+  ruby-base: ruby-base,
+  ruby-text: ruby-text,
+  ruby-base-container: ruby-base-container,
+  ruby-text-container: ruby-text-container,
+
+// display-box
+  contents: contents,
+  none: none,
+  hidden: none,
+
+// display-legacy
+  inline-block: inline-block,
+  inline-table: inline-table,
+  inline-flex: inline-flex,
+  inline-grid: inline-grid,
+
+// globales
+  inherit: inherit,
+  initial: initial,
+  unset: unset
+) !default;
+
+$z-index: (
+  deep: -9999,
+  default: 1,
+  masked: 100,
+  mask: 200,
+  sticky: 300,
+  header: 400,
+  toast: 500,
+  dropdown: 600
+  overlay: 700,
+  spinner: 800,
+  modal: 900,
+  popup: 950
+) !default;
+
+
+////////////////////////////////////////////////////
+//
+//              Breakpoint Definition
+//
+////////////////////////////////////////////////////
+$g-base: 16px;
+$g-breakpoint-min: "xxs";
+$g-breakpoints: (
+  xxl: 1440px / $g-base * 1rem,
+  xl: 1200px / $g-base * 1rem,
+  l: 1024px / $g-base * 1rem,
+  m: 768px / $g-base * 1rem,
+  s: 425px / $g-base * 1rem,
+  xs: 375px / $g-base * 1rem,
+  xxs: 320px / $g-base * 1rem
+) !default;
+
+////////////////////////////////////////////////////
+//
+//   Media Expressions
+//
+////////////////////////////////////////////////////
+
+$screen: "screen";
+$print: "print";
+$handheld: "handheld";
+$landscape: "(orientation: landscape)";
+$portrait: "(orientation: portrait)";
+$retina2x: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)";
+$retina3x: "(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)";
+
+$g-media: (
+  screen: $screen,
+  print: $print,
+  handheld: $handheld,
+  landscape: $landscape,
+  portrait: $portrait,
+  retina2x: $retina2x,
+  retina3x: $retina3x
+);
+
+////////////////////////////////////////////////////
+//
+//   Grid - Unit interval
+//   Defines a number to be added or subtracted from each unit when declaring breakpoints with exclusive intervals
+//
+////////////////////////////////////////////////////
+
+$g-interval-px: 1;
+$g-interval-em: .01;
+$g-interval-rem: .01;
+$g-interval-default: 0;
+
+$g-intervals: (
+  px: $g-interval-px,
+  em: $g-interval-em,
+  rem: $g-interval-rem,
+  default: $g-interval-default
+) !default;
+
+////////////////////////////////////////////////////
+//
+//   Grid Operators
+//
+////////////////////////////////////////////////////
+
+$more: ">";
+$less: "<";
+$equal: "=";
+
+$more-or-equal: ">=";
+$less-or-equal: "<=";
+
+$g-operators-one: ($more, $less, $equal);
+$g-operators-two: ($more-or-equal, $less-or-equal);
+$g-operators: join($g-operators-one, $g-operators-two);

@@ -1,0 +1,14 @@
+@use '../settings' as settings;
+
+@function duration($name) {
+  $ret: null;
+
+  @if map-has-key(settings.$durations, $name){
+    $ret: map-get(settings.$durations, $name);
+  }
+  @else{
+    @warn 'E404: No value for the given duration' + $name;
+  }
+
+  @return $ret;
+}
