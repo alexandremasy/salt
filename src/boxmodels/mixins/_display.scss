@@ -3,11 +3,13 @@
 //              Mixin
 //
 ////////////////////////////////////////////////////
+@use '../settings';
+@use 'commons';
 
 @mixin display($name, $init: false) {
-  $collection: map-get($boxmodel, 'display');
-  $domains: map-get($boxmodel, domains);
-  $helpers: ('box-model', 'display');
+  $collection: settings.$boxmodels-display;
+  $domains: (d: display);
+  $helpers: ('display');
 
-  @include salt-helper(display, $collection, $name, $domains, $helpers, $init);
+  @include commons.salt-helper(display, $collection, $name, $domains, $helpers, $init);
 }

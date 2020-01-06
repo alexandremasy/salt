@@ -6,17 +6,17 @@
 
 $boxmodels-enabled: true !default;
 
-$boxmodels-domains: (
-  align-items: 'b',
-  display: 'b',
-  flex: 'b',
-  height: 'b',
-  margin: 'b',
-  padding: 'b',
-  position: 'b',
-  width: 'b',
-  z-index: 'b'
-) !default;
+// $boxmodels-domains: (
+//   align-items: 'b',
+//   display: 'b',
+//   flex: 'b',
+//   height: 'b',
+//   margin: 'b',
+//   padding: 'b',
+//   position: 'b',
+//   width: 'b',
+//   z-index: 'b'
+// ) !default;
 
 $boxmodels-sizes: (
   xxxxl: 5rem,
@@ -38,24 +38,19 @@ $boxmodels-radii: (
   circle: 50%
 ) !default;
 
-$boxmodels-align-items: (
-  normal: normal,
-  stretch: stretch,
-  center: center,
-  start: start,
-  end: end,
-  flex-start: flex-start,
-  flex-end: flex-end,
-  self-start: self-start,
-  self-end: self-end,
-  first: first,
-  first-baseline: first baseline,
-  last-baseline: last baseline,
-  safe-center: safe center,
-  unsafe-center: unsafe center,
-  inherit: inherit,
-  initial: initial,
-  unset: unset
+$boxmodels-zindex: (
+  deep: -9999,
+  default: 1,
+  masked: 100,
+  mask: 200,
+  sticky: 300,
+  header: 400,
+  toast: 500,
+  dropdown: 600,
+  overlay: 700,
+  spinner: 800,
+  modal: 900,
+  popup: 950
 ) !default;
 
 $boxmodels-display: (
@@ -117,21 +112,43 @@ $boxmodels-display: (
   unset: unset
 ) !default;
 
-$boxmodels-zindex: (
-  deep: -9999,
-  default: 1,
-  masked: 100,
-  mask: 200,
-  sticky: 300,
-  header: 400,
-  toast: 500,
-  dropdown: 600,
-  overlay: 700,
-  spinner: 800,
-  modal: 900,
-  popup: 950
+////////////////////////////////////////////////////////////////////////////////
+//
+// Domains
+//
+////////////////////////////////////////////////////////////////////////////////
+
+$boxmodels-align-items: (
+  normal: normal,
+  stretch: stretch,
+  center: center,
+  start: start,
+  end: end,
+  flex-start: flex-start,
+  flex-end: flex-end,
+  self-start: self-start,
+  self-end: self-end,
+  first: first,
+  first-baseline: first baseline,
+  last-baseline: last baseline,
+  safe-center: safe center,
+  unsafe-center: unsafe center,
+  inherit: inherit,
+  initial: initial,
+  unset: unset
 ) !default;
 
+$boxmodels-heights: (
+  h: height,
+  minh: min-height,
+  maxh: max-height
+) !default;
+
+$boxmodels-widths: (
+  w: width,
+  minw: min-width,
+  maxw: max-width
+) !default;
 
 ////////////////////////////////////////////////////
 //

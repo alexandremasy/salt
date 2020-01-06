@@ -1,9 +1,6 @@
 @use "salt" with(
   $mode: "dsm",
-
-  $helpers: (
-    prefix: "%"
-  )
+  $helpers-prefix: "%"
 );
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,5 +14,5 @@
 }
 
 .display-hidden{
-  // @include salt.display(hidden);
+  @include salt.display(hidden);
 }

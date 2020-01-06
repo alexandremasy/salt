@@ -3,8 +3,8 @@
 @function size($name) {
   $ret: null;
 
-  @if map-has-key(settings.$sizes, $name){
-    $ret: map-get(settings.$sizes, $name);
+  @if map-has-key(settings.$boxmodels-sizes, $name){
+    $ret: map-get(settings.$boxmodels-sizes, $name);
   }
   @else{
     @warn 'E404: No value for the given size' + $name;
