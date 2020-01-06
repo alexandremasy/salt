@@ -9,6 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+.duration-func{
+  transition: all salt.duration(m);
+}
+
 .duration-xxs{
   @include salt.transition-duration(xs);
   @include salt.animation-duration(xxl);

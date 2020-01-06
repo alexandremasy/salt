@@ -18,18 +18,24 @@ $domains: (
   z-index: 'b',
 ) !default;
 
-
 $sizes: (
-  "xxxxl": 5rem,
-  "xxxl": 3.375rem,
-  "xxl": 2rem,
-  "xl": 1.5rem,
-  "l": 1.25rem,
-  "m": 1rem,
-  "s": .75rem,
-  "xs": .5rem,
-  "xxs": .25rem,
-  "xxxs": .125rem
+  xxxxl: 5rem,
+  xxxl: 3.375rem,
+  xxl: 2rem,
+  xl: 1.5rem,
+  l: 1.25rem,
+  m: 1rem,
+  s: .75rem,
+  xs: .5rem,
+  xxs: .25rem,
+  xxxs: .125rem
+) !default;
+
+$radii: (
+  none: 0,
+  pill: 20rem,
+  default: 4px,
+  circle: 50%
 ) !default;
 
 $align-items: (

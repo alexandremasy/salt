@@ -1,0 +1,14 @@
+@use '../settings' as settings;
+
+@function z($name) {
+  $ret: null;
+
+  @if map-has-key(settings.$z-index, $name){
+    $ret: map-get(settings.$z-index, $name);
+  }
+  @else{
+    @warn 'E404: No value for the given z-index' + $name;
+  }
+
+  @return $ret;
+}

@@ -1,0 +1,14 @@
+@use '../settings' as settings;
+
+@function radius($name) {
+  $ret: null;
+
+  @if map-has-key(settings.$radii, $name){
+    $ret: map-get(settings.$radii, $name);
+  }
+  @else{
+    @warn 'E404: No value for the given radius' + $name;
+  }
+
+  @return $ret;
+}
