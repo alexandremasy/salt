@@ -6,17 +6,17 @@
 
 $boxmodels-enabled: true !default;
 
-// $boxmodels-domains: (
-//   align-items: 'b',
-//   display: 'b',
-//   flex: 'b',
-//   height: 'b',
-//   margin: 'b',
-//   padding: 'b',
-//   position: 'b',
-//   width: 'b',
-//   z-index: 'b'
-// ) !default;
+$boxmodels-domains: (
+  align-items: 'b',
+  display: 'b',
+  flex: 'b',
+  height: 'b',
+  margin: 'b',
+  padding: 'b',
+  position: 'b',
+  width: 'b',
+  z-index: 'b'
+) !default;
 
 $boxmodels-sizes: (
   xxxxl: 5rem,

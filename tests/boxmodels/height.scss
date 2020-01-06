@@ -13,3 +13,7 @@
   functionvalue: salt.size('m');
   @include salt.height(xl);
 }
+
+.minheight{
+  @include salt.min-height(xs);
+}

@@ -3,11 +3,13 @@
 //              Mixin
 //
 ////////////////////////////////////////////////////
+@use '../settings';
+@use 'commons';
 
 @mixin align-items($name, $init: false) {
-  $collection: map-get($boxmodel, 'align-items');
-  $domains: map-get($boxmodel, domains);
-  $helpers: ('box-model', 'align-items');
+  $collection: settings.$boxmodel-align-items;
+  $domains: settings.$boxmodels-domains;
+  $helpers: ('align-items');
 
-  @include salt-helper(display, $collection, $name, $domains, $helpers, $init);
+  @include common.salt-helper(display, $collection, $name, $domains, $helpers, $init);
 }

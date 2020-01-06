@@ -6,10 +6,19 @@
 @use '../settings';
 @use 'commons';
 
-@mixin height($name, $direction: h, $init: false) {
+@mixin __height($name, $helpers, $init: false) {
   $collection: settings.$boxmodels-sizes;
-  $domains: settings.$boxmodels-heights;
-  $helpers: (height);
+  $domains: settings.$boxmodels-domains;
 
-  @include commons.salt-helper(height, $collection, $name, $domains, $helpers, $init);
+  @include commons.salt-helper($helpers, $collection, $name, $domains, $helpers, $init);
+}
+
+@mixin height($name, $init: false){
+  @include __height($name, (height), $init);
+}
+@mixin min-height($name, $init: false){
+  @include __height($name, (min-height), $init);
+}
+@mixin max-height($name, $init: false){
+  @include __height($name, (max-height), $init);
 }

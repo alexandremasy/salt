@@ -8,7 +8,7 @@
 
 @mixin display($name, $init: false) {
   $collection: settings.$boxmodels-display;
-  $domains: (d: display);
+  $domains: settings.$boxmodels-domains;
   $helpers: ('display');
 
   @include commons.salt-helper(display, $collection, $name, $domains, $helpers, $init);
