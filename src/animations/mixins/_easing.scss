@@ -3,7 +3,8 @@
 //              Mixin
 //
 ////////////////////////////////////////////////////
-@use '../settings' as settings;
+@use '../settings';
+@use 'commons';
 
 @mixin animation-timing-function($name, $init: false) {
   $collection: settings.$easings;

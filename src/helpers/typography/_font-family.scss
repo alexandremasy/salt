@@ -107,25 +107,25 @@ $f-default:
 
 @mixin font-family($name, $init: false) {
   @if $name == "heading" {
-    @if $g-in-media or $init {
+    @if $boxmodels-in-breakpoint or $init {
       font-family: $f-heading, $f-default;
     } @else {
       @extend #{$helper-prefix}f-heading;
     }
   } @else if $name == "body" {
-    @if $g-in-media or $init {
+    @if $boxmodels-in-breakpoint or $init {
       font-family: $f-body, $f-default;
     } @else {
       @extend #{$helper-prefix}f-body;
     }
   } @else if $name == "code" {
-    @if $g-in-media or $init {
+    @if $boxmodels-in-breakpoint or $init {
       font-family: $f-code, $f-default;
     } @else {
       @extend #{$helper-prefix}f-code;
     }
   } @else if $name == "icon" {
-    @if $g-in-media or $init {
+    @if $boxmodels-in-breakpoint or $init {
       font-family: $f-icon;
       speak: none;
       font-variant: normal;

@@ -20,7 +20,7 @@ $f-aligns: (
 @mixin text-align($name, $init: false) {
   $value: map-get($f-aligns, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     text-align: $value;
   } @else {
     @extend #{$helper-prefix}f-#{$name};

@@ -18,7 +18,7 @@ $f-transforms: (
 @mixin text-transform($name, $init: false) {
   $value: map-get($f-transforms, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     text-transform: $value;
   } @else {
     @extend #{$helper-prefix}f-#{$name};

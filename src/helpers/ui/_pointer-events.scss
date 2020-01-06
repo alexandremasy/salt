@@ -17,7 +17,7 @@ $ui-events: (
 @mixin pointer-events($name, $init: false) {
   $value: map-get($ui-events, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     pointer-events: $value;
   } @else {
     @extend #{$helper-prefix}ui-#{$name};

@@ -31,7 +31,7 @@ $b-heights: (
     }
   }
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     @if length($prop) > 1 {
       @each $p in $prop {
         #{$p}: $value;

@@ -18,7 +18,7 @@ $f-wraps: (
 @mixin word-break($name, $init: false) {
   $value: map-get($f-wraps, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     word-break: $value;
   } @else {
     @extend #{$helper-prefix}f-#{$name};

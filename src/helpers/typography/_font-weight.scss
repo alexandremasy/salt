@@ -25,7 +25,7 @@ $f-weights: (
 @mixin font-weight($name, $init: false) {
   $value: map-get($f-weights, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     font-weight: $value;
   } @else {
     @extend #{$helper-prefix}f-#{$name};

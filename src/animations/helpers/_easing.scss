@@ -3,7 +3,6 @@
 //              Helper
 //
 ////////////////////////////////////////////////////
-
 @if salt-helper-enabled(){
   $collection: map-get($animation, easings);
   $domains: map-get($animation, domains);

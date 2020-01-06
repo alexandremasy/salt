@@ -22,7 +22,7 @@ $ui-cursors: (
 @mixin cursor($name, $init: false) {
   $value: map-get($ui-cursors, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     cursor: $value;
   } @else {
     @extend #{$helper-prefix}ui-#{$name};

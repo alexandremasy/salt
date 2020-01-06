@@ -18,7 +18,7 @@ $f-styles: (
 @mixin font-style($name, $init: false) {
   $value: map-get($f-styles, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     font-style: $value;
   } @else {
     @extend #{$helper-prefix}f-#{$name};

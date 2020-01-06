@@ -15,19 +15,21 @@
 //   @example scss - Mixing everything
 //      @include media('>=m', '<xl', 'retina3x') { }
 //
-$g-in-media: false;
+@use '../api/breakpoint';
+@use 'commons';
 
+$boxmodels-in-media: false;
 @mixin media($conditions...) {
-  $g-in-media: true !global;
+  $boxmodels-in-breakpoint: true !global;
   @if length($conditions) == 0 {
     @content;
-    $g-in-media: false !global;
+    $boxmodels-in-breakpoint: false !global;
   } @else if length($conditions) > 0 {
-    @media #{unquote(grid-breakpoint(nth($conditions, 1)))} {
+    @media #{unquote(breakpoint.breakpoint(nth($conditions, 1)))} {
       // Recursive call
-      @include media(list-slice($conditions, 2) ...) {
+      @include media(commons.list-slice($conditions, 2) ...) {
         @content;
-        $g-in-media: false !global;
+        $boxmodels-in-breakpoint: false !global;
       }
     }
   }

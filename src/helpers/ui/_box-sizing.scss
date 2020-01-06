@@ -18,7 +18,7 @@ $ui-sizings: (
 @mixin box-sizing($name, $init: false) {
   $value: map-get($ui-sizings, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     box-sizing: $value;
   } @else {
     @extend #{$helper-prefix}ui-#{$name};

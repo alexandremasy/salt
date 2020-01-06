@@ -53,7 +53,7 @@ $b-flexs-flat: ();
       @if map-has-key($values, $name) {
         $vvalue: map-get($values, $name);
 
-        @if $g-in-media or $init {
+        @if $boxmodels-in-breakpoint or $init {
           #{$p}: $vvalue;
         } @else {
           @extend #{$helper-prefix}b-flex-#{$name};

@@ -3,16 +3,16 @@
 //  Animations
 //
 ////////////////////////////////////////////////////////////////////////////////
-$enabled: true !default;
+$animations-enabled: true !default;
 
-$domains: (
+$animations-domains: (
   transition: t,
   animation: a,
   duration: '',
   easing: ''
 ) !default;
 
-$durations: (
+$animations-durations: (
   xxs: 50ms,
   xs:  150ms,
   s:   300ms,
@@ -22,7 +22,7 @@ $durations: (
   xxl: 1500ms
 ) !default;
 
-$easings: (
+$animations-easings: (
   "in": ease-in,
   "out": ease-out,
   "in-out": ease-in-out,

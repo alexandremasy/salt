@@ -7,7 +7,7 @@
 @mixin z-index($name, $init: false) {
   $value: map-get($b-zindex, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     z-index: $value;
   } @else {
     @extend #{$helper-prefix}z-#{$name};

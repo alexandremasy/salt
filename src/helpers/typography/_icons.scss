@@ -137,7 +137,7 @@ $f-icons: (
 @mixin icon($name, $init: false) {
   $value: map-get($f-icons, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     &::before {
       content: unicode($value);
     }

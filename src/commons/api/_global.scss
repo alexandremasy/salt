@@ -19,5 +19,5 @@
 }
 
 @function salt-media-active(){
-  @return $g-in-media;
+  @return $boxmodels-in-breakpoint;
 }

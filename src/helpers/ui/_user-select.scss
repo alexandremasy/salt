@@ -17,7 +17,7 @@ $ui-selects: (
 @mixin user-select($name, $init: false) {
   $value: map-get($ui-selects, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     user-select: $value;
   } @else {
     @extend #{$helper-prefix}ui-#{$name};

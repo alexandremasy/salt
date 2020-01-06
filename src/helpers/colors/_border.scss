@@ -14,7 +14,7 @@
   @if map-has-key($c-colors, $name) {
     $value: map-get($c-colors, $name);
 
-    @if $g-in-media or $init {
+    @if $boxmodels-in-breakpoint or $init {
       border-color: $value;
     } @else {
       @extend #{$helper-prefix}bc-#{$name};

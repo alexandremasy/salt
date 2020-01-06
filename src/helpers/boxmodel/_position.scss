@@ -27,7 +27,7 @@ $b-directions: (
 @mixin position($name, $init: false) {
   $value: map-get($b-positions, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     position: $value;
   } @else {
     @extend #{$helper-prefix}b-#{$name};
@@ -51,7 +51,7 @@ $b-directions: (
   $value: map-get($b-spaces, $name);
   $prop: map-get($b-directions, $direction);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     #{$prop}: $value;
   } @else {
     @extend #{$helper-prefix}#{$direction}-#{$name};

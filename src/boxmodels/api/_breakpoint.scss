@@ -4,11 +4,13 @@
 //   @param {String} $expression - Expression to parse
 //   @return {String} - Valid media query
 //
-@function grid-breakpoint($expression) {
-  // If it is part of $g-media, it has no operator
+@use '../settings';
+
+@function breakpoint($expression) {
+  // If it is part of $boxmodels-media, it has no operator
   // then there is no need to go any further, just return the value
-  @if map-has-key($g-media, $expression) {
-    @return map-get($g-media, $expression);
+  @if map-has-key(settings.$boxmodels-media, $expression) {
+    @return map-get(settings.$boxmodels-media, $expression);
   }
 
   $operator: grid-parse-operator($expression);
@@ -17,4 +19,182 @@
   $value: grid-parse($expression);
 
   @return "(#{$prefix}-#{$dimension}: #{$value})";
+}
+
+//
+//   Get dimension of an expression, based on a found operator
+//
+//   @param {String} $expression - Expression to extract dimension from
+//   @param {String} $operator - Operator from `$expression`
+//   @return {String} - `width` or `height` (or potentially anything else)
+//   @access private
+//
+@function grid-breakpoint-dimension($expression, $operator) {
+  $dimension: "width";
+  $parsed-dimension: null;
+
+  // @debug 'expression: #{$expression}';
+  // @debug 'operator: #{$operator}';
+
+  @if str-length($expression) > 0 and $operator != null {
+    $operator-index: str-index($expression, $operator);
+    $parsed-dimension: str-slice($expression, 0, $operator-index - 1);
+  }
+
+  @if $parsed-dimension != null and str-length($parsed-dimension) > 0 {
+    $dimension: $parsed-dimension;
+  }
+
+  @return $dimension;
+}
+
+//
+//   Get dimension prefix based on an operator
+//
+//   @param {String} $operator - Operator
+//   @return {String} - `min` or `max` or `null` if the operator is not valid
+//   @access private
+//
+@function grid-breakpoint-prefix($operator) {
+  @if index(settings.$boxmodels-operators, $operator) {
+    @return if(index((settings.$boxmodels-less, settings.$boxmodels-less-or-equal), $operator), "max", "min");
+  }
+
+  @return null;
+}
+
+
+//
+//  Parse an unit expression to retrieve the breakpoint
+//
+//  @param {String} $expression  The expression to parse.
+//  @return {Number}             The breakpoint value
+//
+//  @example scss
+//     grid-parse-breakpoint('=m') => 48em
+//     grid-parse-breakpoint('>m') => 48em
+//     grid-parse-breakpoint('<m') => 48em
+//
+//  @access private
+//  @author Alexandre Masy
+//
+@function grid-parse-breakpoint($expression, $operator) {
+  $value: $expression;
+
+  @if $operator != null {
+    $index: str-index($expression, $operator);
+    $value: str-slice($expression, $index + str-length($operator));
+  }
+
+  $ret: null;
+  @if map-has-key(settings.$boxmodels-breakpoints, $value) {
+    $ret: map-get(settings.$boxmodels-breakpoints, $value);
+  }
+
+  @return $ret;
+}
+
+//
+//   Parse an unit expression to retrieve the operator
+//
+//   @param {String} $expression   The expression to parse.
+//   @return {String}              The operator.
+//
+//   @example scss
+//      grid-parse-operator('=m') => '='
+//      grid-parse-operator('>m') => '>'
+//      grid-parse-operator('<m') => '<'
+//
+//   @access private
+//   @author Alexandre Masy
+//
+@function grid-parse-operator($expression)
+{
+  //
+  //   1. loop through the operators
+  //       a. the one chars
+  //       b. the two chars
+  //
+  //   2. If there is a match
+  //       a. take a look at the following char
+  //         if it match the $equal operator
+  //           than we have the two chars operator
+  //         else
+  //           than we have a one chars operator
+  //
+
+  @each $operator in settings.$boxmodels-operators {
+    $index: str-index($expression, $operator);
+    @if $index and $index == 1 {
+      @if str-length($expression) >= ($index + 2) {
+        $next: str-slice($expression, $index+1, $index+1);
+        @if $next == $equal {
+          @each $operator in settings.$boxmodels-operators-two {
+            @if str-index($expression, $operator) {
+              @return $operator;
+            }
+          }
+        }
+        @else {
+          @return $operator;
+        }
+      }
+      @else
+      {
+        @return $operator;
+      }
+    }
+  }
+
+  @return null;
+}
+
+
+//
+//   Unit expression parser
+//   Parse an expression composed of an operator and a grid breakpoint
+//   Return the value of the breakpoint altered by the unit interval
+//
+//   @param {String} $expression   The expression to parse
+//   @return {Number}
+//
+//   @example scss
+//     grid-parse('m')  => 48em
+//     grid-parse('=m') => 48em
+//     grid-parse('>m') => 48.01em
+//     grid-parse('<m') => 47.99em
+//
+//   @author Alexandre Masy
+//
+@function grid-parse($expression)
+{
+  $ret: null;
+  $operator: grid-parse-operator($expression);
+  $breakpoint: grid-parse-breakpoint($expression, $operator);
+
+  // if no operator than give back the value of the expression
+  // it is the equivalent of a equal operation
+  @if $operator == null {
+    $operator: '=';
+  }
+
+  @if $breakpoint == null {
+    $breakpoint: 0;
+    $interval: 0;
+    @return null;
+  }
+
+  $interval: map-get(settings.$boxmodels-intervals, unit($breakpoint));
+
+  @if index((settings.$boxmodels-equal, settings.$boxmodels-less-or-equal, settings.$boxmodels-more-or-equal), $operator) {
+    $ret: $breakpoint;
+  }
+  @else if index((settings.$boxmodels-less), $operator) {
+    $ret: $breakpoint - $interval;
+  }
+  @else if index((settings.$boxmodels-more), $operator) {
+    $ret: $breakpoint + $interval;
+  }
+
+  @return $ret;
 }

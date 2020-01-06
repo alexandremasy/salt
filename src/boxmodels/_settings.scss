@@ -4,9 +4,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-$enabled: true !default;
+$boxmodels-enabled: true !default;
 
-$domains: (
+$boxmodels-domains: (
   align-items: 'b',
   display: 'b',
   flex: 'b',
@@ -15,10 +15,10 @@ $domains: (
   padding: 'b',
   position: 'b',
   width: 'b',
-  z-index: 'b',
+  z-index: 'b'
 ) !default;
 
-$sizes: (
+$boxmodels-sizes: (
   xxxxl: 5rem,
   xxxl: 3.375rem,
   xxl: 2rem,
@@ -31,14 +31,14 @@ $sizes: (
   xxxs: .125rem
 ) !default;
 
-$radii: (
+$boxmodels-radii: (
   none: 0,
   pill: 20rem,
   default: 4px,
   circle: 50%
 ) !default;
 
-$align-items: (
+$boxmodels-align-items: (
   normal: normal,
   stretch: stretch,
   center: center,
@@ -58,7 +58,7 @@ $align-items: (
   unset: unset
 ) !default;
 
-$display: (
+$boxmodels-display: (
 // display-outside
   block: block,
   inline: inline,
@@ -117,7 +117,7 @@ $display: (
   unset: unset
 ) !default;
 
-$z-index: (
+$boxmodels-zindex: (
   deep: -9999,
   default: 1,
   masked: 100,
@@ -125,7 +125,7 @@ $z-index: (
   sticky: 300,
   header: 400,
   toast: 500,
-  dropdown: 600
+  dropdown: 600,
   overlay: 700,
   spinner: 800,
   modal: 900,
@@ -138,16 +138,16 @@ $z-index: (
 //              Breakpoint Definition
 //
 ////////////////////////////////////////////////////
-$g-base: 16px;
-$g-breakpoint-min: "xxs";
-$g-breakpoints: (
-  xxl: 1440px / $g-base * 1rem,
-  xl: 1200px / $g-base * 1rem,
-  l: 1024px / $g-base * 1rem,
-  m: 768px / $g-base * 1rem,
-  s: 425px / $g-base * 1rem,
-  xs: 375px / $g-base * 1rem,
-  xxs: 320px / $g-base * 1rem
+$boxmodels-base: 16px;
+$boxmodels-breakpoint-min: "xxs";
+$boxmodels-breakpoints: (
+  xxl: 1440px / $boxmodels-base * 1rem,
+  xl: 1200px / $boxmodels-base * 1rem,
+  l: 1024px / $boxmodels-base * 1rem,
+  m: 768px / $boxmodels-base * 1rem,
+  s: 425px / $boxmodels-base * 1rem,
+  xs: 375px / $boxmodels-base * 1rem,
+  xxs: 320px / $boxmodels-base * 1rem
 ) !default;
 
 ////////////////////////////////////////////////////
@@ -156,22 +156,14 @@ $g-breakpoints: (
 //
 ////////////////////////////////////////////////////
 
-$screen: "screen";
-$print: "print";
-$handheld: "handheld";
-$landscape: "(orientation: landscape)";
-$portrait: "(orientation: portrait)";
-$retina2x: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)";
-$retina3x: "(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)";
-
-$g-media: (
-  screen: $screen,
-  print: $print,
-  handheld: $handheld,
-  landscape: $landscape,
-  portrait: $portrait,
-  retina2x: $retina2x,
-  retina3x: $retina3x
+$boxmodels-media: (
+  screen: "screen",
+  print: "print",
+  handheld: "handheld",
+  landscape: "(orientation: landscape)",
+  portrait: "(orientation: portrait)",
+  retina2x: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)",
+  retina3x: "(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)"
 );
 
 ////////////////////////////////////////////////////
@@ -181,16 +173,11 @@ $g-media: (
 //
 ////////////////////////////////////////////////////
 
-$g-interval-px: 1;
-$g-interval-em: .01;
-$g-interval-rem: .01;
-$g-interval-default: 0;
-
-$g-intervals: (
-  px: $g-interval-px,
-  em: $g-interval-em,
-  rem: $g-interval-rem,
-  default: $g-interval-default
+$boxmodels-intervals: (
+  px: 1,
+  em: .01,
+  rem: .01,
+  default: 0
 ) !default;
 
 ////////////////////////////////////////////////////
@@ -199,13 +186,13 @@ $g-intervals: (
 //
 ////////////////////////////////////////////////////
 
-$more: ">";
-$less: "<";
-$equal: "=";
+$boxmodels-more: ">";
+$boxmodels-less: "<";
+$boxmodels-equal: "=";
 
-$more-or-equal: ">=";
-$less-or-equal: "<=";
+$boxmodels-more-or-equal: ">=";
+$boxmodels-less-or-equal: "<=";
 
-$g-operators-one: ($more, $less, $equal);
-$g-operators-two: ($more-or-equal, $less-or-equal);
-$g-operators: join($g-operators-one, $g-operators-two);
+$boxmodels-operators-one: ($boxmodels-more, $boxmodels-less, $boxmodels-equal);
+$boxmodels-operators-two: ($boxmodels-more-or-equal, $boxmodels-less-or-equal);
+$boxmodels-operators: join($boxmodels-operators-one, $boxmodels-operators-two);

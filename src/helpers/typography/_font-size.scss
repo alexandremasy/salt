@@ -28,7 +28,7 @@ $f-sizes: (
 @mixin font-size($name, $init: false) {
   $size: map-get($f-sizes, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     @if length($size) > 1 {
       $f-min: nth($size, 1);
       $f-max: nth($size, 2);

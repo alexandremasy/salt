@@ -20,7 +20,7 @@ $f-decorations: (
 @mixin text-decoration($name, $init: false) {
   $value: map-get($f-decorations, $name);
 
-  @if $g-in-media or $init {
+  @if $boxmodels-in-breakpoint or $init {
     text-decoration: $value;
   } @else {
     @extend #{$helper-prefix}f-#{$name};
