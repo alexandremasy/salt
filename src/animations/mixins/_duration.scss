@@ -4,14 +4,14 @@
 //
 ////////////////////////////////////////////////////
 @use '../settings' as settings;
-@import '../../utils/helpers';
+@use 'common';
 
 @mixin animation-duration($name, $init: false){
   $collection: settings.$durations;
   $domains: settings.$domains;
   $helpers: (animation, duration);
 
-  @include salt-helper(animation-duration, $collection, $name, $domains, $helpers, $init);
+  @include common.salt-helper(animation-duration, $collection, $name, $domains, $helpers, $init);
 }
 
 @mixin transition-duration($name, $init: false) {
@@ -19,5 +19,5 @@
   $domains: settings.$domains;
   $helpers: (transition, duration);
 
-  @include salt-helper(transition-duration, $collection, $name, $domains, $helpers, $init);
+  @include common.salt-helper(transition-duration, $collection, $name, $domains, $helpers, $init);
 }

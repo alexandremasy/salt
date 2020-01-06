@@ -10,7 +10,7 @@
   $domains: settings.$domains;
   $helpers: (animation, easing);
 
-  @include salt-helper(animation-timing-function, $collection, $name, $domains, $helpers, $init);
+  @include common.salt-helper(animation-timing-function, $collection, $name, $domains, $helpers, $init);
 }
 
 @mixin transition-timing-function($name, $init: false) {
@@ -18,5 +18,5 @@
   $domains: settings.$domains;
   $helpers: (transition, easing);
 
-  @include salt-helper(transition-timing-function, $collection, $name, $domains, $helpers, $init);
+  @include common.salt-helper(transition-timing-function, $collection, $name, $domains, $helpers, $init);
 }

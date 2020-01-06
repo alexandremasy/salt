@@ -1,0 +1,12 @@
+@function salt-helper-classname($domains, $helpers, $property){
+  $prefix: salt-helpers-prefix();
+  $separator: salt-helpers-separator();
+  $key: salt-helper-key($domains, $helpers);
+
+  @if str-length($key) == 0 {
+    @return #{$prefix}#{$property};
+  }
+  @else{
+    @return #{$prefix}#{$key}#{$separator}#{$property};
+  }
+}

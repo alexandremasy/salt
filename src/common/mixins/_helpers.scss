@@ -1,0 +1,14 @@
+@mixin salt-helper($css-property, $alt-collection, $alt-property, $domains, $helpers, $init: false){
+  @if salt-helper-enabled(){
+    @if salt-media-active() or $init {
+      $value: map-get($alt-collection, $alt-property);
+      #{$css-property}: $value;
+    } @else {
+      @extend #{salt-helper-classname($domains, $helpers, $alt-property)};
+    }
+  }
+  @else{
+    $value: map-get($alt-collection, $alt-property);
+    #{$css-property}: $value;
+  }
+}
