@@ -18,7 +18,12 @@
   $prefix: grid-breakpoint-prefix($operator);
   $value: grid-parse($expression);
 
-  @return "(#{$prefix}-#{$dimension}: #{$value})";
+  // @debug 'operator: #{$operator}';
+  // @debug 'dimen: #{$dimension}';
+  // @debug 'prefix: #{$prefix}';
+  // @debug 'value: #{$value}';
+
+  @return "(#{$prefix}#{$dimension}: #{$value})";
 }
 
 //
@@ -44,6 +49,8 @@
   @if $parsed-dimension != null and str-length($parsed-dimension) > 0 {
     $dimension: $parsed-dimension;
   }
+
+  // @debug 'dimension: #{$dimension}';
 
   @return $dimension;
 }
