@@ -3,11 +3,11 @@
 @function radius($name) {
   $ret: null;
 
-  @if map-has-key(settings.$radii, $name){
-    $ret: map-get(settings.$radii, $name);
+  @if map-has-key(settings.$boxmodels-radii, $name){
+    $ret: map-get(settings.$boxmodels-radii, $name);
   }
   @else{
-    @warn 'E404: No value for the given radius' + $name;
+    @warn 'E404: No value for the given radius ' + $name;
   }
 
   @return $ret;

@@ -1,19 +1,5 @@
 ////////////////////////////////////////////////////
 //
-//              Mixin
-//
-////////////////////////////////////////////////////
-
-@mixin align-items($name, $init: false) {
-  $collection: map-get($boxmodel, 'align-items');
-  $domains: map-get($boxmodel, domains);
-  $helpers: ('box-model', 'align-items');
-
-  @include salt-helper(display, $collection, $name, $domains, $helpers, $init);
-}
-
-////////////////////////////////////////////////////
-//
 //              Helper
 //
 ////////////////////////////////////////////////////

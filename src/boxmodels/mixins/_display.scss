@@ -1,0 +1,13 @@
+////////////////////////////////////////////////////
+//
+//              Mixin
+//
+////////////////////////////////////////////////////
+
+@mixin display($name, $init: false) {
+  $collection: map-get($boxmodel, 'display');
+  $domains: map-get($boxmodel, domains);
+  $helpers: ('box-model', 'display');
+
+  @include salt-helper(display, $collection, $name, $domains, $helpers, $init);
+}
