@@ -12,13 +12,3 @@
 .duration-func{
   transition: all salt.duration(m);
 }
-
-.duration-xxs{
-  @include salt.transition-duration(xs);
-  @include salt.animation-duration(xxl);
-}
-
-.duration-aliases-m{
-  // @include salt.a(m);
-  // @include salt.t(m);
-}

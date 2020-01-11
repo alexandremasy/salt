@@ -1,0 +1,19 @@
+@mixin animation($token) {
+  @if is-duration($token){
+    // @TODO
+    // if helpers enabled
+    //   extends helper
+    // else
+    //   property: value
+    animation-duration: duration($token);
+  }
+
+  @if is-easing($token){
+    // @TODO
+    // if helpers enabled
+    //   extends helper
+    // else
+    //   property: value
+    animation-timing-function: easing($token);
+  }
+}

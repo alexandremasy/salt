@@ -1,0 +1,20 @@
+@use 'sass:map';
+
+@function easing($name) {
+  $ret: null;
+  $easings: map.get($animation, easings);
+
+  @if map.has-key($easings, $name){
+    $ret: map.get($easings, $name);
+  }
+  @else{
+    @warn 'E404 - Easings - No value for the given token: ' + $name;
+  }
+
+  @return $ret;
+}
+
+@function is-easing($token){
+  $easings: map.get($animation, easings);
+  @return map.has-key($easings, $token);
+}

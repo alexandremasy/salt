@@ -1,21 +1,15 @@
 @use "salt" with(
   $mode: "dsm",
-
-  $helpers: (
-    prefix: "%"
-  )
+  $helpers-prefix: "%"
 );
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-//   Display
+//   Animation
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-.align-items{
-  // @include salt.align-items(start);
-}
-
-.align-items-flex-end{
-  // @include salt.align-items(flex-end);
+.transition{
+  @include salt.transition(xl);
+  @include salt.transition(cubic-in-out);
 }

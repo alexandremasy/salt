@@ -7,15 +7,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .height{
-  functionvalue: salt.size('m');
-  @include salt.height(xl);
+  // functionvalue: salt.size('m');
+  // @include salt.height(xl);
 }
 
 .minheight{
-  @include salt.min-height(xs);
+  // @include salt.min-height(xs);
 }
 
 
 .other{
-  @include salt.height(xl);
+  // @include salt.height(xl);
 }
