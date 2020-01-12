@@ -2,8 +2,13 @@
 @use 'commons';
 
 @mixin transition-bootstrap(){
-  $easings: _easings();
+  // only if module enabled && helpers enabled
+  
+  @include _transition-durations-bootstrap();
+  @include _transition-easings-bootstrap();
+}
 
+@mixin _transition-durations-bootstrap(){
   // %t-m
   // %t-back-out
   $domain: map.get(_domains(), transition);
@@ -11,4 +16,8 @@
     $classname: commons.helper-classname($domain, $token);
     @debug $classname;
   }
+}
+
+@mixin _transition-easings-bootstrap(){
+
 }

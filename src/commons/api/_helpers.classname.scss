@@ -1,9 +1,16 @@
 @use "sass:list";
 
+//
+// Generate the utility classname
+// {domain}<separator>[{property}<separator>]{token}
+//
+// @param $domain String
+// @param $token String
+// @param $property String
+//
 @function helper-classname($domain, $token, $property: null){
   $prefix: _prefix();
 
-  // {domain}<separator>[{property}<separator>]{token}
   $parts: ($domain);
   @if $property {
     $parts: list.append($parts, $property);
@@ -11,17 +18,4 @@
   $parts: list.append($parts, $token);
 
   @return #{$prefix}#{list-join($parts, '-')};
-
-  /////////////////////////////////////
-
-  // $prefix: salt-helpers-prefix();
-  // $separator: salt-helpers-separator();
-  // $key: salt-helper-key($domains, $helpers);
-  //
-  // @if str-length($key) == 0 {
-  //   @return #{$prefix}#{$property};
-  // }
-  // @else{
-  //   @return #{$prefix}#{$key}#{$separator}#{$property};
-  // }
 }
