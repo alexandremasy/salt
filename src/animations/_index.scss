@@ -80,5 +80,11 @@ $animation: (
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+@import './helpers/transition';
+
 // @import './helpers/duration';
 // @import './helpers/easing';
+
+@mixin bootstrap(){
+  @include transition-bootstrap();
+}

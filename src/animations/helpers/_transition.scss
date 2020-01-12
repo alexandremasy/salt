@@ -1,6 +1,14 @@
-@mixin transition:bootstrap(){
-  $durations: _durations();
+@use 'sass:map';
+@use 'commons';
+
+@mixin transition-bootstrap(){
   $easings: _easings();
 
-  
+  // %t-m
+  // %t-back-out
+  $domain: map.get(_domains(), transition);
+  @each $token, $value in _durations() {
+    $classname: commons.helper-classname($domain, $token);
+    @debug $classname;
+  }
 }

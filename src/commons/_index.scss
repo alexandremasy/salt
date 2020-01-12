@@ -4,7 +4,7 @@
 //
 ////////////////////////////////////////////////////
 
-@forward './settings';
+@import './settings';
 
 ////////////////////////////////////////////////////
 //
@@ -12,12 +12,13 @@
 //
 ////////////////////////////////////////////////////
 
-@forward './api/global';
-@forward './api/helpers.classname';
-@forward './api/helpers.key';
-@forward './api/list.slice';
-@forward './api/stripunit';
-@forward './api/token.get';
+@import './api/getters';
+@import './api/helpers.classname';
+@import './api/helpers.key';
+@import './api/list.join';
+@import './api/list.slice';
+@import './api/stripunit';
+@import './api/token.get';
 
 ////////////////////////////////////////////////////
 //
@@ -25,7 +26,7 @@
 //
 ////////////////////////////////////////////////////
 
-@forward './mixins/helpers';
+@import './mixins/helpers';
 
 ////////////////////////////////////////////////////
 //

@@ -1,7 +1,8 @@
-@use "salt" with(
-  $mode: "dsm",
-  $helpers-prefix: "%"
-);
+@use "salt";
+// @use "salt" with(
+//   $mode: "dsm",
+//   $helpers-prefix: "%"
+// );
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -13,3 +14,6 @@
   @include salt.transition(xl);
   @include salt.transition(cubic-in-out);
 }
+
+
+@include salt.bootstrap();

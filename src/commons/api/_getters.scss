@@ -1,0 +1,35 @@
+@function _mode() {
+  @return $mode;
+}
+
+@function _utility() {
+  @return $utility;
+}
+
+@function _prefix() {
+  $variable: _variable();
+  @if $variable == 'scss' {
+    @return '.';
+  }
+  @else if $variable == 'placeholder' {
+    @return '%';
+  }
+  @else if $variable == 'css' {
+    @return '';
+  }
+  @else{
+    @warn 'Warn: Not a valid value for $variable configuration';
+  }
+}
+
+@function _separator() {
+  @return $separator;
+}
+
+@function _variable() {
+  @return $variable;
+}
+
+@function _in-media(){
+  @return $boxmodels-in-breakpoint;
+}

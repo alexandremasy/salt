@@ -1,0 +1,14 @@
+@use "sass:list";
+
+@function list-join($list, $glue: '', $is-nested: false) {
+  $n: list.length($list);
+  $result: list.nth($list, 1);
+
+  @for $i from 2 through $n {
+    $e: list.nth($list, $i);
+
+    $result: #{$result}#{$glue}#{$e};
+  }
+
+  @return $result;
+}
