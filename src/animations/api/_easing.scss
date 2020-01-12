@@ -1,19 +1,23 @@
 @use 'sass:map';
+@use 'commons';
 
-@function easing($name) {
-  $ret: null;
-  $easings: map.get($animation, easings);
-
-  @if map.has-key($easings, $name){
-    $ret: map.get($easings, $name);
-  }
-  @else{
-    @warn 'E404 - Easings - No value for the given token: ' + $name;
-  }
-
-  @return $ret;
+//
+// Return the easing token
+//
+// @param token String
+// @return
+//
+@function easing($token) {
+  $easings: _easings();
+  @return commons.token-get($easings, $token);
 }
 
+//
+// Is the token a valid easing
+//
+// @param token String
+// @return Boolean
+//
 @function is-easing($token){
   $easings: map.get($animation, easings);
   @return map.has-key($easings, $token);

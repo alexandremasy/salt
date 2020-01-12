@@ -1,20 +1,24 @@
 @use 'sass:map';
+@use 'commons';
 
-@function duration($name) {
-  $ret: null;
-  $durations: map.get($animation, durations);
-
-  @if map.has-key($durations, $name){
-    $ret: map.get($durations, $name);
-  }
-  @else{
-    @warn 'E404 - Durations - No value for the given token: ' + $name;
-  }
-
-  @return $ret;
+//
+// Return the duration token
+//
+// @param token String
+// @return
+//
+@function duration($token) {
+  $durations: _durations();
+  @return commons.token-get($durations, $token);
 }
 
+//
+// Is the token a valid duration
+//
+// @param token String
+// @return Boolean
+//
 @function is-duration($token){
-  $durations: map.get($animation, durations);
+  $durations: _durations();
   @return map.has-key($durations, $token);
 }

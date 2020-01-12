@@ -1,0 +1,14 @@
+@use 'sass:map';
+
+@function token-get($collection, $token){
+  $ret: null;
+
+  @if map.has-key($collection, $token){
+    $ret: map.get($collection, $token);
+  }
+  @else{
+    @warn 'E404 - No value for the given token: ' + $token;
+  }
+
+  @return $ret;
+}

@@ -1,0 +1,29 @@
+@use 'sass:map';
+
+//
+// @return $animation.enabled
+//
+@function _enabled(){
+  @return map.get($animation, enabled);
+}
+
+//
+// @return $animation.domains
+//
+@function _domains(){
+  @return map.get($animation, domains);
+}
+
+//
+// @return $animation.durations
+//
+@function _durations(){
+  @return map.get($animation, durations);
+}
+
+//
+// @return $animation.easings
+//
+@function _easings(){
+  @return map.get($animation, easings);
+}

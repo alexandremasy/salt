@@ -9,9 +9,7 @@ $animation: (
 
   domains: (
     transition: t,
-    animation: a,
-    duration: '',
-    easing: ''
+    animation: a
   ),
 
   durations: (
@@ -63,6 +61,7 @@ $animation: (
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+@import './api/getters';
 @import './api/duration';
 @import './api/easing';
 
