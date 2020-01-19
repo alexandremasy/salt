@@ -73,6 +73,7 @@ $animation: (
 
 @import './mixins/animation';
 @import './mixins/transition';
+@import './mixins/bootstrap';
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -81,10 +82,4 @@ $animation: (
 ////////////////////////////////////////////////////////////////////////////////
 
 @import './helpers/transition';
-
-// @import './helpers/duration';
-// @import './helpers/easing';
-
-@mixin bootstrap(){
-  @include transition-bootstrap();
-}
+@import './helpers/animation.scss';

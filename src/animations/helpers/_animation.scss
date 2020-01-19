@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use 'commons';
+
+@mixin animation-bootstrap(){
+  // only if module enabled && helpers enabled
+  @if _enabled(){
+    @include _animation-durations-bootstrap();
+    @include _animation-easings-bootstrap();
+  }
+}
+
+@mixin _animation-durations-bootstrap(){
+  // %t-m
+  $domain: map.get(_domains(), animation);
+  @each $token, $value in _durations() {
+    $classname: commons.helper-classname($domain, $token);
+    #{$classname}{
+      animation-duration: duration($token);
+    }
+  }
+}
+
+@mixin _animation-easings-bootstrap(){
+  // %t-back-out
+  $domain: map.get(_domains(), animation);
+  @each $token, $value in _easings() {
+    $classname: commons.helper-classname($domain, $token);
+    #{$classname}{
+      animation-timing-function: easing($token);
+    }
+  }
+}

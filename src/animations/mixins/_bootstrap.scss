@@ -1,0 +1,4 @@
+@mixin bootstrap(){
+  @include animation-bootstrap();
+  @include transition-bootstrap();
+}
