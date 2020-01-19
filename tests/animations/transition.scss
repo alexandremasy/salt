@@ -4,6 +4,8 @@
 //   $helpers-prefix: "%"
 // );
 
+@include salt.bootstrap();
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 //   Animation
@@ -16,4 +18,6 @@
 }
 
 
-@include salt.bootstrap();
+.another{
+  @include salt.transition(xl);
+}

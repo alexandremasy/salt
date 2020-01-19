@@ -3,21 +3,30 @@
 
 @mixin transition-bootstrap(){
   // only if module enabled && helpers enabled
-  
-  @include _transition-durations-bootstrap();
-  @include _transition-easings-bootstrap();
+  @if _enabled(){
+    @include _transition-durations-bootstrap();
+    @include _transition-easings-bootstrap();
+  }
 }
 
 @mixin _transition-durations-bootstrap(){
   // %t-m
-  // %t-back-out
   $domain: map.get(_domains(), transition);
   @each $token, $value in _durations() {
     $classname: commons.helper-classname($domain, $token);
-    @debug $classname;
+    #{$classname}{
+      transition-duration: duration($token);
+    }
   }
 }
 
 @mixin _transition-easings-bootstrap(){
-
+  // %t-back-out
+  $domain: map.get(_domains(), transition);
+  @each $token, $value in _easings() {
+    $classname: commons.helper-classname($domain, $token);
+    #{$classname}{
+      transition-timing-function: easing($token);
+    }
+  }
 }

@@ -1,7 +1,7 @@
 @mixin transition($token){
   @if is-duration($token){
     // @TODO
-    // if helpers enabled
+    // if helpers enabled and not in media query
     //   extends helper
     // else
     //   property: value
@@ -10,7 +10,7 @@
 
   @if is-easing($token){
     // @TODO
-    // if helpers enabled
+    // if helpers enabled and not in media query
     //   extends helper
     // else
     //   property: value
